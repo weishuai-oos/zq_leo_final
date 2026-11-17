@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-29",
+  "task": "T800_base-Impact",
+  "device": "cpu",
+  "cuda_available": false,
+  "baseline": {
+    "path": "logs/cusrl/T800_base/2026-10-28-15-23-25:T800_base_2gpu_seed42/ckpt/ckpt_26500.pt",
+    "sha256": "e3429cf931639b62633007bafb1d12132a802e3f8a6b5c607e9be0a30863d3e0",
+    "iteration": 26500,
+    "optimizer_learning_rates": [
+      4.112805623679685e-05
+    ]
+  },
+  "validation": {
+    "pytest_passed": 106,
+    "ruff": "passed",
+    "compileall": "passed",
+    "slurm_bash_syntax": "passed",
+    "pyright_declared_scope_errors": 0
+  },
+  "physics": {
+    "full": {
+      "full_restore_verified": true,
+      "num_envs": 2,
+      "steps": 4,
+      "observation_dimensions": {
+        "policy": 84,
+        "critic": 87,
+        "amp_policy": 96,
+        "amp_reference": 96
+      },
+      "applied_impulse_ns": 68.49178314208984,
+      "reset_wrenches_cleared": true,
+      "action_dimensions": 25,
+      "source_report": "/tmp/t800-impact-smoke-fixed.json"
+    },
+    "headless": {
+      "full_restore_verified": true,
+      "num_envs": 2,
+      "steps": 4,
+      "observation_dimensions": {
+        "policy": 84,
+        "critic": 87,
+        "amp_policy": 96,
+        "amp_reference": 96
+      },
+      "applied_impulse_ns": 68.49178314208984,
+      "reset_wrenches_cleared": true,
+      "action_dimensions": 25,
+      "source_report": "/tmp/t800-impact-headless-complete.json"
+    }
+  },
+  "continuation": [
+    {
+      "path": "/tmp/t800-impact-update-validation/T800_base-Impact/2026-10-29-18-52-36:one_update_retry/ckpt/ckpt_26500.pt",
+      "iteration": 26500,
+      "stage_origin_iteration": 26500,
+      "completed_updates": 0,
+      "lr_caps": [
+        2.0564028118398426e-05
+      ],
+      "optimizer_learning_rates": [
+        2.0564028118398426e-05
+      ],
+      "adam_parameter_states": 27,
+      "adam_state_finite": true,
+      "actor_changed_from_previous": false
+    },
+    {
+      "path": "/tmp/t800-impact-update-validation/T800_base-Impact/2026-10-29-18-52-36:one_update_retry/ckpt/ckpt_26501.pt",
+      "iteration": 26501,
+      "stage_origin_iteration": 26500,
+      "completed_updates": 1,
+      "lr_caps": [
+        2.0564028118398426e-05
+      ],
+      "optimizer_learning_rates": [
+        1.6836402227693138e-05
+      ],
+      "adam_parameter_states": 27,
+      "adam_state_finite": true,
+      "actor_changed_from_previous": true
+    },
+    {
+      "path": "/tmp/t800-impact-update-validation/T800_base-Impact/2026-10-29-18-55-27:resume_one_update/ckpt/ckpt_26502.pt",
+      "iteration": 26502,
+      "stage_origin_iteration": 26500,
+      "completed_updates": 2,
+      "lr_caps": [
+        2.0564028118398426e-05
+      ],
+      "optimizer_learning_rates": [
+        1.3784480275003014e-05
+      ],
+      "adam_parameter_states": 27,
+      "adam_state_finite": true,
+      "actor_changed_from_previous": true
+    }
+  ],
+  "formal_training_started": false
+}

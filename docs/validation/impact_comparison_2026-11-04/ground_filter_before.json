@@ -1,0 +1,196 @@
+{
+  "filter": "current",
+  "samples": [
+    {
+      "phase": "upright",
+      "step": 15,
+      "root_height": 0.9229422807693481,
+      "up": 0.9746175408363342,
+      "fall": false,
+      "largest_net": [
+        {
+          "body": "LINK_ANKLE_ROLL_R",
+          "net_n": 675.8125,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_ANKLE_ROLL_L",
+          "net_n": 212.20436096191406,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_BASE",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_PITCH_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 0.0
+    },
+    {
+      "phase": "fallen",
+      "step": 0,
+      "root_height": 0.2528136670589447,
+      "up": -0.015533685684204102,
+      "fall": false,
+      "largest_net": [
+        {
+          "body": "LINK_KNEE_PITCH_L",
+          "net_n": 286.8887634277344,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_BASE",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_PITCH_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_YAW_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 0.0
+    },
+    {
+      "phase": "fallen",
+      "step": 4,
+      "root_height": 0.2272263616323471,
+      "up": -0.08379149436950684,
+      "fall": false,
+      "largest_net": [
+        {
+          "body": "LINK_KNEE_PITCH_L",
+          "net_n": 181.5067901611328,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_BASE",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_PITCH_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_YAW_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 0.0
+    },
+    {
+      "phase": "fallen",
+      "step": 14,
+      "root_height": 0.13041113317012787,
+      "up": -0.06137847900390625,
+      "fall": false,
+      "largest_net": [
+        {
+          "body": "LINK_HEAD_YAW",
+          "net_n": 273.2225341796875,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_KNEE_PITCH_L",
+          "net_n": 261.6654357910156,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_ELBOW_PITCH_R",
+          "net_n": 211.57167053222656,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_ELBOW_PITCH_L",
+          "net_n": 124.97122192382812,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 0.0
+    },
+    {
+      "phase": "fallen",
+      "step": 29,
+      "root_height": 0.1396239697933197,
+      "up": -0.0823742151260376,
+      "fall": false,
+      "largest_net": [
+        {
+          "body": "LINK_TORSO_YAW",
+          "net_n": 243.76673889160156,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_ELBOW_PITCH_R",
+          "net_n": 167.08314514160156,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_ELBOW_PITCH_L",
+          "net_n": 119.94402313232422,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_KNEE_PITCH_L",
+          "net_n": 104.95970153808594,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 0.0
+    },
+    {
+      "phase": "fallen",
+      "step": 59,
+      "root_height": 0.13907860219478607,
+      "up": -0.08113205432891846,
+      "fall": false,
+      "largest_net": [
+        {
+          "body": "LINK_TORSO_YAW",
+          "net_n": 219.2981719970703,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_ELBOW_PITCH_R",
+          "net_n": 137.47434997558594,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_ELBOW_PITCH_L",
+          "net_n": 117.35873413085938,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_KNEE_PITCH_L",
+          "net_n": 96.75760650634766,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 0.0
+    }
+  ],
+  "fallen_resets": 0,
+  "collider_prims": {
+    "/World/ground/terrain": {
+      "type": "Xform",
+      "collision": false
+    },
+    "/World/ground/terrain/mesh": {
+      "type": "Mesh",
+      "collision": true
+    }
+  }
+}

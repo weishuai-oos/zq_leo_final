@@ -1,0 +1,31 @@
+selected_files:
+  - "站立2_t800_controller_retargeted.npz"
+  - "站立3_t800_controller_retargeted.npz"
+  - "前进1_t800_controller_retargeted.npz"
+  - "后退1_t800_controller_retargeted.npz"
+  - "左移1_t800_controller_retargeted.npz"
+  - "右移1_t800_controller_retargeted.npz"
+  - "左转1_t800_controller_retargeted.npz"
+  - "右转1_t800_controller_retargeted.npz"
+  - "左前移1_t800_controller_retargeted.npz"
+  - "右前移1_t800_controller_retargeted.npz"
+  - "左后移1_t800_controller_retargeted.npz"
+  - "右后移1_t800_controller_retargeted.npz"
+  - "随机方向移动转向混合走路_t800_controller_retargeted.npz"
+
+# File-level sampling probabilities. The four cardinal translations and two
+# in-place turns receive most of the reference samples; weights sum to 1.0.
+motion_weights:
+  - 0.0500
+  - 0.0500
+  - 0.1250
+  - 0.1250
+  - 0.1250
+  - 0.1250
+  - 0.1000
+  - 0.1000
+  - 0.0375
+  - 0.0375
+  - 0.0375
+  - 0.0375
+  - 0.0500

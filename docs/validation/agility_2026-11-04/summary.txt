@@ -1,0 +1,80 @@
+stage1 off n= 128 falls= 0 xyRMSE= 0.25 yawRMSE= 0.116
+  fb_1 falls 0 T90 {'reached': 16} median 0.33 strict stop {'reached': 16} filtered stop 0.67 dist 0.11682354961729667
+    1 T50 {'reached': 8} 0.2 T90 {'reached': 8} 0.32 gain 0.8987789022922515
+    -1 T50 {'reached': 8} 0.2 T90 {'reached': 8} 0.36 gain 0.9345999741554261
+  lr_1 falls 0 T90 {'reached': 16} median 0.68 strict stop {'reached': 16} filtered stop 0.67 dist 0.18387209593258141
+    1 T50 {'reached': 8} 0.32 T90 {'reached': 8} 0.7000000000000001 gain 0.9177059710025788
+    -1 T50 {'reached': 8} 0.22 T90 {'reached': 8} 0.38 gain 0.914824982881546
+  yaw_0.75 falls 0 T90 {'reached': 16} median 0.32 strict stop {'reached': 16} filtered stop 0.13 dist 0.011877815660816634
+    1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.34 gain 0.9450146834055583
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.32 gain 0.9799637381235757
+  yaw_0.75_negative_first falls 0 T90 {'reached': 16} median 0.39 strict stop {'reached': 16} filtered stop 0.1 dist 0.01327332348703766
+    1 T50 {'reached': 8} 0.07 T90 {'reached': 8} 0.27 gain 0.9196976391474405
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.51 gain 0.9675118033091228
+  yaw_1.25 falls 0 T90 {'reached': 16} median 0.19 strict stop {'reached': 16} filtered stop 0.1 dist 0.008357932462355947
+    1 T50 {'reached': 8} 0.08 T90 {'reached': 8} 0.24 gain 0.9700383377075196
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.14 gain 0.9973788204193115
+  fast_fb falls 0 T90 {'reached': 8, 'not_reached': 120} median 0.29000000000000004 strict stop {'reached': 8} filtered stop 0.48 dist 0.11346748776495941
+  fast_lr falls 0 T90 {'not_reached': 128} median None strict stop {'reached': 8} filtered stop 0.6900000000000001 dist 0.10919926333598928
+  fast_yaw falls 0 T90 {'reached': 116, 'not_reached': 12} median 0.12 strict stop {'reached': 8} filtered stop 0.09 dist 0.009280454345597976
+  mixed_chase_evade falls 0 T90 {} median None strict stop {'reached': 8} filtered stop 0.48 dist 0.13306814043300003
+stage1 common n= 128 falls= 5 xyRMSE= 0.303 yawRMSE= 0.229
+  fb_1 falls 0 T90 {'reached': 16} median 0.41000000000000003 strict stop {'not_reached': 2, 'reached': 14} filtered stop 0.56 dist 0.16339496750998547
+    1 T50 {'reached': 8} 0.2 T90 {'reached': 8} 0.32 gain 0.9161662483215331
+    -1 T50 {'reached': 8} 0.21000000000000002 T90 {'reached': 8} 0.67 gain 0.9688207828998565
+  lr_1 falls 1 T90 {'reached': 15, 'not_exposed': 1} median 0.8200000000000001 strict stop {'reached': 14, 'not_exposed': 2} filtered stop 0.8 dist 0.24083918772649848
+    1 T50 {'reached': 8} 0.27 T90 {'reached': 8} 0.6900000000000001 gain 0.908393919467926
+    -1 T50 {'reached': 7, 'not_exposed': 1} 0.22 T90 {'reached': 7, 'not_exposed': 1} 0.84 gain 0.907238450050354
+  yaw_0.75 falls 0 T90 {'reached': 16} median 0.29000000000000004 strict stop {'reached': 16} filtered stop 0.1 dist 0.010663591980593972
+    1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.34 gain 0.9319146219889323
+    -1 T50 {'reached': 8} 0.07 T90 {'reached': 8} 0.21000000000000002 gain 0.9641151698430379
+  yaw_0.75_negative_first falls 0 T90 {'reached': 16} median 0.44 strict stop {'reached': 16} filtered stop 0.1 dist 0.010195376373909881
+    1 T50 {'reached': 8} 0.08 T90 {'reached': 8} 0.42000000000000004 gain 0.9423244635264079
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.44 gain 0.9744575993220012
+  yaw_1.25 falls 0 T90 {'reached': 16} median 0.19 strict stop {'reached': 16} filtered stop 0.16 dist 0.012212136381408528
+    1 T50 {'reached': 8} 0.08 T90 {'reached': 8} 0.24 gain 0.9794389495849609
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.16 gain 0.9854373474121093
+  fast_fb falls 0 T90 {'reached': 9, 'not_reached': 119} median 0.3 strict stop {'reached': 8} filtered stop 0.55 dist 0.10956687264649617
+  fast_lr falls 0 T90 {'not_reached': 124, 'reached': 4} median 0.32999999999999996 strict stop {'reached': 8} filtered stop 0.8 dist 0.14728831147809995
+  fast_yaw falls 0 T90 {'reached': 108, 'not_reached': 20} median 0.22 strict stop {'reached': 8} filtered stop 0.13 dist 0.012716702174378976
+  mixed_chase_evade falls 1 T90 {} median None strict stop {'reached': 7, 'not_exposed': 1} filtered stop 0.72 dist 0.14115029148782032
+impact off n= 128 falls= 0 xyRMSE= 0.247 yawRMSE= 0.161
+  fb_1 falls 0 T90 {'reached': 16} median 0.72 strict stop {'reached': 16} filtered stop 0.65 dist 0.17754663166129947
+    1 T50 {'reached': 8} 0.22 T90 {'reached': 8} 0.76 gain 0.946413096189499
+    -1 T50 {'reached': 8} 0.21000000000000002 T90 {'reached': 8} 0.5700000000000001 gain 0.9217738223075866
+  lr_1 falls 0 T90 {'reached': 16} median 0.6900000000000001 strict stop {'reached': 16} filtered stop 0.61 dist 0.22799445612013955
+    1 T50 {'reached': 8} 0.26 T90 {'reached': 8} 0.67 gain 0.9872954320907592
+    -1 T50 {'reached': 8} 0.26 T90 {'reached': 8} 0.73 gain 0.9118343615531921
+  yaw_0.75 falls 0 T90 {'reached': 8, 'not_reached': 8} median 0.65 strict stop {'reached': 16} filtered stop 0.45 dist 0.011680121243140693
+    1 T50 {'reached': 8} 0.07 T90 {'reached': 8} 0.65 gain 0.86525932153066
+    -1 T50 {'reached': 8} 0.06 T90 {'not_reached': 8} None gain 0.0926299219330152
+  yaw_0.75_negative_first falls 0 T90 {'reached': 10, 'not_reached': 6} median 0.8 strict stop {'reached': 16} filtered stop 0.14 dist 0.013768619796992888
+    1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.73 gain 0.9068056233723958
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 2, 'not_reached': 6} 0.86 gain 0.06046947194108118
+  yaw_1.25 falls 0 T90 {'reached': 16} median 0.48 strict stop {'reached': 14, 'not_reached': 2} filtered stop 0.22 dist 0.0171985984372438
+    1 T50 {'reached': 8} 0.07 T90 {'reached': 8} 0.29 gain 0.9597037601470947
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 8} 0.48 gain 0.9775984153747559
+  fast_fb falls 0 T90 {'not_reached': 127, 'reached': 1} median 0.3 strict stop {'reached': 8} filtered stop 0.4 dist 0.09120518636594306
+  fast_lr falls 0 T90 {'not_reached': 128} median None strict stop {'reached': 8} filtered stop 0.45 dist 0.07956985136935599
+  fast_yaw falls 0 T90 {'not_reached': 31, 'reached': 97} median 0.1 strict stop {'reached': 7, 'not_reached': 1} filtered stop 0.18 dist 0.006938329246625176
+  mixed_chase_evade falls 0 T90 {} median None strict stop {'reached': 8} filtered stop 0.44 dist 0.12512240042622902
+impact common n= 128 falls= 2 xyRMSE= 0.281 yawRMSE= 0.212
+  fb_1 falls 0 T90 {'reached': 16} median 0.77 strict stop {'reached': 15, 'not_reached': 1} filtered stop 0.64 dist 0.1557494147492659
+    1 T50 {'reached': 8} 0.22 T90 {'reached': 8} 0.8300000000000001 gain 0.9369673180580139
+    -1 T50 {'reached': 8} 0.22 T90 {'reached': 8} 0.71 gain 0.9384388625621796
+  lr_1 falls 1 T90 {'reached': 16} median 0.76 strict stop {'reached': 15, 'not_exposed': 1} filtered stop 0.64 dist 0.25495377870013913
+    1 T50 {'reached': 8} 0.24 T90 {'reached': 8} 0.73 gain 0.9787349414825439
+    -1 T50 {'reached': 8} 0.27 T90 {'reached': 8} 0.76 gain 0.9124990010261536
+  yaw_0.75 falls 0 T90 {'reached': 11, 'not_reached': 5} median 0.6 strict stop {'reached': 16} filtered stop 0.36 dist 0.016040136258349626
+    1 T50 {'reached': 8} 0.07 T90 {'reached': 8} 0.6 gain 0.8552601687113444
+    -1 T50 {'reached': 8} 0.07 T90 {'not_reached': 5, 'reached': 3} 0.48 gain 0.0880286990602811
+  yaw_0.75_negative_first falls 0 T90 {'reached': 12, 'not_reached': 4} median 0.8200000000000001 strict stop {'reached': 16} filtered stop 0.69 dist 0.01616746444604751
+    1 T50 {'reached': 8} 0.07 T90 {'reached': 8} 0.75 gain 0.9091655540466309
+    -1 T50 {'reached': 8} 0.06 T90 {'reached': 4, 'not_reached': 4} 0.96 gain 0.11203416655460993
+  yaw_1.25 falls 0 T90 {'reached': 16} median 0.47 strict stop {'reached': 16} filtered stop 0.26 dist 0.02206989269703941
+    1 T50 {'reached': 8} 0.08 T90 {'reached': 8} 0.41000000000000003 gain 0.9605812149047852
+    -1 T50 {'reached': 8} 0.07 T90 {'reached': 8} 0.48 gain 0.9840877437591553
+  fast_fb falls 0 T90 {'not_reached': 124, 'reached': 4} median 0.4 strict stop {'reached': 8} filtered stop 0.43 dist 0.08382778913484057
+  fast_lr falls 0 T90 {'not_reached': 128} median None strict stop {'reached': 8} filtered stop 0.53 dist 0.09747496876625894
+  fast_yaw falls 0 T90 {'not_reached': 29, 'reached': 99} median 0.1 strict stop {'reached': 8} filtered stop 0.31 dist 0.01438870616857774
+  mixed_chase_evade falls 0 T90 {} median None strict stop {'reached': 8} filtered stop 0.5 dist 0.12717513269797753

@@ -1,0 +1,7357 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-04T12:59:28.386860+00:00",
+  "label": "initialization_probe",
+  "checkpoint": "/srv/shared/home/xjh/workspace/zq_leo_final/logs/cusrl/T800_base-Impact/2026-11-04-20-26-01:T800_base-Impact_singlehit_groundfix_from115500_to125500/ckpt/ckpt_115500.pt",
+  "checkpoint_iteration": 115500,
+  "task": "T800_base-Impact-Play",
+  "seed": 42,
+  "num_envs": 16,
+  "duration_s": 15.0,
+  "control_timestep_s": 0.02,
+  "impact_mode": "off",
+  "impact_config_signature": "2d9eaa9afb7eb1ae0074b6928132f30c1897cd000f908b4f866c01039f787aec",
+  "native_baseline": false,
+  "head_faults": "disabled; full physical head retained",
+  "terrain": {
+    "type": "fight_mat_flat",
+    "level": 0,
+    "size_m": [
+      64,
+      64
+    ]
+  },
+  "trace_file": "/srv/shared/home/xjh/workspace/zq_leo_final/docs/validation/agility_2026-11-04/initialization_probe.npz",
+  "training_command_ranges": {
+    "cardinal_speed_m_s": [
+      0.65,
+      1.1
+    ],
+    "pure_turn_rad_s": [
+      1.0,
+      2.1
+    ],
+    "other_speed_m_s": [
+      0.8,
+      1.35
+    ],
+    "mixed_speed_m_s": [
+      0.8,
+      1.25
+    ],
+    "mixed_turn_rad_s": [
+      0.5,
+      1.8
+    ],
+    "note": "0.6/1.4m/s and 0.75rad/s cases intentionally probe outside their sampling mode's training range."
+  },
+  "measurement_notes": [
+    "At each step the actual command and actor/critic command input slices change before actor.act.",
+    "Commands are unfiltered; no AMP history recomputation and no LSTM reset at command edges.",
+    "State sample k is at (k+1)*0.02 seconds; command k acts over [k*0.02,(k+1)*0.02].",
+    "Velocity xy uses tactical yaw frame (37 degrees); angular tracking is world-z angular velocity approximation.",
+    "Raw RMSE includes first terminal physical frame, excludes every later autoreset frame, and weights valid samples.",
+    "Reach/stop latencies use trailing 100ms mean velocity (5 samples; initial min_periods=1).",
+    "Thresholds must persist for 100ms between first/last samples (6 samples); falls never count as successes.",
+    "latency_s is first qualifying state once hold confirmed; confirmed_s is when hold confirmation becomes available.",
+    "reach_50/reach_90 compare new signed target amplitude; zero_cross applies only direct sign reversals.",
+    "stop tests signed mean velocity; counter-oscillations may cancel. It is a drift-stopping measure.",
+    "stop_raw_speed tests 100ms mean(raw planar speed norm)<0.1m/s AND mean(abs(raw yaw))<0.15rad/s, held 100ms.",
+    "Both stopping distance/path measures end at confirmation; raw-speed stops cannot cancel opposite motion.",
+    "Steady gain uses the final 0.5 seconds of an unchanged command window; incomplete windows have null gain.",
+    "Not-exposed, fell-before-reach and not-reached are explicit statuses with null latency, never zero.",
+    "AMP trace is raw discriminator style reward before recovery scaling; terminal AMP transitions are invalid.",
+    "Reward term traces equal IsaacLab _step_reward = term*weight, a weighted per-second contribution.",
+    "Body/friction randomization is retained; paired seeds do not guarantee paired draws after different falls."
+  ],
+  "reward_terms": [
+    {
+      "name": "action_rate_l2",
+      "weight": -0.0045
+    },
+    {
+      "name": "dof_acc_l2",
+      "weight": -2e-07
+    },
+    {
+      "name": "ankle_target_rate_l2",
+      "weight": -0.01
+    },
+    {
+      "name": "ankle_target_acceleration_l2",
+      "weight": -0.002
+    }
+  ],
+  "aggregate": {
+    "trials": 16,
+    "falls": 0,
+    "failure_rate": 0.0,
+    "valid_samples": 12000,
+    "alive_seconds_total": 240.0,
+    "tracking_rmse_components": [
+      0.18615663051605225,
+      0.16058117151260376,
+      0.1680736392736435
+    ],
+    "tracking_rmse_xy": 0.24584828317165375,
+    "tracking_rmse_yaw": 0.1680740863084793
+  },
+  "scenarios": {
+    "fb_0.6": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        0
+      ],
+      "axis": 0,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.6,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            -0.6,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "fb_1": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        1
+      ],
+      "axis": 0,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "fb_1.4": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        2
+      ],
+      "axis": 0,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            1.4,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            -1.4,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "lr_0.6": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        3
+      ],
+      "axis": 1,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "lr_1": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        4
+      ],
+      "axis": 1,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            -1.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "lr_1.4": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        5
+      ],
+      "axis": 1,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            1.4,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            -1.4,
+            0.0
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "yaw_0.75": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        6
+      ],
+      "axis": 2,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "yaw_0.75_negative_first": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        7
+      ],
+      "axis": 2,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "yaw_1.25": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        8
+      ],
+      "axis": 2,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            -1.25
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "yaw_1.25_negative_first": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        9
+      ],
+      "axis": 2,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            -1.25
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            1.25
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "yaw_1.8": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        10
+      ],
+      "axis": 2,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            1.8
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            -1.8
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "yaw_1.8_negative_first": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        11
+      ],
+      "axis": 2,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "first",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            -1.8
+          ]
+        },
+        {
+          "name": "stop_first",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            1.8
+          ]
+        },
+        {
+          "name": "stop_reverse",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "hold_stand",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "fast_fb": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        12
+      ],
+      "axis": 0,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_00",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_01",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_02",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_03",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_04",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_05",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_06",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_07",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_08",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_09",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_10",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_11",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_12",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_13",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_14",
+          "duration_s": 0.5,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_15",
+          "duration_s": 0.5,
+          "command": [
+            -0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop",
+          "duration_s": 5.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "fast_lr": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        13
+      ],
+      "axis": 1,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_00",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_01",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_02",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_03",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_04",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_05",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_06",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_07",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_08",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_09",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_10",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_11",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_12",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_13",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_14",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_15",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            -0.6,
+            0.0
+          ]
+        },
+        {
+          "name": "stop",
+          "duration_s": 5.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "fast_yaw": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        14
+      ],
+      "axis": 2,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "reverse_00",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_01",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "reverse_02",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_03",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "reverse_04",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_05",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "reverse_06",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_07",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "reverse_08",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_09",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "reverse_10",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_11",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "reverse_12",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_13",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "reverse_14",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "reverse_15",
+          "duration_s": 0.5,
+          "command": [
+            0.0,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "stop",
+          "duration_s": 5.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "mixed_chase_evade": {
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "env_indices": [
+        15
+      ],
+      "axis": null,
+      "segments": [
+        {
+          "name": "settle",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "advance_turn_left",
+          "duration_s": 2.0,
+          "command": [
+            0.8,
+            0.0,
+            0.75
+          ]
+        },
+        {
+          "name": "retreat_turn_right",
+          "duration_s": 2.0,
+          "command": [
+            -0.8,
+            0.0,
+            -0.75
+          ]
+        },
+        {
+          "name": "left_turn_left",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            0.6,
+            0.75
+          ]
+        },
+        {
+          "name": "right_turn_right",
+          "duration_s": 2.0,
+          "command": [
+            0.0,
+            -0.6,
+            -0.75
+          ]
+        },
+        {
+          "name": "advance",
+          "duration_s": 2.0,
+          "command": [
+            0.8,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "name": "stop",
+          "duration_s": 3.0,
+          "command": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  },
+  "per_trial": [
+    {
+      "env_index": 0,
+      "scenario": "fb_0.6",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.131318598985672,
+        0.050609834492206573,
+        0.09379711747169495
+      ],
+      "tracking_rmse_xy": 0.1407335251569748,
+      "tracking_rmse_yaw": 0.09379711747169495,
+      "tilt_p95_rad": 0.17715607583522797,
+      "tilt_max_rad": 0.19147387146949768,
+      "height_min_m": 0.9604783654212952,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.6000000238418579,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.18,
+            "confirmed_s": 0.28,
+            "first_sample": 8,
+            "confirmed_sample": 13
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.86,
+            "confirmed_s": 0.96,
+            "first_sample": 42,
+            "confirmed_sample": 47
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 1.0070988135695929,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.6000000238418579,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.48,
+            "confirmed_s": 0.58,
+            "first_sample": 23,
+            "confirmed_sample": 28,
+            "stop_distance_xy_m": 0.11415660109067101,
+            "stop_path_xy_m": 0.11494043015535574
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.48,
+            "confirmed_s": 0.58,
+            "first_sample": 23,
+            "confirmed_sample": 28,
+            "stop_distance_xy_m": 0.11415660109067101,
+            "stop_path_xy_m": 0.11494043015535574
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.6000000238418579,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.18,
+            "confirmed_s": 0.28,
+            "first_sample": 8,
+            "confirmed_sample": 13
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.9,
+            "confirmed_s": 1.0,
+            "first_sample": 44,
+            "confirmed_sample": 49
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.8423961841107932,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            -0.6000000238418579,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.32,
+            "confirmed_s": 0.42,
+            "first_sample": 15,
+            "confirmed_sample": 20,
+            "stop_distance_xy_m": 0.08840750500082793,
+            "stop_path_xy_m": 0.09160866809831596
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.46,
+            "confirmed_s": 0.56,
+            "first_sample": 22,
+            "confirmed_sample": 27,
+            "stop_distance_xy_m": 0.09839327753295878,
+            "stop_path_xy_m": 0.10388906965035445
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 1,
+      "scenario": "fb_1",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.17270269989967346,
+        0.056639932096004486,
+        0.10885616391897202
+      ],
+      "tracking_rmse_xy": 0.1817534863948822,
+      "tracking_rmse_yaw": 0.1088562160730362,
+      "tilt_p95_rad": 0.1930830180644989,
+      "tilt_max_rad": 0.22016727924346924,
+      "height_min_m": 0.9310835003852844,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.22,
+            "confirmed_s": 0.32,
+            "first_sample": 10,
+            "confirmed_sample": 15
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.76,
+            "confirmed_s": 0.86,
+            "first_sample": 37,
+            "confirmed_sample": 42
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9647454571723938,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 1.06,
+            "confirmed_s": 1.16,
+            "first_sample": 52,
+            "confirmed_sample": 57,
+            "stop_distance_xy_m": 0.24470450705525432,
+            "stop_path_xy_m": 0.28713986353552773
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 1.06,
+            "confirmed_s": 1.16,
+            "first_sample": 52,
+            "confirmed_sample": 57,
+            "stop_distance_xy_m": 0.24470450705525432,
+            "stop_path_xy_m": 0.28713986353552773
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.926836621761322,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.48,
+            "confirmed_s": 0.58,
+            "first_sample": 23,
+            "confirmed_sample": 28,
+            "stop_distance_xy_m": 0.14831069504317598,
+            "stop_path_xy_m": 0.16753191827642955
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.5,
+            "confirmed_s": 0.6,
+            "first_sample": 24,
+            "confirmed_sample": 29,
+            "stop_distance_xy_m": 0.14951021229272762,
+            "stop_path_xy_m": 0.16880620055731443
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 2,
+      "scenario": "fb_1.4",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.2870650589466095,
+        0.07005797326564789,
+        0.1377653032541275
+      ],
+      "tracking_rmse_xy": 0.2954901456832886,
+      "tracking_rmse_yaw": 0.1377652883529663,
+      "tilt_p95_rad": 0.1659417599439621,
+      "tilt_max_rad": 0.2054598331451416,
+      "height_min_m": 0.8933759331703186,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            1.399999976158142,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.78,
+            "confirmed_s": 0.88,
+            "first_sample": 38,
+            "confirmed_sample": 43
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9435782525126977,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            1.399999976158142,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.6,
+            "confirmed_s": 0.7000000000000001,
+            "first_sample": 29,
+            "confirmed_sample": 34,
+            "stop_distance_xy_m": 0.39973917006559684,
+            "stop_path_xy_m": 0.4162214537885498
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.6,
+            "confirmed_s": 0.7000000000000001,
+            "first_sample": 29,
+            "confirmed_sample": 34,
+            "stop_distance_xy_m": 0.39973917006559684,
+            "stop_path_xy_m": 0.4162214537885498
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -1.399999976158142,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.22,
+            "confirmed_s": 0.32,
+            "first_sample": 10,
+            "confirmed_sample": 15
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.96,
+            "confirmed_s": 1.06,
+            "first_sample": 47,
+            "confirmed_sample": 52
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9821806666200615,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            -1.399999976158142,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.72,
+            "confirmed_s": 0.8200000000000001,
+            "first_sample": 35,
+            "confirmed_sample": 40,
+            "stop_distance_xy_m": 0.36194410064729365,
+            "stop_path_xy_m": 0.3817768938123412
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.72,
+            "confirmed_s": 0.8200000000000001,
+            "first_sample": 35,
+            "confirmed_sample": 40,
+            "stop_distance_xy_m": 0.36194410064729365,
+            "stop_path_xy_m": 0.3817768938123412
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 3,
+      "scenario": "lr_0.6",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.07633594423532486,
+        0.12163441628217697,
+        0.11763496696949005
+      ],
+      "tracking_rmse_xy": 0.14360401034355164,
+      "tracking_rmse_yaw": 0.11763496696949005,
+      "tilt_p95_rad": 0.198114812374115,
+      "tilt_max_rad": 0.21750643849372864,
+      "height_min_m": 0.967751681804657,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.84,
+            "confirmed_s": 0.9400000000000001,
+            "first_sample": 41,
+            "confirmed_sample": 46
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 1.0166031393765156,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.34,
+            "confirmed_s": 0.44,
+            "first_sample": 16,
+            "confirmed_sample": 21,
+            "stop_distance_xy_m": 0.10454316294733114,
+            "stop_path_xy_m": 0.11394797163530841
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.36,
+            "confirmed_s": 0.46,
+            "first_sample": 17,
+            "confirmed_sample": 22,
+            "stop_distance_xy_m": 0.10400054263285599,
+            "stop_path_xy_m": 0.11550143415914346
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.72,
+            "confirmed_s": 0.8200000000000001,
+            "first_sample": 35,
+            "confirmed_sample": 40
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9489716391177321,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.52,
+            "confirmed_s": 0.62,
+            "first_sample": 25,
+            "confirmed_sample": 30,
+            "stop_distance_xy_m": 0.13220657023891144,
+            "stop_path_xy_m": 0.15635394168353814
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.52,
+            "confirmed_s": 0.62,
+            "first_sample": 25,
+            "confirmed_sample": 30,
+            "stop_distance_xy_m": 0.13220657023891144,
+            "stop_path_xy_m": 0.15635394168353814
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 4,
+      "scenario": "lr_1",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.09274941682815552,
+        0.2038620412349701,
+        0.11096270382404327
+      ],
+      "tracking_rmse_xy": 0.22396919131278992,
+      "tracking_rmse_yaw": 0.11096271872520447,
+      "tilt_p95_rad": 0.19281408190727234,
+      "tilt_max_rad": 0.21164481341838837,
+      "height_min_m": 0.9428711533546448,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.68,
+            "confirmed_s": 0.78,
+            "first_sample": 33,
+            "confirmed_sample": 38
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.995296037197113,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.62,
+            "confirmed_s": 0.72,
+            "first_sample": 30,
+            "confirmed_sample": 35,
+            "stop_distance_xy_m": 0.2681677352742471,
+            "stop_path_xy_m": 0.27603802122715043
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.66,
+            "confirmed_s": 0.76,
+            "first_sample": 32,
+            "confirmed_sample": 37,
+            "stop_distance_xy_m": 0.2696178901398433,
+            "stop_path_xy_m": 0.278043459102459
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.26,
+            "confirmed_s": 0.36,
+            "first_sample": 12,
+            "confirmed_sample": 17
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.76,
+            "confirmed_s": 0.86,
+            "first_sample": 37,
+            "confirmed_sample": 42
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9088219785690308,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.42,
+            "confirmed_s": 0.52,
+            "first_sample": 20,
+            "confirmed_sample": 25,
+            "stop_distance_xy_m": 0.19381115776404972,
+            "stop_path_xy_m": 0.20174095988511484
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 1.26,
+            "confirmed_s": 1.36,
+            "first_sample": 62,
+            "confirmed_sample": 67,
+            "stop_distance_xy_m": 0.2731328705591975,
+            "stop_path_xy_m": 0.2831342935733188
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 5,
+      "scenario": "lr_1.4",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.09764701128005981,
+        0.303288996219635,
+        0.16698504984378815
+      ],
+      "tracking_rmse_xy": 0.3186207413673401,
+      "tracking_rmse_yaw": 0.16698507964611053,
+      "tilt_p95_rad": 0.1995183229446411,
+      "tilt_max_rad": 0.22635458409786224,
+      "height_min_m": 0.9143642783164978,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            1.399999976158142,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.3,
+            "confirmed_s": 0.4,
+            "first_sample": 14,
+            "confirmed_sample": 19
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.7000000000000001,
+            "confirmed_s": 0.8,
+            "first_sample": 34,
+            "confirmed_sample": 39
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9390116919621687,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            1.399999976158142,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.76,
+            "confirmed_s": 0.86,
+            "first_sample": 37,
+            "confirmed_sample": 42,
+            "stop_distance_xy_m": 0.3936900778398336,
+            "stop_path_xy_m": 0.4235073168967767
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.76,
+            "confirmed_s": 0.86,
+            "first_sample": 37,
+            "confirmed_sample": 42,
+            "stop_distance_xy_m": 0.3936900778398336,
+            "stop_path_xy_m": 0.4235073168967767
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -1.399999976158142,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.44,
+            "confirmed_s": 0.54,
+            "first_sample": 21,
+            "confirmed_sample": 26
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.92,
+            "confirmed_s": 1.02,
+            "first_sample": 45,
+            "confirmed_sample": 50
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.8982175843752721,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            -1.399999976158142,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.58,
+            "confirmed_s": 0.68,
+            "first_sample": 28,
+            "confirmed_sample": 33,
+            "stop_distance_xy_m": 0.32380975330243045,
+            "stop_path_xy_m": 0.3434278425884626
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.58,
+            "confirmed_s": 0.68,
+            "first_sample": 28,
+            "confirmed_sample": 33,
+            "stop_distance_xy_m": 0.32380975330243045,
+            "stop_path_xy_m": 0.3434278425884626
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 6,
+      "scenario": "yaw_0.75",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.07942519336938858,
+        0.05306171998381615,
+        0.34955424070358276
+      ],
+      "tracking_rmse_xy": 0.09551916271448135,
+      "tracking_rmse_yaw": 0.3495541214942932,
+      "tilt_p95_rad": 0.3286471962928772,
+      "tilt_max_rad": 0.3935893774032593,
+      "height_min_m": 0.975949764251709,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.86,
+            "confirmed_s": 0.96,
+            "first_sample": 42,
+            "confirmed_sample": 47
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.8714053630828857,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.14,
+            "confirmed_s": 0.24,
+            "first_sample": 6,
+            "confirmed_sample": 11,
+            "stop_distance_xy_m": 0.012949818524664007,
+            "stop_path_xy_m": 0.015864436609559263
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.14,
+            "confirmed_s": 0.24,
+            "first_sample": 6,
+            "confirmed_sample": 11,
+            "stop_distance_xy_m": 0.012949818524664007,
+            "stop_path_xy_m": 0.015864436609559263
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.20806188027064007,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 1.58,
+            "confirmed_s": 1.68,
+            "first_sample": 78,
+            "confirmed_sample": 83,
+            "stop_distance_xy_m": 0.06082569189034687,
+            "stop_path_xy_m": 0.22798489457816296
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 1.68,
+            "confirmed_s": 1.78,
+            "first_sample": 83,
+            "confirmed_sample": 88,
+            "stop_distance_xy_m": 0.054737801207434635,
+            "stop_path_xy_m": 0.23716274068074977
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 7,
+      "scenario": "yaw_0.75_negative_first",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.04347991943359375,
+        0.032868385314941406,
+        0.3221077024936676
+      ],
+      "tracking_rmse_xy": 0.054505351930856705,
+      "tracking_rmse_yaw": 0.32210773229599,
+      "tilt_p95_rad": 0.27633970975875854,
+      "tilt_max_rad": 0.311760276556015,
+      "height_min_m": 0.9738463163375854,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.06553495099147161,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.66,
+            "confirmed_s": 0.76,
+            "first_sample": 32,
+            "confirmed_sample": 37,
+            "stop_distance_xy_m": 0.02972198646342467,
+            "stop_path_xy_m": 0.06391687532844202
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.66,
+            "confirmed_s": 0.76,
+            "first_sample": 32,
+            "confirmed_sample": 37,
+            "stop_distance_xy_m": 0.02972198646342467,
+            "stop_path_xy_m": 0.06391687532844202
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.72,
+            "confirmed_s": 0.8200000000000001,
+            "first_sample": 35,
+            "confirmed_sample": 40
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.8935190105438232,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8,
+            "stop_distance_xy_m": 0.013105735889088664,
+            "stop_path_xy_m": 0.013867671988957008
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.14,
+            "confirmed_s": 0.24,
+            "first_sample": 6,
+            "confirmed_sample": 11,
+            "stop_distance_xy_m": 0.013105678869010944,
+            "stop_path_xy_m": 0.01622285690878933
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 8,
+      "scenario": "yaw_1.25",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.07389736920595169,
+        0.05184480920433998,
+        0.11475459486246109
+      ],
+      "tracking_rmse_xy": 0.09027017652988434,
+      "tracking_rmse_yaw": 0.11475462466478348,
+      "tilt_p95_rad": 0.14957992732524872,
+      "tilt_max_rad": 0.15881340205669403,
+      "height_min_m": 0.9676907658576965,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            1.25
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.32,
+            "confirmed_s": 0.42,
+            "first_sample": 15,
+            "confirmed_sample": 20
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9677217178344726,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.0,
+            1.25
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.22,
+            "confirmed_s": 0.32,
+            "first_sample": 10,
+            "confirmed_sample": 15,
+            "stop_distance_xy_m": 0.023104106230714704,
+            "stop_path_xy_m": 0.027229140590423254
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.22,
+            "confirmed_s": 0.32,
+            "first_sample": 10,
+            "confirmed_sample": 15,
+            "stop_distance_xy_m": 0.023104106230714704,
+            "stop_path_xy_m": 0.027229140590423254
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -1.25
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.5,
+            "confirmed_s": 0.6,
+            "first_sample": 24,
+            "confirmed_sample": 29
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9851711044311523,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            0.0,
+            -1.25
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18,
+            "stop_distance_xy_m": 0.00747494262309603,
+            "stop_path_xy_m": 0.018129625925072643
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18,
+            "stop_distance_xy_m": 0.00747494262309603,
+            "stop_path_xy_m": 0.018129625925072643
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 9,
+      "scenario": "yaw_1.25_negative_first",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.05168517306447029,
+        0.06196652352809906,
+        0.11525951325893402
+      ],
+      "tracking_rmse_xy": 0.08069205284118652,
+      "tracking_rmse_yaw": 0.11525950580835342,
+      "tilt_p95_rad": 0.1574600487947464,
+      "tilt_max_rad": 0.1575275957584381,
+      "height_min_m": 0.9644583463668823,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -1.25
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.44,
+            "confirmed_s": 0.54,
+            "first_sample": 21,
+            "confirmed_sample": 26
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9797397842407227,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.0,
+            -1.25
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18,
+            "stop_distance_xy_m": 0.01199773142417429,
+            "stop_path_xy_m": 0.018189164690074845
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18,
+            "stop_distance_xy_m": 0.01199773142417429,
+            "stop_path_xy_m": 0.018189164690074845
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            1.25
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9579962005615235,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            0.0,
+            1.25
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14,
+            "stop_distance_xy_m": 0.018752351150883254,
+            "stop_path_xy_m": 0.022113702008394215
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14,
+            "stop_distance_xy_m": 0.018752351150883254,
+            "stop_path_xy_m": 0.022113702008394215
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 10,
+      "scenario": "yaw_1.8",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.08336473256349564,
+        0.05088905617594719,
+        0.1102740690112114
+      ],
+      "tracking_rmse_xy": 0.09766974300146103,
+      "tracking_rmse_yaw": 0.11027407646179199,
+      "tilt_p95_rad": 0.17665347456932068,
+      "tilt_max_rad": 0.17906929552555084,
+      "height_min_m": 0.9740501642227173,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            1.7999999523162842
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9862540559306159,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.0,
+            1.7999999523162842
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14,
+            "stop_distance_xy_m": 0.01885892137679859,
+            "stop_path_xy_m": 0.02621660281804907
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14,
+            "stop_distance_xy_m": 0.01885892137679859,
+            "stop_path_xy_m": 0.02621660281804907
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -1.7999999523162842
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.44,
+            "confirmed_s": 0.54,
+            "first_sample": 21,
+            "confirmed_sample": 26
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9836457433606716,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            0.0,
+            -1.7999999523162842
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18,
+            "stop_distance_xy_m": 0.02348484703958843,
+            "stop_path_xy_m": 0.032370835684256125
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18,
+            "stop_distance_xy_m": 0.02348484703958843,
+            "stop_path_xy_m": 0.032370835684256125
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 11,
+      "scenario": "yaw_1.8_negative_first",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.06372883915901184,
+        0.09460931271314621,
+        0.11984610557556152
+      ],
+      "tracking_rmse_xy": 0.11407134681940079,
+      "tracking_rmse_yaw": 0.11984612792730331,
+      "tilt_p95_rad": 0.15966874361038208,
+      "tilt_max_rad": 0.17638275027275085,
+      "height_min_m": 0.9672647714614868,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 250,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -1.7999999523162842
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.14,
+            "confirmed_s": 0.24,
+            "first_sample": 6,
+            "confirmed_sample": 11
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.9765479637926939,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 350,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.0,
+            -1.7999999523162842
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.3,
+            "confirmed_s": 0.4,
+            "first_sample": 14,
+            "confirmed_sample": 19,
+            "stop_distance_xy_m": 0.025589889871894988,
+            "stop_path_xy_m": 0.03370098111480704
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.3,
+            "confirmed_s": 0.4,
+            "first_sample": 14,
+            "confirmed_sample": 19,
+            "stop_distance_xy_m": 0.025589889871894988,
+            "stop_path_xy_m": 0.03370098111480704
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            1.7999999523162842
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 1.0129870073791878,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            0.0,
+            1.7999999523162842
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.24,
+            "confirmed_s": 0.34,
+            "first_sample": 11,
+            "confirmed_sample": 16,
+            "stop_distance_xy_m": 0.02242139743303053,
+            "stop_path_xy_m": 0.027087348361163437
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.24,
+            "confirmed_s": 0.34,
+            "first_sample": 11,
+            "confirmed_sample": 16,
+            "stop_distance_xy_m": 0.02242139743303053,
+            "stop_path_xy_m": 0.027087348361163437
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 12,
+      "scenario": "fast_fb",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.5557934045791626,
+        0.0989324226975441,
+        0.17206379771232605
+      ],
+      "tracking_rmse_xy": 0.5645297169685364,
+      "tracking_rmse_yaw": 0.17206382751464844,
+      "tilt_p95_rad": 0.2411590963602066,
+      "tilt_max_rad": 0.2594536542892456,
+      "height_min_m": 0.9328435063362122,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 125,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.5882656274249312,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 125,
+          "start_s": 2.5,
+          "end_step_exclusive": 150,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.1792424555235735,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 150,
+          "start_s": 3.0,
+          "end_step_exclusive": 175,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.18,
+            "confirmed_s": 0.28,
+            "first_sample": 8,
+            "confirmed_sample": 13
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.26,
+            "confirmed_s": 0.36,
+            "first_sample": 12,
+            "confirmed_sample": 17
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.3281117749868069,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 175,
+          "start_s": 3.5,
+          "end_step_exclusive": 200,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.20999660439794354,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 4,
+          "start_step": 200,
+          "start_s": 4.0,
+          "end_step_exclusive": 225,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.32,
+            "confirmed_s": 0.42,
+            "first_sample": 15,
+            "confirmed_sample": 20
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.21380622329106597,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 5,
+          "start_step": 225,
+          "start_s": 4.5,
+          "end_step_exclusive": 250,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.38,
+            "confirmed_s": 0.48,
+            "first_sample": 18,
+            "confirmed_sample": 23
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.13473067827924076,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 6,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 275,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.18,
+            "confirmed_s": 0.28,
+            "first_sample": 8,
+            "confirmed_sample": 13
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.2689562824524003,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 7,
+          "start_step": 275,
+          "start_s": 5.5,
+          "end_step_exclusive": 300,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.15818608605211845,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 8,
+          "start_step": 300,
+          "start_s": 6.0,
+          "end_step_exclusive": 325,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.3,
+            "confirmed_s": 0.4,
+            "first_sample": 14,
+            "confirmed_sample": 19
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.20325557873389752,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 9,
+          "start_step": 325,
+          "start_s": 6.5,
+          "end_step_exclusive": 350,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.36,
+            "confirmed_s": 0.46,
+            "first_sample": 17,
+            "confirmed_sample": 22
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.07534079653634435,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 10,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 375,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.32,
+            "confirmed_s": 0.42,
+            "first_sample": 15,
+            "confirmed_sample": 20
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.1871973906688781,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 11,
+          "start_step": 375,
+          "start_s": 7.5,
+          "end_step_exclusive": 400,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.1484952133373139,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 12,
+          "start_step": 400,
+          "start_s": 8.0,
+          "end_step_exclusive": 425,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.3,
+            "confirmed_s": 0.4,
+            "first_sample": 14,
+            "confirmed_sample": 19
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.20847482501007877,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 13,
+          "start_step": 425,
+          "start_s": 8.5,
+          "end_step_exclusive": 450,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.1531657538836337,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 14,
+          "start_step": 450,
+          "start_s": 9.0,
+          "end_step_exclusive": 475,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.3,
+            "confirmed_s": 0.4,
+            "first_sample": 14,
+            "confirmed_sample": 19
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.23128386447155677,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 15,
+          "start_step": 475,
+          "start_s": 9.5,
+          "end_step_exclusive": 500,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.15579094878150598,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 16,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.42,
+            "confirmed_s": 0.52,
+            "first_sample": 20,
+            "confirmed_sample": 25,
+            "stop_distance_xy_m": 0.09342145211825582,
+            "stop_path_xy_m": 0.11228513884061546
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.46,
+            "confirmed_s": 0.56,
+            "first_sample": 22,
+            "confirmed_sample": 27,
+            "stop_distance_xy_m": 0.09586442183613055,
+            "stop_path_xy_m": 0.11484708180227958
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 13,
+      "scenario": "fast_lr",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.10176865011453629,
+        0.44167622923851013,
+        0.10572106391191483
+      ],
+      "tracking_rmse_xy": 0.4532494843006134,
+      "tracking_rmse_yaw": 0.10572101920843124,
+      "tilt_p95_rad": 0.18278057873249054,
+      "tilt_max_rad": 0.1945970207452774,
+      "height_min_m": 0.9453986287117004,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 125,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.5249806625155344,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 125,
+          "start_s": 2.5,
+          "end_step_exclusive": 150,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.34,
+            "confirmed_s": 0.44,
+            "first_sample": 16,
+            "confirmed_sample": 21
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.09906958879253909,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 150,
+          "start_s": 3.0,
+          "end_step_exclusive": 175,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.07082443856152143,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 175,
+          "start_s": 3.5,
+          "end_step_exclusive": 200,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.3,
+            "confirmed_s": 0.4,
+            "first_sample": 14,
+            "confirmed_sample": 19
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.0477202674658987,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 4,
+          "start_step": 200,
+          "start_s": 4.0,
+          "end_step_exclusive": 225,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.026489787768978368,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 5,
+          "start_step": 225,
+          "start_s": 4.5,
+          "end_step_exclusive": 250,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.38,
+            "confirmed_s": 0.48,
+            "first_sample": 18,
+            "confirmed_sample": 23
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.17878566155068432,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 6,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 275,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.26,
+            "confirmed_s": 0.36,
+            "first_sample": 12,
+            "confirmed_sample": 17
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.38,
+            "confirmed_s": 0.48,
+            "first_sample": 18,
+            "confirmed_sample": 23
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.1564638002380212,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 7,
+          "start_step": 275,
+          "start_s": 5.5,
+          "end_step_exclusive": 300,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.24057771014237564,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 8,
+          "start_step": 300,
+          "start_s": 6.0,
+          "end_step_exclusive": 325,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.38,
+            "confirmed_s": 0.48,
+            "first_sample": 18,
+            "confirmed_sample": 23
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.17048119603917217,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 9,
+          "start_step": 325,
+          "start_s": 6.5,
+          "end_step_exclusive": 350,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.12795718179440768,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 10,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 375,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.030916902249876567,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 11,
+          "start_step": 375,
+          "start_s": 7.5,
+          "end_step_exclusive": 400,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.1980968155102207,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 12,
+          "start_step": 400,
+          "start_s": 8.0,
+          "end_step_exclusive": 425,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.4,
+            "confirmed_s": 0.5,
+            "first_sample": 19,
+            "confirmed_sample": 24
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.1445705556799561,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 13,
+          "start_step": 425,
+          "start_s": 8.5,
+          "end_step_exclusive": 450,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.38,
+            "confirmed_s": 0.48,
+            "first_sample": 18,
+            "confirmed_sample": 23
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.21459910033932428,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 14,
+          "start_step": 450,
+          "start_s": 9.0,
+          "end_step_exclusive": 475,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.28,
+            "confirmed_s": 0.38,
+            "first_sample": 13,
+            "confirmed_sample": 18
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.38,
+            "confirmed_s": 0.48,
+            "first_sample": 18,
+            "confirmed_sample": 23
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.173208623140211,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 15,
+          "start_step": 475,
+          "start_s": 9.5,
+          "end_step_exclusive": 500,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.34,
+            "confirmed_s": 0.44,
+            "first_sample": 16,
+            "confirmed_sample": 21
+          },
+          "reach_50": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": -0.16765193029712044,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 16,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.48,
+            "confirmed_s": 0.58,
+            "first_sample": 23,
+            "confirmed_sample": 28,
+            "stop_distance_xy_m": 0.09280049477535506,
+            "stop_path_xy_m": 0.10239738251319065
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.48,
+            "confirmed_s": 0.58,
+            "first_sample": 23,
+            "confirmed_sample": 28,
+            "stop_distance_xy_m": 0.09280049477535506,
+            "stop_path_xy_m": 0.10239738251319065
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 14,
+      "scenario": "fast_yaw",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.07530535012483597,
+        0.06189465895295143,
+        0.11971526592969894
+      ],
+      "tracking_rmse_xy": 0.09747738391160965,
+      "tracking_rmse_yaw": 0.11971522122621536,
+      "tilt_p95_rad": 0.16952726244926453,
+      "tilt_max_rad": 0.1723339855670929,
+      "height_min_m": 0.9442734122276306,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 125,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.6778686730066935,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 125,
+          "start_s": 2.5,
+          "end_step_exclusive": 150,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.04,
+            "confirmed_s": 0.14,
+            "first_sample": 1,
+            "confirmed_sample": 6
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.24,
+            "confirmed_s": 0.34,
+            "first_sample": 11,
+            "confirmed_sample": 16
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7837183632453283,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 150,
+          "start_s": 3.0,
+          "end_step_exclusive": 175,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.04,
+            "confirmed_s": 0.14,
+            "first_sample": 1,
+            "confirmed_sample": 6
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7919765418271224,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 175,
+          "start_s": 3.5,
+          "end_step_exclusive": 200,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7138788662354152,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 4,
+          "start_step": 200,
+          "start_s": 4.0,
+          "end_step_exclusive": 225,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.04,
+            "confirmed_s": 0.14,
+            "first_sample": 1,
+            "confirmed_sample": 6
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.8359457085902492,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 5,
+          "start_step": 225,
+          "start_s": 4.5,
+          "end_step_exclusive": 250,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.6497265863418579,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 6,
+          "start_step": 250,
+          "start_s": 5.0,
+          "end_step_exclusive": 275,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.04,
+            "confirmed_s": 0.14,
+            "first_sample": 1,
+            "confirmed_sample": 6
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.8742520902554194,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 7,
+          "start_step": 275,
+          "start_s": 5.5,
+          "end_step_exclusive": 300,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.6325886050860087,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 8,
+          "start_step": 300,
+          "start_s": 6.0,
+          "end_step_exclusive": 325,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.04,
+            "confirmed_s": 0.14,
+            "first_sample": 1,
+            "confirmed_sample": 6
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.8132462120056152,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 9,
+          "start_step": 325,
+          "start_s": 6.5,
+          "end_step_exclusive": 350,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.2,
+            "confirmed_s": 0.3,
+            "first_sample": 9,
+            "confirmed_sample": 14
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7286778438091278,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 10,
+          "start_step": 350,
+          "start_s": 7.0,
+          "end_step_exclusive": 375,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7934393699963888,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 11,
+          "start_step": 375,
+          "start_s": 7.5,
+          "end_step_exclusive": 400,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7288242495059967,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 12,
+          "start_step": 400,
+          "start_s": 8.0,
+          "end_step_exclusive": 425,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7977911257743835,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 13,
+          "start_step": 425,
+          "start_s": 8.5,
+          "end_step_exclusive": 450,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7256437714894614,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 14,
+          "start_step": 450,
+          "start_s": 9.0,
+          "end_step_exclusive": 475,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "reached",
+            "latency_s": 0.1,
+            "confirmed_s": 0.2,
+            "first_sample": 4,
+            "confirmed_sample": 9
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7986476455132167,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 15,
+          "start_step": 475,
+          "start_s": 9.5,
+          "end_step_exclusive": 500,
+          "window_duration_s": 0.5,
+          "valid_exposure_s": 0.5,
+          "command_before": [
+            0.0,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7
+          },
+          "reach_50": {
+            "status": "reached",
+            "latency_s": 0.08,
+            "confirmed_s": 0.18,
+            "first_sample": 3,
+            "confirmed_sample": 8
+          },
+          "reach_90": {
+            "status": "not_reached",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "complete",
+            "value": 0.7253225394090017,
+            "valid_samples": 25,
+            "required_samples": 25
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 16,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 5.0,
+          "valid_exposure_s": 5.0,
+          "command_before": [
+            0.0,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.06,
+            "confirmed_s": 0.16,
+            "first_sample": 2,
+            "confirmed_sample": 7,
+            "stop_distance_xy_m": 0.004410706458103546,
+            "stop_path_xy_m": 0.004512294709187468
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.58,
+            "confirmed_s": 0.68,
+            "first_sample": 28,
+            "confirmed_sample": 33,
+            "stop_distance_xy_m": 0.016281622940165684,
+            "stop_path_xy_m": 0.022424012235372586
+          }
+        }
+      ]
+    },
+    {
+      "env_index": 15,
+      "scenario": "mixed_chase_evade",
+      "fell": false,
+      "first_fall_s": null,
+      "valid_samples": 750,
+      "alive_seconds": 15.0,
+      "tracking_rmse_components": [
+        0.22080715000629425,
+        0.15136362612247467,
+        0.1558454930782318
+      ],
+      "tracking_rmse_xy": 0.2677064538002014,
+      "tracking_rmse_yaw": 0.15584556758403778,
+      "tilt_p95_rad": 0.17693625390529633,
+      "tilt_max_rad": 0.20877352356910706,
+      "height_min_m": 0.9419851303100586,
+      "transitions": [
+        {
+          "transition_index": 0,
+          "start_step": 100,
+          "start_s": 2.0,
+          "end_step_exclusive": 200,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 1,
+          "start_step": 200,
+          "start_s": 4.0,
+          "end_step_exclusive": 300,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.75
+          ],
+          "command_after": [
+            -0.800000011920929,
+            0.0,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 2,
+          "start_step": 300,
+          "start_s": 6.0,
+          "end_step_exclusive": 400,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            -0.800000011920929,
+            0.0,
+            -0.75
+          ],
+          "command_after": [
+            0.0,
+            0.6000000238418579,
+            0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 3,
+          "start_step": 400,
+          "start_s": 8.0,
+          "end_step_exclusive": 500,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            0.6000000238418579,
+            0.75
+          ],
+          "command_after": [
+            0.0,
+            -0.6000000238418579,
+            -0.75
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 4,
+          "start_step": 500,
+          "start_s": 10.0,
+          "end_step_exclusive": 600,
+          "window_duration_s": 2.0,
+          "valid_exposure_s": 2.0,
+          "command_before": [
+            0.0,
+            -0.6000000238418579,
+            -0.75
+          ],
+          "command_after": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          }
+        },
+        {
+          "transition_index": 5,
+          "start_step": 600,
+          "start_s": 12.0,
+          "end_step_exclusive": 750,
+          "window_duration_s": 3.0,
+          "valid_exposure_s": 3.0,
+          "command_before": [
+            0.800000011920929,
+            0.0,
+            0.0
+          ],
+          "command_after": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "zero_cross": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_50": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "reach_90": {
+            "status": "not_applicable",
+            "latency_s": null,
+            "confirmed_s": null
+          },
+          "stop": {
+            "status": "reached",
+            "latency_s": 0.36,
+            "confirmed_s": 0.46,
+            "first_sample": 17,
+            "confirmed_sample": 22,
+            "stop_distance_xy_m": 0.12676631412621503,
+            "stop_path_xy_m": 0.13588033988891507
+          },
+          "steady_state_gain": {
+            "status": "not_applicable",
+            "value": null
+          },
+          "stop_raw_speed": {
+            "status": "reached",
+            "latency_s": 0.36,
+            "confirmed_s": 0.46,
+            "first_sample": 17,
+            "confirmed_sample": 22,
+            "stop_distance_xy_m": 0.12676631412621503,
+            "stop_path_xy_m": 0.13588033988891507
+          }
+        }
+      ]
+    }
+  ]
+}

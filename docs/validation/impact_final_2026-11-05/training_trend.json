@@ -1,0 +1,70 @@
+{
+  "job_id": 13683,
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "start_cst": "2026-11-04 20:24:25",
+  "end_cst": "2026-11-05 11:43:28",
+  "final_iteration": 125500,
+  "stage_origin_iteration": 85500,
+  "stage_updates_completed": 40000,
+  "ground_fix_and_single_hit_updates": 10000,
+  "tensorboard_scalar_values": 1390000,
+  "nonfinite_scalar_values": 0,
+  "windows": [
+    {
+      "iterations": [115600, 116599],
+      "common_failure_reset_batch_mean": 0.09044,
+      "stress_failure_reset_batch_mean": 0.16152,
+      "hit_episode_failure_reset_batch_mean": 0.16034,
+      "base_contact_last_episode_snapshot_mean": 0.14803,
+      "episode_seconds_rolling_mean": 18.163,
+      "successful_recovery_batch_mean_seconds": 0.4378,
+      "recovery_timeouts_per_finished_episode_mean": 0.3809,
+      "episode_extra_displacement_max_mean_m": 0.4551,
+      "cumulative_xy_command_error_metric": 0.60961,
+      "cumulative_yaw_command_error_metric": 0.92487,
+      "episode_reward_mean": 21.856,
+      "terrain_level_mean": 5.17
+    },
+    {
+      "iterations": [120000, 120999],
+      "common_failure_reset_batch_mean": 0.09518,
+      "stress_failure_reset_batch_mean": 0.14377,
+      "hit_episode_failure_reset_batch_mean": 0.15332,
+      "base_contact_last_episode_snapshot_mean": 0.14313,
+      "episode_seconds_rolling_mean": 18.233,
+      "successful_recovery_batch_mean_seconds": 0.4271,
+      "recovery_timeouts_per_finished_episode_mean": 0.2351,
+      "episode_extra_displacement_max_mean_m": 0.4476,
+      "cumulative_xy_command_error_metric": 0.59942,
+      "cumulative_yaw_command_error_metric": 0.88886,
+      "episode_reward_mean": 22.901
+    },
+    {
+      "iterations": [124500, 125499],
+      "common_failure_reset_batch_mean": 0.09351,
+      "stress_failure_reset_batch_mean": 0.13190,
+      "hit_episode_failure_reset_batch_mean": 0.14542,
+      "base_contact_last_episode_snapshot_mean": 0.13749,
+      "episode_seconds_rolling_mean": 18.310,
+      "successful_recovery_batch_mean_seconds": 0.4355,
+      "recovery_timeouts_per_finished_episode_mean": 0.2223,
+      "episode_extra_displacement_max_mean_m": 0.4490,
+      "cumulative_xy_command_error_metric": 0.60965,
+      "cumulative_yaw_command_error_metric": 0.86830,
+      "episode_reward_mean": 23.439,
+      "terrain_level_mean": 5.77
+    }
+  ],
+  "notes": [
+    "All three windows average 1000 TensorBoard updates; the early window excludes the first 100 startup updates.",
+    "Failure values are means of per-reset-batch ratios, then control-step/rank/update averages, with empty categories recorded as zero. They are not pooled episode failure probabilities or match fall rates.",
+    "No per-category failure/episode counts were saved, so pooled common/stress failure rates cannot be reconstructed.",
+    "Recovery time includes successful recovery events only; batches with no successful recovery record zero.",
+    "Timeouts are event counts per finished episode; multiple events per episode are possible. No-hit episode zero values are included.",
+    "Extra displacement is an episode maximum averaged over finished episodes; no-hit episode zero values are included.",
+    "Episode duration averages each rank's rolling last 100 finished episodes, then ranks and updates; episode cap is 20 seconds.",
+    "Command error metrics divide episode-cumulative error by fixed 6 seconds, not actual elapsed episode duration. They are not velocity MAE/RMSE.",
+    "Terrain difficulty changes during training; windows are not a fixed-difficulty controlled comparison."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "checkpoint": "/srv/shared/home/xjh/workspace/zq_leo_final/logs/cusrl/T800_base-Impact/2026-11-04-20-26-01:T800_base-Impact_singlehit_groundfix_from115500_to125500/ckpt/ckpt_125500.pt",
+  "iteration": 125500,
+  "finetune": {
+    "config_version": 2,
+    "task": "T800_base-Impact",
+    "stage_origin_iteration": 85500,
+    "completed_updates": 40000,
+    "lr_caps": [
+      1.7886114670038565e-05
+    ],
+    "config_signature": "2d9eaa9afb7eb1ae0074b6928132f30c1897cd000f908b4f866c01039f787aec",
+    "config_migrations": [
+      {
+        "change": "stress_single_hit",
+        "from_signature": "41fcd09cf34822efc5c2de2f232d1e663e488777d2f7649ae6c77b9a13020040",
+        "to_signature": "2d9eaa9afb7eb1ae0074b6928132f30c1897cd000f908b4f866c01039f787aec",
+        "completed_updates": 30000
+      }
+    ]
+  },
+  "floating_tensors": 121,
+  "floating_elements": 5837472,
+  "nonfinite_tensor_paths": []
+}

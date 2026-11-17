@@ -1,0 +1,81 @@
+{
+  "evaluation_job": 13742,
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "checks": [
+    "8 finite JSON reports with checkpoint125500 and exact runtime impact signature",
+    "Flat terrain, physical healthy head, two seeds per mode",
+    "Per-trial counts agree with fixed-protocol aggregates",
+    "All two agility NPZ physical traces finite, 750 steps x64 environments, no falls",
+    "Strict raw-speed stop metric present",
+    "No Traceback/OOM/CUDA execution error in eight case logs",
+    "Checkpoint all floating tensors finite; see checkpoint_integrity.json",
+    "Ruff and bash syntax checks passed"
+  ],
+  "reports": [
+    {
+      "file": "agility_off_seed42.json",
+      "iteration": 125500,
+      "seed": 42,
+      "mode": "off",
+      "trials": 64,
+      "falls": 0
+    },
+    {
+      "file": "agility_off_seed43.json",
+      "iteration": 125500,
+      "seed": 43,
+      "mode": "off",
+      "trials": 64,
+      "falls": 0
+    },
+    {
+      "file": "impact_common_seed42.json",
+      "iteration": 125500,
+      "seed": 42,
+      "mode": "common",
+      "trials": 48,
+      "falls": 0
+    },
+    {
+      "file": "impact_common_seed43.json",
+      "iteration": 125500,
+      "seed": 43,
+      "mode": "common",
+      "trials": 48,
+      "falls": 0
+    },
+    {
+      "file": "impact_off_seed42.json",
+      "iteration": 125500,
+      "seed": 42,
+      "mode": "off",
+      "trials": 48,
+      "falls": 0
+    },
+    {
+      "file": "impact_off_seed43.json",
+      "iteration": 125500,
+      "seed": 43,
+      "mode": "off",
+      "trials": 48,
+      "falls": 0
+    },
+    {
+      "file": "impact_stress_seed42.json",
+      "iteration": 125500,
+      "seed": 42,
+      "mode": "stress",
+      "trials": 48,
+      "falls": 21
+    },
+    {
+      "file": "impact_stress_seed43.json",
+      "iteration": 125500,
+      "seed": 43,
+      "mode": "stress",
+      "trials": 48,
+      "falls": 22
+    }
+  ]
+}

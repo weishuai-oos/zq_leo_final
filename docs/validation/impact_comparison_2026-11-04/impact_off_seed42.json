@@ -1,0 +1,3472 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-04T12:23:25.688813+00:00",
+  "label": "impact",
+  "checkpoint": "/srv/shared/home/xjh/workspace/zq_leo_final/logs/cusrl/T800_base-Impact/2026-11-02-20-45-18:T800_base-Impact_from85500_40k/ckpt/ckpt_115000.pt",
+  "checkpoint_iteration": 115000,
+  "task": "T800_base-Impact-Play",
+  "seed": 42,
+  "num_envs": 48,
+  "duration_requested_s": 20.0,
+  "duration_simulated_s": 20.0,
+  "control_timestep_s": 0.02,
+  "impact_mode": "off",
+  "native_baseline": false,
+  "head_faults": "disabled; full physical head retained",
+  "impact_config_signature": "2d9eaa9afb7eb1ae0074b6928132f30c1897cd000f908b4f866c01039f787aec",
+  "terrain": {
+    "type": "fight_mat_flat",
+    "level": 0,
+    "size_m": [
+      64,
+      64
+    ]
+  },
+  "measurement_notes": [
+    "Exactly one fixed-command trial per environment; no replacement trials after termination.",
+    "All physical metrics, including RMSE, stop at first termination and include its pre-reset frame.",
+    "Aggregates weight individual valid simulation samples; xy RMSE is the planar error norm.",
+    "Velocity is in the 37-degree tactical yaw frame; angular rate is root body-z rad/s.",
+    "Environment randomization is retained; paired seeds share distributions, not post-reset draw order.",
+    "Recovery mean counts completed recoveries only; expired windows and falls are reported separately.",
+    "Extra displacement is the runtime's maximum command-relative 2-second measurement deviation."
+  ],
+  "aggregate": {
+    "trials": 48,
+    "falls": 0,
+    "failure_rate": 0.0,
+    "valid_samples": 48000,
+    "alive_seconds_total": 960.0,
+    "alive_seconds_mean": 20.0,
+    "actual_velocity_mean_tactical": [
+      0.22770272405970687,
+      -0.006651977571930123,
+      0.007078517890379468
+    ],
+    "tracking_rmse_xyz": [
+      0.12199717498460404,
+      0.07933875209094622,
+      0.19892568806418587
+    ],
+    "tracking_rmse_xy": 0.14552645219193658,
+    "tracking_rmse_yaw": 0.19892568806418098,
+    "tilt_p95_rad": 0.22149440869688986,
+    "tilt_max_rad": 0.48197534680366516,
+    "height_mean_m": 0.9881435068485638,
+    "height_min_m": 0.9187591671943665,
+    "impacts": {
+      "hits": 0,
+      "common_hits": 0,
+      "stress_hits": 0,
+      "impulse_total_ns": 0.0,
+      "applied_physics_step_force_max_n": 0.0,
+      "continuous_pulse_peak_max_n": 0.0,
+      "directions": {
+        "front": 0.0,
+        "side": 0.0,
+        "rear": 0.0
+      },
+      "targets": {
+        "torso": 0.0,
+        "pelvis": 0.0,
+        "arm": 0.0,
+        "thigh": 0.0,
+        "calf": 0.0,
+        "head": 0.0
+      },
+      "recoveries": 0,
+      "recovery_expired": 0,
+      "completed_recovery_mean_s": null,
+      "extra_displacement_max_m": 0.0,
+      "completed_measurement_windows": 0
+    }
+  },
+  "commands": {
+    "stand": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.004159503955903346,
+        0.0006262864731106674,
+        -0.031345422495287496
+      ],
+      "tracking_rmse_xyz": [
+        0.03444798756524151,
+        0.028370197004299946,
+        0.05346224123673872
+      ],
+      "tracking_rmse_xy": 0.04462658316920333,
+      "tracking_rmse_yaw": 0.053462241236738546,
+      "tilt_p95_rad": 0.1508135586977005,
+      "tilt_max_rad": 0.16680137813091278,
+      "height_mean_m": 0.9908953994363546,
+      "height_min_m": 0.9658597111701965,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "forward_0.6": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5341098627233878,
+        -0.023163603744586,
+        -0.045849551705498016
+      ],
+      "tracking_rmse_xyz": [
+        0.13852598605552346,
+        0.05995355522517595,
+        0.1284501197946533
+      ],
+      "tracking_rmse_xy": 0.15094329265255074,
+      "tracking_rmse_yaw": 0.12845011979465318,
+      "tilt_p95_rad": 0.1893885217607021,
+      "tilt_max_rad": 0.22753629088401794,
+      "height_mean_m": 0.9880545059889555,
+      "height_min_m": 0.9564760327339172,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "forward_1.0": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.9393485842305236,
+        -0.02057555229216814,
+        -0.036122525052865964
+      ],
+      "tracking_rmse_xyz": [
+        0.16168422582551292,
+        0.07877495448459006,
+        0.1499256304854968
+      ],
+      "tracking_rmse_xy": 0.17985350242585146,
+      "tracking_rmse_yaw": 0.14992563048549667,
+      "tilt_p95_rad": 0.20435110181570051,
+      "tilt_max_rad": 0.21352313458919525,
+      "height_mean_m": 0.975951990172267,
+      "height_min_m": 0.9305039644241333,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "backward_0.6": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.5655206339182333,
+        0.015180789462989196,
+        0.03076946918613248
+      ],
+      "tracking_rmse_xyz": [
+        0.11737145939790974,
+        0.07892526569478285,
+        0.13152646093813028
+      ],
+      "tracking_rmse_xy": 0.1414399414811367,
+      "tracking_rmse_yaw": 0.13152646093812995,
+      "tilt_p95_rad": 0.20615916624665254,
+      "tilt_max_rad": 0.23328784108161926,
+      "height_mean_m": 0.9782356880307198,
+      "height_min_m": 0.9187591671943665,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "left_0.6": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.009850829376257024,
+        0.5281964076478034,
+        -0.010295319388897042
+      ],
+      "tracking_rmse_xyz": [
+        0.10721000205159913,
+        0.10695034383333253,
+        0.15733652276321744
+      ],
+      "tracking_rmse_xy": 0.15143434414283952,
+      "tracking_rmse_yaw": 0.15733652276321716,
+      "tilt_p95_rad": 0.16636703088879584,
+      "tilt_max_rad": 0.20111067593097687,
+      "height_mean_m": 0.9904778985381126,
+      "height_min_m": 0.9380643367767334,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "right_0.6": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.006288316241232678,
+        -0.5305878698308952,
+        0.008001830405701184
+      ],
+      "tracking_rmse_xyz": [
+        0.10788662392847258,
+        0.11574379243121956,
+        0.14721488316131195
+      ],
+      "tracking_rmse_xy": 0.15822815523491704,
+      "tracking_rmse_yaw": 0.14721488316131165,
+      "tilt_p95_rad": 0.1822116307914257,
+      "tilt_max_rad": 0.20131555199623108,
+      "height_mean_m": 0.9926482574492693,
+      "height_min_m": 0.9573982357978821,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "forward_left_0.6": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.37351279659802095,
+        0.38994405195495346,
+        -0.003142889756389195
+      ],
+      "tracking_rmse_xyz": [
+        0.1437984479093278,
+        0.08078785461196578,
+        0.12642091832781158
+      ],
+      "tracking_rmse_xy": 0.16493838568973512,
+      "tracking_rmse_yaw": 0.12642091832781155,
+      "tilt_p95_rad": 0.15380906537175176,
+      "tilt_max_rad": 0.20422659814357758,
+      "height_mean_m": 0.9883997499942779,
+      "height_min_m": 0.9622014164924622,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "forward_right_0.6": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.36402466555079444,
+        -0.3893049728808837,
+        -0.045246232484088975
+      ],
+      "tracking_rmse_xyz": [
+        0.1329692924321472,
+        0.08472517716041561,
+        0.12187313324764568
+      ],
+      "tracking_rmse_xy": 0.15766796876591535,
+      "tracking_rmse_yaw": 0.12187313324764569,
+      "tilt_p95_rad": 0.2044649913907051,
+      "tilt_max_rad": 0.23720230162143707,
+      "height_mean_m": 0.9929071770012379,
+      "height_min_m": 0.9566389918327332,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "turn_left_0.75": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.020754256267067832,
+        0.020235286612496566,
+        0.6160032346898224
+      ],
+      "tracking_rmse_xyz": [
+        0.085335608363714,
+        0.04266239506829271,
+        0.19583098001459087
+      ],
+      "tracking_rmse_xy": 0.09540569169482595,
+      "tracking_rmse_yaw": 0.19583098001459423,
+      "tilt_p95_rad": 0.15070104524493216,
+      "tilt_max_rad": 0.1727306991815567,
+      "height_mean_m": 0.9910630323141814,
+      "height_min_m": 0.9534933567047119,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "turn_right_0.75": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.0350538704215578,
+        -0.03799718956863944,
+        -0.3348516532694339
+      ],
+      "tracking_rmse_xyz": [
+        0.10439363124041003,
+        0.08080695709196944,
+        0.500146466977746
+      ],
+      "tracking_rmse_xy": 0.13201437254337892,
+      "tracking_rmse_yaw": 0.5001464669777451,
+      "tilt_p95_rad": 0.38442836403846736,
+      "tilt_max_rad": 0.48197534680366516,
+      "height_mean_m": 0.9942957516014576,
+      "height_min_m": 0.9392794370651245,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "advance_turn_left": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5704098869897425,
+        -0.014812324497732334,
+        0.675303112875903
+      ],
+      "tracking_rmse_xyz": [
+        0.138806211849055,
+        0.08696515604490457,
+        0.15010717065229692
+      ],
+      "tracking_rmse_xy": 0.1637989707348603,
+      "tracking_rmse_yaw": 0.1501071706523004,
+      "tilt_p95_rad": 0.17626663744449617,
+      "tilt_max_rad": 0.19471092522144318,
+      "height_mean_m": 0.985873011097312,
+      "height_min_m": 0.9425467848777771,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    "advance_turn_right": {
+      "trials": 4,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 4000,
+      "alive_seconds_total": 80.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5142275540493428,
+        -0.01756504019960994,
+        -0.738281838320545
+      ],
+      "tracking_rmse_xyz": [
+        0.1391620356594029,
+        0.06518317156673183,
+        0.16562568364264435
+      ],
+      "tracking_rmse_xy": 0.1536714613204652,
+      "tracking_rmse_yaw": 0.16562568364264782,
+      "tilt_p95_rad": 0.20501085817813874,
+      "tilt_max_rad": 0.23892052471637726,
+      "height_mean_m": 0.9889196205586195,
+      "height_min_m": 0.9581498503684998,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    }
+  },
+  "per_trial": [
+    {
+      "env_index": 0,
+      "command_name": "stand",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.007059988329478074,
+        0.003248710172076244,
+        -0.049426375198061576
+      ],
+      "tracking_rmse_xyz": [
+        0.013759637000570459,
+        0.02207592860303619,
+        0.056141057204712706
+      ],
+      "tracking_rmse_xy": 0.026012962808450297,
+      "tracking_rmse_yaw": 0.056141057204712685,
+      "tilt_p95_rad": 0.13779416680335999,
+      "tilt_max_rad": 0.13781143724918365,
+      "height_mean_m": 0.9939887046217918,
+      "height_min_m": 0.9711781144142151,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 1,
+      "command_name": "forward_0.6",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5399639109224081,
+        -0.021099074743688107,
+        -0.059632386756595226
+      ],
+      "tracking_rmse_xyz": [
+        0.12176929507701446,
+        0.048411457965204886,
+        0.11653716438306123
+      ],
+      "tracking_rmse_xy": 0.13103980496730674,
+      "tracking_rmse_yaw": 0.11653716438306132,
+      "tilt_p95_rad": 0.18847452178597449,
+      "tilt_max_rad": 0.2217264473438263,
+      "height_mean_m": 0.9906533903479576,
+      "height_min_m": 0.9651414752006531,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 2,
+      "command_name": "forward_1.0",
+      "command_tactical": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.9460911116022617,
+        -0.028600655446061864,
+        -0.050585767656448295
+      ],
+      "tracking_rmse_xyz": [
+        0.15467385797317512,
+        0.06568521405404411,
+        0.15247786084836043
+      ],
+      "tracking_rmse_xy": 0.16804329705653706,
+      "tracking_rmse_yaw": 0.15247786084836032,
+      "tilt_p95_rad": 0.2049770884215832,
+      "tilt_max_rad": 0.21235774457454681,
+      "height_mean_m": 0.978169748544693,
+      "height_min_m": 0.9305039644241333,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 3,
+      "command_name": "backward_0.6",
+      "command_tactical": [
+        -0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.5667203759104014,
+        0.014973901189863682,
+        0.033679191088071096
+      ],
+      "tracking_rmse_xyz": [
+        0.1177721334982318,
+        0.08926822659150782,
+        0.12665011035716786
+      ],
+      "tracking_rmse_xy": 0.1477805525348925,
+      "tracking_rmse_yaw": 0.1266501103571679,
+      "tilt_p95_rad": 0.19598202258348466,
+      "tilt_max_rad": 0.22535207867622375,
+      "height_mean_m": 0.9772195373177528,
+      "height_min_m": 0.9349952340126038,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 4,
+      "command_name": "left_0.6",
+      "command_tactical": [
+        0.0,
+        0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.0008921025567688048,
+        0.5267629343569279,
+        -0.022617654034518635
+      ],
+      "tracking_rmse_xyz": [
+        0.10659004101282891,
+        0.10351751585929435,
+        0.16082829770954954
+      ],
+      "tracking_rmse_xy": 0.14858436301574893,
+      "tracking_rmse_yaw": 0.1608282977095495,
+      "tilt_p95_rad": 0.168791763484478,
+      "tilt_max_rad": 0.20111067593097687,
+      "height_mean_m": 0.9918469614386558,
+      "height_min_m": 0.9380643367767334,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 5,
+      "command_name": "right_0.6",
+      "command_tactical": [
+        0.0,
+        -0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.004844511728733778,
+        -0.5353522190079093,
+        0.006879548970377073
+      ],
+      "tracking_rmse_xyz": [
+        0.10209242726801392,
+        0.11024855545600867,
+        0.15065287598244786
+      ],
+      "tracking_rmse_xy": 0.15025846959692934,
+      "tracking_rmse_yaw": 0.15065287598244786,
+      "tilt_p95_rad": 0.18236398622393607,
+      "tilt_max_rad": 0.1938316375017166,
+      "height_mean_m": 0.9924351382851601,
+      "height_min_m": 0.9633638262748718,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 6,
+      "command_name": "forward_left_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.36939700999110936,
+        0.3859907435849309,
+        -0.005442673964425921
+      ],
+      "tracking_rmse_xyz": [
+        0.1536129238535073,
+        0.08316532086800142,
+        0.12489417212040929
+      ],
+      "tracking_rmse_xy": 0.17468085461750255,
+      "tracking_rmse_yaw": 0.12489417212040937,
+      "tilt_p95_rad": 0.17473054602742194,
+      "tilt_max_rad": 0.20422659814357758,
+      "height_mean_m": 0.9872923074364662,
+      "height_min_m": 0.9626299738883972,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 7,
+      "command_name": "forward_right_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        -0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.3742011049836874,
+        -0.389227909296751,
+        -0.046324949764995835
+      ],
+      "tracking_rmse_xyz": [
+        0.12236170472804514,
+        0.06770404405043808,
+        0.10965847653951304
+      ],
+      "tracking_rmse_xy": 0.1398435710525764,
+      "tracking_rmse_yaw": 0.10965847653951294,
+      "tilt_p95_rad": 0.19153770133852957,
+      "tilt_max_rad": 0.2176366150379181,
+      "height_mean_m": 0.9941810319423675,
+      "height_min_m": 0.9570613503456116,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 8,
+      "command_name": "turn_left_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.02641687220071617,
+        0.015585731846062116,
+        0.6191065015494823
+      ],
+      "tracking_rmse_xyz": [
+        0.09356011260222533,
+        0.034802459598695254,
+        0.19089942064273674
+      ],
+      "tracking_rmse_xy": 0.09982337333640805,
+      "tracking_rmse_yaw": 0.19089942064273724,
+      "tilt_p95_rad": 0.1475748635828495,
+      "tilt_max_rad": 0.158176988363266,
+      "height_mean_m": 0.9899825525283813,
+      "height_min_m": 0.9732310175895691,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 9,
+      "command_name": "turn_right_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.03232119944976876,
+        -0.04914125875916216,
+        -0.3622517404453829
+      ],
+      "tracking_rmse_xyz": [
+        0.10658029088536931,
+        0.08080729048759908,
+        0.47908308793139004
+      ],
+      "tracking_rmse_xy": 0.13375042654570185,
+      "tracking_rmse_yaw": 0.4790830879313904,
+      "tilt_p95_rad": 0.36794009804725647,
+      "tilt_max_rad": 0.40880054235458374,
+      "height_mean_m": 0.9939550824761391,
+      "height_min_m": 0.9583063721656799,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 10,
+      "command_name": "advance_turn_left",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5663461853563786,
+        -0.023828092464245856,
+        0.684338400083594
+      ],
+      "tracking_rmse_xyz": [
+        0.1443058780990247,
+        0.07442455589110523,
+        0.1579155860024086
+      ],
+      "tracking_rmse_xy": 0.16236748742749818,
+      "tracking_rmse_yaw": 0.15791558600240863,
+      "tilt_p95_rad": 0.17878373712301254,
+      "tilt_max_rad": 0.19319868087768555,
+      "height_mean_m": 0.9821445825099945,
+      "height_min_m": 0.9489064812660217,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 11,
+      "command_name": "advance_turn_right",
+      "command_tactical": [
+        0.6,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.49802089609205724,
+        -0.02221713640145026,
+        -0.7429858307801187
+      ],
+      "tracking_rmse_xyz": [
+        0.17586864837281543,
+        0.07267030397596178,
+        0.16169606706353978
+      ],
+      "tracking_rmse_xy": 0.19029123616299212,
+      "tracking_rmse_yaw": 0.1616960670635398,
+      "tilt_p95_rad": 0.2142639122903347,
+      "tilt_max_rad": 0.23892052471637726,
+      "height_mean_m": 0.9882714803218842,
+      "height_min_m": 0.9649717211723328,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 12,
+      "command_name": "stand",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.004949938694713637,
+        0.004547999882954173,
+        0.004416335493559018
+      ],
+      "tracking_rmse_xyz": [
+        0.0463664375374522,
+        0.02531680712327215,
+        0.051395275902480844
+      ],
+      "tracking_rmse_xy": 0.05282790221872735,
+      "tracking_rmse_yaw": 0.05139527590248076,
+      "tilt_p95_rad": 0.13777786493301392,
+      "tilt_max_rad": 0.1377873569726944,
+      "height_mean_m": 0.9952599577903748,
+      "height_min_m": 0.9693958163261414,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 13,
+      "command_name": "forward_0.6",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5150649817623199,
+        -0.0153778469231911,
+        -0.03312732176668942
+      ],
+      "tracking_rmse_xyz": [
+        0.17809249407979952,
+        0.06112850581418861,
+        0.1359903803250472
+      ],
+      "tracking_rmse_xy": 0.18829134518250873,
+      "tracking_rmse_yaw": 0.13599038032504718,
+      "tilt_p95_rad": 0.19265127032995222,
+      "tilt_max_rad": 0.21422132849693298,
+      "height_mean_m": 0.9857171106934547,
+      "height_min_m": 0.9582847952842712,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 14,
+      "command_name": "forward_1.0",
+      "command_tactical": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.9340928439423442,
+        -0.002383093573153019,
+        -0.033176441673305815
+      ],
+      "tracking_rmse_xyz": [
+        0.15531729197055288,
+        0.06995755316563614,
+        0.16325859940958742
+      ],
+      "tracking_rmse_xy": 0.17034529764566098,
+      "tracking_rmse_yaw": 0.16325859940958734,
+      "tilt_p95_rad": 0.19870274066925048,
+      "tilt_max_rad": 0.20549792051315308,
+      "height_mean_m": 0.9772280784845352,
+      "height_min_m": 0.9409695267677307,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 15,
+      "command_name": "backward_0.6",
+      "command_tactical": [
+        -0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.5520118895694613,
+        0.007479505330324173,
+        0.05103684526192956
+      ],
+      "tracking_rmse_xyz": [
+        0.127510951488407,
+        0.0713209223543057,
+        0.13385385571717787
+      ],
+      "tracking_rmse_xy": 0.14610173412710678,
+      "tracking_rmse_yaw": 0.13385385571717798,
+      "tilt_p95_rad": 0.21524690389633178,
+      "tilt_max_rad": 0.23328784108161926,
+      "height_mean_m": 0.9812615567445755,
+      "height_min_m": 0.9515829682350159,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 16,
+      "command_name": "left_0.6",
+      "command_tactical": [
+        0.0,
+        0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.004776356138288975,
+        0.5217889358252287,
+        -0.030954216607846318
+      ],
+      "tracking_rmse_xyz": [
+        0.11321548249518222,
+        0.11276370591720088,
+        0.16659897763141726
+      ],
+      "tracking_rmse_xy": 0.15979173585889225,
+      "tracking_rmse_yaw": 0.1665989776314172,
+      "tilt_p95_rad": 0.1779216967523098,
+      "tilt_max_rad": 0.1933523267507553,
+      "height_mean_m": 0.9926316732168198,
+      "height_min_m": 0.974122166633606,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 17,
+      "command_name": "right_0.6",
+      "command_tactical": [
+        0.0,
+        -0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.0030503105078823864,
+        -0.5214529702421278,
+        -0.0040785523985978215
+      ],
+      "tracking_rmse_xyz": [
+        0.10412766512612205,
+        0.12683084359051827,
+        0.15764736808797114
+      ],
+      "tracking_rmse_xy": 0.16409946231021072,
+      "tracking_rmse_yaw": 0.15764736808797108,
+      "tilt_p95_rad": 0.18757932037115096,
+      "tilt_max_rad": 0.20131555199623108,
+      "height_mean_m": 0.9914569265842438,
+      "height_min_m": 0.959804892539978,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 18,
+      "command_name": "forward_left_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.38991186626255514,
+        0.3977563315629959,
+        -0.011339420672273264
+      ],
+      "tracking_rmse_xyz": [
+        0.12128750995597092,
+        0.06798949083884524,
+        0.11887996765607912
+      ],
+      "tracking_rmse_xy": 0.13904398921149067,
+      "tracking_rmse_yaw": 0.11887996765607915,
+      "tilt_p95_rad": 0.15164224356412886,
+      "tilt_max_rad": 0.15780340135097504,
+      "height_mean_m": 0.990340133190155,
+      "height_min_m": 0.9622014164924622,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 19,
+      "command_name": "forward_right_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        -0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.3632846692353487,
+        -0.4051029516160488,
+        -0.04928479891514871
+      ],
+      "tracking_rmse_xyz": [
+        0.13966386850319495,
+        0.05787121255416459,
+        0.14210381948489142
+      ],
+      "tracking_rmse_xy": 0.15117894498827208,
+      "tracking_rmse_yaw": 0.14210381948489142,
+      "tilt_p95_rad": 0.2146277941763401,
+      "tilt_max_rad": 0.23720230162143707,
+      "height_mean_m": 0.991814181625843,
+      "height_min_m": 0.9566389918327332,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 20,
+      "command_name": "turn_left_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.019058903402998113,
+        0.020778971855383133,
+        0.6200583075582982
+      ],
+      "tracking_rmse_xyz": [
+        0.07618424163581515,
+        0.03478741178794969,
+        0.18219604386652447
+      ],
+      "tracking_rmse_xy": 0.08375083696613822,
+      "tracking_rmse_yaw": 0.18219604386652474,
+      "tilt_p95_rad": 0.15066261813044549,
+      "tilt_max_rad": 0.15368567407131195,
+      "height_mean_m": 0.9920111440420151,
+      "height_min_m": 0.9667866826057434,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 21,
+      "command_name": "turn_right_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.03163222773128655,
+        -0.037281487032654693,
+        -0.3368904860774055
+      ],
+      "tracking_rmse_xyz": [
+        0.08746343881346508,
+        0.07753186751543872,
+        0.4975617327561161
+      ],
+      "tracking_rmse_xy": 0.1168804671855323,
+      "tracking_rmse_yaw": 0.49756173275611654,
+      "tilt_p95_rad": 0.38501277267932893,
+      "tilt_max_rad": 0.44494423270225525,
+      "height_mean_m": 0.9962192434668541,
+      "height_min_m": 0.9668163061141968,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 22,
+      "command_name": "advance_turn_left",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5743894846886396,
+        -0.015557338871993124,
+        0.6393120241239667
+      ],
+      "tracking_rmse_xyz": [
+        0.15530467008068763,
+        0.1084887267667302,
+        0.17956277700171433
+      ],
+      "tracking_rmse_xy": 0.1894448320338602,
+      "tracking_rmse_yaw": 0.17956277700171455,
+      "tilt_p95_rad": 0.18276325687766073,
+      "tilt_max_rad": 0.19471092522144318,
+      "height_mean_m": 0.9886357702612877,
+      "height_min_m": 0.9577898383140564,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 23,
+      "command_name": "advance_turn_right",
+      "command_tactical": [
+        0.6,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5178607270717621,
+        -0.021619339181575926,
+        -0.7454287859685719
+      ],
+      "tracking_rmse_xyz": [
+        0.12475173814854222,
+        0.056242106506359225,
+        0.18649311764716558
+      ],
+      "tracking_rmse_xy": 0.13684359946798788,
+      "tracking_rmse_yaw": 0.1864931176471659,
+      "tilt_p95_rad": 0.20747667178511617,
+      "tilt_max_rad": 0.22214779257774353,
+      "height_mean_m": 0.9911313794851303,
+      "height_min_m": 0.9581498503684998,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 24,
+      "command_name": "stand",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.005632656388101168,
+        -0.003443391690263525,
+        -0.01975825028953841
+      ],
+      "tracking_rmse_xyz": [
+        0.04548435181744896,
+        0.03545779318278234,
+        0.03057256170739429
+      ],
+      "tracking_rmse_xy": 0.057672188771074356,
+      "tracking_rmse_yaw": 0.03057256170739431,
+      "tilt_p95_rad": 0.14214758723974225,
+      "tilt_max_rad": 0.16680137813091278,
+      "height_mean_m": 0.9877606310248375,
+      "height_min_m": 0.9764233231544495,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 25,
+      "command_name": "forward_0.6",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5349834511876106,
+        -0.023316050797700882,
+        -0.02882024193322286
+      ],
+      "tracking_rmse_xyz": [
+        0.12305088811101998,
+        0.06658204788121662,
+        0.13551729418707295
+      ],
+      "tracking_rmse_xy": 0.13990957853187683,
+      "tracking_rmse_yaw": 0.13551729418707292,
+      "tilt_p95_rad": 0.1800862044095993,
+      "tilt_max_rad": 0.20406541228294373,
+      "height_mean_m": 0.9849925481081009,
+      "height_min_m": 0.9564760327339172,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 26,
+      "command_name": "forward_1.0",
+      "command_tactical": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.9540057405345141,
+        -0.04292283711745404,
+        -0.03940315296780318
+      ],
+      "tracking_rmse_xyz": [
+        0.13548515160675625,
+        0.08077686080707365,
+        0.14131792460654888
+      ],
+      "tracking_rmse_xy": 0.15773752739202895,
+      "tracking_rmse_yaw": 0.14131792460654885,
+      "tilt_p95_rad": 0.20713151916861533,
+      "tilt_max_rad": 0.21352313458919525,
+      "height_mean_m": 0.975481422662735,
+      "height_min_m": 0.9378820061683655,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 27,
+      "command_name": "backward_0.6",
+      "command_tactical": [
+        -0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.5874492211490869,
+        0.03420761402975768,
+        0.023964764769771135
+      ],
+      "tracking_rmse_xyz": [
+        0.10020196985964124,
+        0.08528235019531623,
+        0.11303073992053016
+      ],
+      "tracking_rmse_xy": 0.13158082694142426,
+      "tracking_rmse_yaw": 0.1130307399205302,
+      "tilt_p95_rad": 0.18134249076247216,
+      "tilt_max_rad": 0.18938906490802765,
+      "height_mean_m": 0.9725928533673286,
+      "height_min_m": 0.9187591671943665,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 28,
+      "command_name": "left_0.6",
+      "command_tactical": [
+        0.0,
+        0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.02559218629822135,
+        0.5326525432169438,
+        0.006961864902812522
+      ],
+      "tracking_rmse_xyz": [
+        0.10073823977753814,
+        0.10469358864717905,
+        0.1563080649875105
+      ],
+      "tracking_rmse_xy": 0.14528916152728524,
+      "tracking_rmse_yaw": 0.15630806498751038,
+      "tilt_p95_rad": 0.15021775737404822,
+      "tilt_max_rad": 0.16197022795677185,
+      "height_mean_m": 0.991063736140728,
+      "height_min_m": 0.9540547728538513,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 29,
+      "command_name": "right_0.6",
+      "command_tactical": [
+        0.0,
+        -0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.014977234499063343,
+        -0.5358920699842274,
+        0.0037282886725151913
+      ],
+      "tracking_rmse_xyz": [
+        0.11630007439696662,
+        0.10884027546859697,
+        0.1507616167360459
+      ],
+      "tracking_rmse_xy": 0.15928563296424478,
+      "tracking_rmse_yaw": 0.150761616736046,
+      "tilt_p95_rad": 0.1837764613330364,
+      "tilt_max_rad": 0.19301879405975342,
+      "height_mean_m": 0.9936994407773018,
+      "height_min_m": 0.9674280881881714,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 30,
+      "command_name": "forward_left_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.3671746005285531,
+        0.3764034021573607,
+        0.0067763627207605166
+      ],
+      "tracking_rmse_xyz": [
+        0.1294519468002869,
+        0.09507467416482794,
+        0.14050987403561074
+      ],
+      "tracking_rmse_xy": 0.16061444579468098,
+      "tracking_rmse_yaw": 0.14050987403561072,
+      "tilt_p95_rad": 0.14533139765262604,
+      "tilt_max_rad": 0.19100137054920197,
+      "height_mean_m": 0.9853797183036804,
+      "height_min_m": 0.9640147686004639,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 31,
+      "command_name": "forward_right_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        -0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.3632515324167907,
+        -0.3863831776212901,
+        -0.04479087788448669
+      ],
+      "tracking_rmse_xyz": [
+        0.12275662676192699,
+        0.07840389119525351,
+        0.10926826683930857
+      ],
+      "tracking_rmse_xy": 0.14565836594073203,
+      "tracking_rmse_yaw": 0.1092682668393086,
+      "tilt_p95_rad": 0.19541713297367097,
+      "tilt_max_rad": 0.2126040756702423,
+      "height_mean_m": 0.9923777255415916,
+      "height_min_m": 0.9647505283355713,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 32,
+      "command_name": "turn_left_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.025709669563162608,
+        0.028609250837587752,
+        0.6356103719770908
+      ],
+      "tracking_rmse_xyz": [
+        0.09393577050101987,
+        0.047948782972355386,
+        0.1835819066950051
+      ],
+      "tracking_rmse_xy": 0.10546570422725249,
+      "tracking_rmse_yaw": 0.18358190669500543,
+      "tilt_p95_rad": 0.15146612226963044,
+      "tilt_max_rad": 0.1538279801607132,
+      "height_mean_m": 0.991469241142273,
+      "height_min_m": 0.9534933567047119,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 33,
+      "command_name": "turn_right_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.040091440241783856,
+        -0.03504491780907847,
+        -0.3429414018976968
+      ],
+      "tracking_rmse_xyz": [
+        0.11563920686543502,
+        0.08503809481783124,
+        0.4928279733307514
+      ],
+      "tracking_rmse_xy": 0.14354059960413063,
+      "tracking_rmse_yaw": 0.4928279733307518,
+      "tilt_p95_rad": 0.42248653918504714,
+      "tilt_max_rad": 0.48197534680366516,
+      "height_mean_m": 0.9923534585237503,
+      "height_min_m": 0.9392794370651245,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 34,
+      "command_name": "advance_turn_left",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.571368648558855,
+        -0.022051187412813304,
+        0.7006394536495208
+      ],
+      "tracking_rmse_xyz": [
+        0.12066365042466314,
+        0.06576687872118726,
+        0.12375733450349861
+      ],
+      "tracking_rmse_xy": 0.13742270143805446,
+      "tracking_rmse_yaw": 0.12375733450349861,
+      "tilt_p95_rad": 0.15153004229068756,
+      "tilt_max_rad": 0.1828376054763794,
+      "height_mean_m": 0.9843159239292145,
+      "height_min_m": 0.9425467848777771,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 35,
+      "command_name": "advance_turn_right",
+      "command_tactical": [
+        0.6,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5275047383308411,
+        -0.016875550340861082,
+        -0.7244049977175891
+      ],
+      "tracking_rmse_xyz": [
+        0.12142215437222073,
+        0.0509511299613175,
+        0.14994401264358598
+      ],
+      "tracking_rmse_xy": 0.13167899307302763,
+      "tracking_rmse_yaw": 0.149944012643586,
+      "tilt_p95_rad": 0.18451777696609498,
+      "tilt_max_rad": 0.20088891685009003,
+      "height_mean_m": 0.9871285908818245,
+      "height_min_m": 0.9623544216156006,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 36,
+      "command_name": "stand",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.008895309800747781,
+        -0.0018481724723242224,
+        -0.060613399987109004
+      ],
+      "tracking_rmse_xyz": [
+        0.018402581031603353,
+        0.028877843898997856,
+        0.06859206028188343
+      ],
+      "tracking_rmse_xy": 0.03424302639778812,
+      "tracking_rmse_yaw": 0.06859206028188347,
+      "tilt_p95_rad": 0.15135363265872,
+      "tilt_max_rad": 0.15161141753196716,
+      "height_mean_m": 0.9865723043084145,
+      "height_min_m": 0.9658597111701965,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 37,
+      "command_name": "forward_0.6",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5464271070212126,
+        -0.032861442513763904,
+        -0.06181825636548456
+      ],
+      "tracking_rmse_xyz": [
+        0.12276634927615125,
+        0.062162549425715224,
+        0.12473372380339533
+      ],
+      "tracking_rmse_xy": 0.13760726385514127,
+      "tracking_rmse_yaw": 0.12473372380339529,
+      "tilt_p95_rad": 0.19326892644166943,
+      "tilt_max_rad": 0.22753629088401794,
+      "height_mean_m": 0.9908549748063088,
+      "height_min_m": 0.9581648707389832,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 38,
+      "command_name": "forward_1.0",
+      "command_tactical": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.9232046408429742,
+        -0.00839562303200364,
+        -0.021324737913906575
+      ],
+      "tracking_rmse_xyz": [
+        0.19535471760852857,
+        0.09533344630350381,
+        0.14155265649474935
+      ],
+      "tracking_rmse_xy": 0.21737509442438788,
+      "tracking_rmse_yaw": 0.14155265649474927,
+      "tilt_p95_rad": 0.20170612931251525,
+      "tilt_max_rad": 0.20909689366817474,
+      "height_mean_m": 0.9729287109971047,
+      "height_min_m": 0.9362824559211731,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 39,
+      "command_name": "backward_0.6",
+      "command_tactical": [
+        -0.6,
+        0.0,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.5559010490439832,
+        0.0040621373020112515,
+        0.014397075624758145
+      ],
+      "tracking_rmse_xyz": [
+        0.1222067305136028,
+        0.0677364064655797,
+        0.14987923937896552
+      ],
+      "tracking_rmse_xy": 0.13972367638913083,
+      "tracking_rmse_yaw": 0.14987923937896547,
+      "tilt_p95_rad": 0.21140249371528624,
+      "tilt_max_rad": 0.22973251342773438,
+      "height_mean_m": 0.981868804693222,
+      "height_min_m": 0.9336395859718323,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 40,
+      "command_name": "left_0.6",
+      "command_tactical": [
+        0.0,
+        0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.01947958990186453,
+        0.5315812171921134,
+        0.005428728183964267
+      ],
+      "tracking_rmse_xyz": [
+        0.10792850821912142,
+        0.10658905768692829,
+        0.14479624894573997
+      ],
+      "tracking_rmse_xy": 0.15168978246735132,
+      "tracking_rmse_yaw": 0.14479624894573997,
+      "tilt_p95_rad": 0.15762686431407924,
+      "tilt_max_rad": 0.17651458084583282,
+      "height_mean_m": 0.986369223356247,
+      "height_min_m": 0.9547222256660461,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 41,
+      "command_name": "right_0.6",
+      "command_tactical": [
+        0.0,
+        -0.6,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.002281208229251206,
+        -0.5296542200893164,
+        0.025478036378510295
+      ],
+      "tracking_rmse_xyz": [
+        0.10847558635887498,
+        0.11618730358927591,
+        0.12810480283377768
+      ],
+      "tracking_rmse_xy": 0.15895421463820425,
+      "tracking_rmse_yaw": 0.1281048028337777,
+      "tilt_p95_rad": 0.17526539117097853,
+      "tilt_max_rad": 0.18850278854370117,
+      "height_mean_m": 0.9930015241503716,
+      "height_min_m": 0.9573982357978821,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 42,
+      "command_name": "forward_left_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.3675677096098661,
+        0.3996257305145264,
+        -0.0025658271096181125
+      ],
+      "tracking_rmse_xyz": [
+        0.1662725999916984,
+        0.07435371331725951,
+        0.12022881818571103
+      ],
+      "tracking_rmse_xy": 0.182140199275351,
+      "tracking_rmse_yaw": 0.12022881818571093,
+      "tilt_p95_rad": 0.1493028976023197,
+      "tilt_max_rad": 0.1546502560377121,
+      "height_mean_m": 0.9905868410468102,
+      "height_min_m": 0.9730368852615356,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 43,
+      "command_name": "forward_right_0.6",
+      "command_tactical": [
+        0.42426406871192845,
+        -0.42426406871192845,
+        0.0
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.355361355567351,
+        -0.376505852989445,
+        -0.040584303371724674
+      ],
+      "tracking_rmse_xyz": [
+        0.1455189285159337,
+        0.12096833305301444,
+        0.12350794024339386
+      ],
+      "tracking_rmse_xy": 0.18923291510213136,
+      "tracking_rmse_yaw": 0.12350794024339383,
+      "tilt_p95_rad": 0.20058511719107627,
+      "tilt_max_rad": 0.21154065430164337,
+      "height_mean_m": 0.9932557688951492,
+      "height_min_m": 0.964137077331543,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 44,
+      "command_name": "turn_left_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        -0.011831579901394435,
+        0.01596719191095326,
+        0.5892377576744184
+      ],
+      "tracking_rmse_xyz": [
+        0.07581030204289375,
+        0.050595047290214676,
+        0.22373821145657266
+      ],
+      "tracking_rmse_xy": 0.09114307821296058,
+      "tracking_rmse_yaw": 0.22373821145657397,
+      "tilt_p95_rad": 0.15005464404821395,
+      "tilt_max_rad": 0.1727306991815567,
+      "height_mean_m": 0.990789191544056,
+      "height_min_m": 0.9578892588615417,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 45,
+      "command_name": "turn_right_0.75",
+      "command_tactical": [
+        0.0,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.036170614263392055,
+        -0.030521094673662447,
+        -0.2973229846572503
+      ],
+      "tracking_rmse_xyz": [
+        0.105879569679335,
+        0.07966536895808715,
+        0.5297341402806138
+      ],
+      "tracking_rmse_xy": 0.1325030350094266,
+      "tracking_rmse_yaw": 0.529734140280614,
+      "tilt_p95_rad": 0.37252103686332705,
+      "tilt_max_rad": 0.3897567093372345,
+      "height_mean_m": 0.994655221939087,
+      "height_min_m": 0.9589489102363586,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 46,
+      "command_name": "advance_turn_left",
+      "command_tactical": [
+        0.6,
+        0.0,
+        0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5695352293550968,
+        0.0021873207581229507,
+        0.6769225736465305
+      ],
+      "tracking_rmse_xyz": [
+        0.1325338230601274,
+        0.09283131353092239,
+        0.13278798776430373
+      ],
+      "tracking_rmse_xy": 0.1618112079764858,
+      "tracking_rmse_yaw": 0.13278798776430378,
+      "tilt_p95_rad": 0.1598518520593643,
+      "tilt_max_rad": 0.18722999095916748,
+      "height_mean_m": 0.9883957676887513,
+      "height_min_m": 0.9537706971168518,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    },
+    {
+      "env_index": 47,
+      "command_name": "advance_turn_right",
+      "command_tactical": [
+        0.6,
+        0.0,
+        -0.75
+      ],
+      "failure_terms": [],
+      "trials": 1,
+      "falls": 0,
+      "failure_rate": 0.0,
+      "valid_samples": 1000,
+      "alive_seconds_total": 20.0,
+      "alive_seconds_mean": 20.0,
+      "actual_velocity_mean_tactical": [
+        0.5135238547027111,
+        -0.009548134874552488,
+        -0.7403077388159
+      ],
+      "tracking_rmse_xyz": [
+        0.1273898404564583,
+        0.0771700599547897,
+        0.16223119418638804
+      ],
+      "tracking_rmse_xy": 0.14894089299097052,
+      "tracking_rmse_yaw": 0.16223119418638807,
+      "tilt_p95_rad": 0.20483882427215577,
+      "tilt_max_rad": 0.22849854826927185,
+      "height_mean_m": 0.989147031545639,
+      "height_min_m": 0.9651347994804382,
+      "impacts": {
+        "hits": 0,
+        "common_hits": 0,
+        "stress_hits": 0,
+        "impulse_total_ns": 0.0,
+        "applied_physics_step_force_max_n": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "directions": {
+          "front": 0.0,
+          "side": 0.0,
+          "rear": 0.0
+        },
+        "targets": {
+          "torso": 0.0,
+          "pelvis": 0.0,
+          "arm": 0.0,
+          "thigh": 0.0,
+          "calf": 0.0,
+          "head": 0.0
+        },
+        "recoveries": 0,
+        "recovery_expired": 0,
+        "completed_recovery_mean_s": null,
+        "extra_displacement_max_m": 0.0,
+        "completed_measurement_windows": 0
+      }
+    }
+  ]
+}

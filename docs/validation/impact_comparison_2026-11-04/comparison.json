@@ -1,0 +1,1686 @@
+{
+  "provenance": {
+    "evaluation_job": 13682,
+    "seeds": [
+      42,
+      43
+    ],
+    "duration_s": 20,
+    "trials_per_policy_and_mode": 96,
+    "baseline_checkpoint": "logs/cusrl/T800_base/2026-10-28-15-23-25:T800_base_2gpu_seed42/ckpt/ckpt_85500.pt",
+    "impact_checkpoint": "logs/cusrl/T800_base-Impact/2026-11-02-20-45-18:T800_base-Impact_from85500_40k/ckpt/ckpt_115000.pt",
+    "scope": "Same flat terrain, 12 fixed tactical commands, healthy physical head, randomized body parameters; first termination ends each trial.",
+    "metrics_note": "RMSE is weighted by valid pre-fall samples; survival and failure rates must be considered alongside it. Wilson intervals are descriptive, do not account for dependence between seeds/commands.",
+    "restart": {
+      "job": 13683,
+      "from_iteration": 115500,
+      "endpoint": 125500,
+      "remaining_updates_at_restart": 10000,
+      "origin": 85500,
+      "old_job": 13501,
+      "run": "logs/cusrl/T800_base-Impact/2026-11-04-20-26-01:T800_base-Impact_singlehit_groundfix_from115500_to125500"
+    },
+    "code_sha256": {
+      "scripts/cusrl/evaluate_impact.py": "32d8b183c626324f84fc3bea023dc39cc94a85efb25fd329d102f6a5cdeb97ed",
+      "source/t800_lab/t800_lab/tasks/t800_impact/impact_runtime.py": "6c9c800d83059130a510b9a676bb4752c769caa0a2de1690f1620bf16f204c35",
+      "source/t800_lab/t800_lab/tasks/t800_impact/env_cfg.py": "d005275b477c5c590bcfde3cf735f723ad187ccb1210e4ae59e17f25dec19abe",
+      "source/t800_lab/t800_lab/tasks/t800_impact/impact_config.py": "e074205ad569a6a2c08ede6557429be41ea0bbd39684574e741760a91fbb8e2f"
+    }
+  },
+  "results": {
+    "stage1": {
+      "off": {
+        "trials": 96,
+        "falls": 0,
+        "failure_rate": 0.0,
+        "failure_rate_wilson95": [
+          0.0,
+          0.03847694748481595
+        ],
+        "valid_samples": 96000,
+        "alive_seconds_mean": 20.0,
+        "tracking_rmse_xy_m_s": 0.14124398653001993,
+        "tracking_rmse_yaw_rad_s": 0.13082090784773098,
+        "actual_yaw_rate_mean_rad_s": -0.0068215838617201145,
+        "hits": 0,
+        "impulse_total_ns": 0.0,
+        "recoveries": 0,
+        "completed_recovery_mean_s": null,
+        "recovery_expired": 0,
+        "extra_displacement_max_m": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "commands": {
+          "stand": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.05838786579336891,
+            "tracking_rmse_yaw_rad_s": 0.06252822228330215,
+            "actual_yaw_rate_mean_rad_s": -0.040756624789728906,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.15928007525102383,
+            "tracking_rmse_yaw_rad_s": 0.09757356586488866,
+            "actual_yaw_rate_mean_rad_s": -0.0019385021255002358,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_1.0": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1919911100319862,
+            "tracking_rmse_yaw_rad_s": 0.12312698247884028,
+            "actual_yaw_rate_mean_rad_s": 0.012873479802641669,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "backward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.13274703365867166,
+            "tracking_rmse_yaw_rad_s": 0.14882446783940195,
+            "actual_yaw_rate_mean_rad_s": -0.007071601678486332,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.15499826362114044,
+            "tracking_rmse_yaw_rad_s": 0.19384365554506738,
+            "actual_yaw_rate_mean_rad_s": -0.007565727231330129,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.13638555906684874,
+            "tracking_rmse_yaw_rad_s": 0.13128452212502212,
+            "actual_yaw_rate_mean_rad_s": -0.01806862890825687,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1541023810169557,
+            "tracking_rmse_yaw_rad_s": 0.12654644599316447,
+            "actual_yaw_rate_mean_rad_s": 0.006243404024569827,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1531589287457167,
+            "tracking_rmse_yaw_rad_s": 0.10987650608453658,
+            "actual_yaw_rate_mean_rad_s": 0.007208296364590751,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "turn_left_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.08577121362808629,
+            "tracking_rmse_yaw_rad_s": 0.1525253944689447,
+            "actual_yaw_rate_mean_rad_s": 0.6704577944989433,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "turn_right_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.09741258292090021,
+            "tracking_rmse_yaw_rad_s": 0.09494979389831767,
+            "actual_yaw_rate_mean_rad_s": -0.7391908226246015,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "advance_turn_left": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.16574739523203977,
+            "tracking_rmse_yaw_rad_s": 0.12438607002248529,
+            "actual_yaw_rate_mean_rad_s": 0.7506112876229454,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "advance_turn_right": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1482832528925785,
+            "tracking_rmse_yaw_rad_s": 0.15485726304998917,
+            "actual_yaw_rate_mean_rad_s": -0.7146613612964283,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          }
+        }
+      },
+      "common": {
+        "trials": 96,
+        "falls": 1,
+        "failure_rate": 0.010416666666666666,
+        "failure_rate_wilson95": [
+          0.001841122818436635,
+          0.056667554927112326
+        ],
+        "valid_samples": 95543,
+        "alive_seconds_mean": 19.904791666666668,
+        "tracking_rmse_xy_m_s": 0.22599009074286244,
+        "tracking_rmse_yaw_rad_s": 0.20298720899808909,
+        "actual_yaw_rate_mean_rad_s": -0.008458342753135905,
+        "hits": 698,
+        "impulse_total_ns": 13362.67317199707,
+        "recoveries": 221,
+        "completed_recovery_mean_s": 0.48285038034301,
+        "recovery_expired": 55,
+        "extra_displacement_max_m": 3.2508504390716553,
+        "continuous_pulse_peak_max_n": 1990.70361328125,
+        "commands": {
+          "stand": {
+            "trials": 8,
+            "falls": 1,
+            "failure_rate": 0.125,
+            "failure_rate_wilson95": [
+              0.02241690886329617,
+              0.4708948057698615
+            ],
+            "valid_samples": 7543,
+            "alive_seconds_mean": 18.8575,
+            "tracking_rmse_xy_m_s": 0.12042332285696848,
+            "tracking_rmse_yaw_rad_s": 0.13720183300151442,
+            "actual_yaw_rate_mean_rad_s": -0.011081609249686214,
+            "hits": 55,
+            "impulse_total_ns": 979.9050979614258,
+            "recoveries": 11,
+            "completed_recovery_mean_s": 0.40636340460994025,
+            "recovery_expired": 10,
+            "extra_displacement_max_m": 0.4464403986930847,
+            "continuous_pulse_peak_max_n": 1809.532470703125
+          },
+          "forward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.25979310990557775,
+            "tracking_rmse_yaw_rad_s": 0.18475338018436588,
+            "actual_yaw_rate_mean_rad_s": -0.010645300555886025,
+            "hits": 59,
+            "impulse_total_ns": 1307.5690612792969,
+            "recoveries": 21,
+            "completed_recovery_mean_s": 0.44047594496182035,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 2.3061013221740723,
+            "continuous_pulse_peak_max_n": 1905.3995361328125
+          },
+          "forward_1.0": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.24761013270029253,
+            "tracking_rmse_yaw_rad_s": 0.1918736719480657,
+            "actual_yaw_rate_mean_rad_s": 0.0218358804093441,
+            "hits": 54,
+            "impulse_total_ns": 1031.5655517578125,
+            "recoveries": 19,
+            "completed_recovery_mean_s": 0.5368417517135018,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.9890539646148682,
+            "continuous_pulse_peak_max_n": 1990.70361328125
+          },
+          "backward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.16766658829906267,
+            "tracking_rmse_yaw_rad_s": 0.2052514997078506,
+            "actual_yaw_rate_mean_rad_s": -0.01306250879451909,
+            "hits": 59,
+            "impulse_total_ns": 981.2518005371094,
+            "recoveries": 19,
+            "completed_recovery_mean_s": 0.5757890939712524,
+            "recovery_expired": 4,
+            "extra_displacement_max_m": 0.6825357675552368,
+            "continuous_pulse_peak_max_n": 1839.4814453125
+          },
+          "left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.2507658441042562,
+            "tracking_rmse_yaw_rad_s": 0.24203779677873308,
+            "actual_yaw_rate_mean_rad_s": -0.012906864333439443,
+            "hits": 64,
+            "impulse_total_ns": 1109.859962463379,
+            "recoveries": 4,
+            "completed_recovery_mean_s": 0.8387493938207626,
+            "recovery_expired": 9,
+            "extra_displacement_max_m": 1.7674944400787354,
+            "continuous_pulse_peak_max_n": 1957.04296875
+          },
+          "right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.28574826209118276,
+            "tracking_rmse_yaw_rad_s": 0.22848306214371916,
+            "actual_yaw_rate_mean_rad_s": -0.01588479352117065,
+            "hits": 55,
+            "impulse_total_ns": 1119.9861373901367,
+            "recoveries": 17,
+            "completed_recovery_mean_s": 0.4761761856429717,
+            "recovery_expired": 6,
+            "extra_displacement_max_m": 3.2508504390716553,
+            "continuous_pulse_peak_max_n": 1870.90673828125
+          },
+          "forward_left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.24379743517211794,
+            "tracking_rmse_yaw_rad_s": 0.23884961140512861,
+            "actual_yaw_rate_mean_rad_s": -0.0034446301439456876,
+            "hits": 57,
+            "impulse_total_ns": 1146.264003753662,
+            "recoveries": 25,
+            "completed_recovery_mean_s": 0.43919972896575926,
+            "recovery_expired": 9,
+            "extra_displacement_max_m": 1.89272940158844,
+            "continuous_pulse_peak_max_n": 1968.8851318359375
+          },
+          "forward_right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.22879881502028696,
+            "tracking_rmse_yaw_rad_s": 0.17035096596483773,
+            "actual_yaw_rate_mean_rad_s": -0.004320277432951116,
+            "hits": 64,
+            "impulse_total_ns": 1309.7862548828125,
+            "recoveries": 30,
+            "completed_recovery_mean_s": 0.4576663951079051,
+            "recovery_expired": 2,
+            "extra_displacement_max_m": 0.9592822194099426,
+            "continuous_pulse_peak_max_n": 1970.5035400390625
+          },
+          "turn_left_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1934384580958606,
+            "tracking_rmse_yaw_rad_s": 0.23582728675151035,
+            "actual_yaw_rate_mean_rad_s": 0.6665107309903833,
+            "hits": 53,
+            "impulse_total_ns": 1027.339038848877,
+            "recoveries": 20,
+            "completed_recovery_mean_s": 0.5074996769428253,
+            "recovery_expired": 6,
+            "extra_displacement_max_m": 1.3895620107650757,
+            "continuous_pulse_peak_max_n": 1915.6573486328125
+          },
+          "turn_right_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.23362475145813874,
+            "tracking_rmse_yaw_rad_s": 0.19510040322278752,
+            "actual_yaw_rate_mean_rad_s": -0.7421770384761621,
+            "hits": 62,
+            "impulse_total_ns": 1237.407470703125,
+            "recoveries": 19,
+            "completed_recovery_mean_s": 0.4497365708413877,
+            "recovery_expired": 3,
+            "extra_displacement_max_m": 2.569169044494629,
+            "continuous_pulse_peak_max_n": 1899.54736328125
+          },
+          "advance_turn_left": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.23441175557988797,
+            "tracking_rmse_yaw_rad_s": 0.19697641155016105,
+            "actual_yaw_rate_mean_rad_s": 0.7446755958027207,
+            "hits": 55,
+            "impulse_total_ns": 999.5658645629883,
+            "recoveries": 18,
+            "completed_recovery_mean_s": 0.5586107422908148,
+            "recovery_expired": 1,
+            "extra_displacement_max_m": 1.4069660902023315,
+            "continuous_pulse_peak_max_n": 1949.699951171875
+          },
+          "advance_turn_right": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.18995423054033564,
+            "tracking_rmse_yaw_rad_s": 0.17869427041767175,
+            "actual_yaw_rate_mean_rad_s": -0.721149151830934,
+            "hits": 61,
+            "impulse_total_ns": 1112.1729278564453,
+            "recoveries": 18,
+            "completed_recovery_mean_s": 0.38555534101194805,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.3822852075099945,
+            "continuous_pulse_peak_max_n": 1660.08837890625
+          }
+        }
+      },
+      "stress": {
+        "trials": 96,
+        "falls": 80,
+        "failure_rate": 0.8333333333333334,
+        "failure_rate_wilson95": [
+          0.7462882947885028,
+          0.8947270735549533
+        ],
+        "valid_samples": 48045,
+        "alive_seconds_mean": 10.009375,
+        "tracking_rmse_xy_m_s": 0.5983780185519515,
+        "tracking_rmse_yaw_rad_s": 0.7176651852976985,
+        "actual_yaw_rate_mean_rad_s": 0.02104629716054353,
+        "hits": 282,
+        "impulse_total_ns": 23817.724140167236,
+        "recoveries": 112,
+        "completed_recovery_mean_s": 0.7479905407609684,
+        "recovery_expired": 67,
+        "extra_displacement_max_m": 3.486003875732422,
+        "continuous_pulse_peak_max_n": 4992.78125,
+        "commands": {
+          "stand": {
+            "trials": 8,
+            "falls": 7,
+            "failure_rate": 0.875,
+            "failure_rate_wilson95": [
+              0.5291051942301386,
+              0.9775830911367038
+            ],
+            "valid_samples": 4662,
+            "alive_seconds_mean": 11.655000000000001,
+            "tracking_rmse_xy_m_s": 0.61053760004225,
+            "tracking_rmse_yaw_rad_s": 0.6349154145328002,
+            "actual_yaw_rate_mean_rad_s": -0.04454147606023951,
+            "hits": 27,
+            "impulse_total_ns": 2104.625518798828,
+            "recoveries": 7,
+            "completed_recovery_mean_s": 0.389285500560488,
+            "recovery_expired": 11,
+            "extra_displacement_max_m": 3.486003875732422,
+            "continuous_pulse_peak_max_n": 4992.78125
+          },
+          "forward_0.6": {
+            "trials": 8,
+            "falls": 7,
+            "failure_rate": 0.875,
+            "failure_rate_wilson95": [
+              0.5291051942301386,
+              0.9775830911367038
+            ],
+            "valid_samples": 4728,
+            "alive_seconds_mean": 11.82,
+            "tracking_rmse_xy_m_s": 0.5709809281104743,
+            "tracking_rmse_yaw_rad_s": 0.6377276229455426,
+            "actual_yaw_rate_mean_rad_s": 0.028051406183183802,
+            "hits": 27,
+            "impulse_total_ns": 2391.2114486694336,
+            "recoveries": 16,
+            "completed_recovery_mean_s": 0.7859369404613972,
+            "recovery_expired": 3,
+            "extra_displacement_max_m": 2.4438302516937256,
+            "continuous_pulse_peak_max_n": 4613.38623046875
+          },
+          "forward_1.0": {
+            "trials": 8,
+            "falls": 5,
+            "failure_rate": 0.625,
+            "failure_rate_wilson95": [
+              0.30573785458380187,
+              0.863158240538479
+            ],
+            "valid_samples": 5290,
+            "alive_seconds_mean": 13.225000000000001,
+            "tracking_rmse_xy_m_s": 0.6008979128106412,
+            "tracking_rmse_yaw_rad_s": 0.6697306669623075,
+            "actual_yaw_rate_mean_rad_s": 0.03951786940427504,
+            "hits": 31,
+            "impulse_total_ns": 2389.9510040283203,
+            "recoveries": 19,
+            "completed_recovery_mean_s": 0.7573678650354084,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 3.4015893936157227,
+            "continuous_pulse_peak_max_n": 4698.2109375
+          },
+          "backward_0.6": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 3216,
+            "alive_seconds_mean": 8.04,
+            "tracking_rmse_xy_m_s": 0.5654086930054523,
+            "tracking_rmse_yaw_rad_s": 0.7522837617391605,
+            "actual_yaw_rate_mean_rad_s": -0.02347376030700082,
+            "hits": 19,
+            "impulse_total_ns": 1598.868911743164,
+            "recoveries": 4,
+            "completed_recovery_mean_s": 0.7524994611740112,
+            "recovery_expired": 3,
+            "extra_displacement_max_m": 2.1725807189941406,
+            "continuous_pulse_peak_max_n": 4614.41796875
+          },
+          "left_0.6": {
+            "trials": 8,
+            "falls": 8,
+            "failure_rate": 1.0,
+            "failure_rate_wilson95": [
+              0.6755843804891231,
+              1.0
+            ],
+            "valid_samples": 2602,
+            "alive_seconds_mean": 6.505,
+            "tracking_rmse_xy_m_s": 0.6437704502929937,
+            "tracking_rmse_yaw_rad_s": 1.0753260812780892,
+            "actual_yaw_rate_mean_rad_s": 0.056379627071225805,
+            "hits": 15,
+            "impulse_total_ns": 1333.2864837646484,
+            "recoveries": 1,
+            "completed_recovery_mean_s": 0.9949992299079895,
+            "recovery_expired": 3,
+            "extra_displacement_max_m": 2.1272025108337402,
+            "continuous_pulse_peak_max_n": 4370.0478515625
+          },
+          "right_0.6": {
+            "trials": 8,
+            "falls": 8,
+            "failure_rate": 1.0,
+            "failure_rate_wilson95": [
+              0.6755843804891231,
+              1.0
+            ],
+            "valid_samples": 2428,
+            "alive_seconds_mean": 6.07,
+            "tracking_rmse_xy_m_s": 0.7566325179538084,
+            "tracking_rmse_yaw_rad_s": 0.8834410091067824,
+            "actual_yaw_rate_mean_rad_s": -0.1528606994001903,
+            "hits": 15,
+            "impulse_total_ns": 1517.3351020812988,
+            "recoveries": 2,
+            "completed_recovery_mean_s": 0.8849993348121643,
+            "recovery_expired": 6,
+            "extra_displacement_max_m": 2.4203498363494873,
+            "continuous_pulse_peak_max_n": 4992.10107421875
+          },
+          "forward_left_0.6": {
+            "trials": 8,
+            "falls": 7,
+            "failure_rate": 0.875,
+            "failure_rate_wilson95": [
+              0.5291051942301386,
+              0.9775830911367038
+            ],
+            "valid_samples": 4530,
+            "alive_seconds_mean": 11.325000000000001,
+            "tracking_rmse_xy_m_s": 0.5255231879875786,
+            "tracking_rmse_yaw_rad_s": 0.702706208152047,
+            "actual_yaw_rate_mean_rad_s": -0.0020826714221931918,
+            "hits": 28,
+            "impulse_total_ns": 2161.85262298584,
+            "recoveries": 10,
+            "completed_recovery_mean_s": 0.6464995622634888,
+            "recovery_expired": 9,
+            "extra_displacement_max_m": 2.6761341094970703,
+            "continuous_pulse_peak_max_n": 4131.8203125
+          },
+          "forward_right_0.6": {
+            "trials": 8,
+            "falls": 7,
+            "failure_rate": 0.875,
+            "failure_rate_wilson95": [
+              0.5291051942301386,
+              0.9775830911367038
+            ],
+            "valid_samples": 4061,
+            "alive_seconds_mean": 10.1525,
+            "tracking_rmse_xy_m_s": 0.6096956941446913,
+            "tracking_rmse_yaw_rad_s": 0.7077908057654884,
+            "actual_yaw_rate_mean_rad_s": 0.03218853279413716,
+            "hits": 23,
+            "impulse_total_ns": 2044.0747909545898,
+            "recoveries": 7,
+            "completed_recovery_mean_s": 0.7635708983455386,
+            "recovery_expired": 8,
+            "extra_displacement_max_m": 2.158661127090454,
+            "continuous_pulse_peak_max_n": 4866.1640625
+          },
+          "turn_left_0.75": {
+            "trials": 8,
+            "falls": 7,
+            "failure_rate": 0.875,
+            "failure_rate_wilson95": [
+              0.5291051942301386,
+              0.9775830911367038
+            ],
+            "valid_samples": 3894,
+            "alive_seconds_mean": 9.735,
+            "tracking_rmse_xy_m_s": 0.5827074254269419,
+            "tracking_rmse_yaw_rad_s": 0.7478216358623796,
+            "actual_yaw_rate_mean_rad_s": 0.5879016127605967,
+            "hits": 22,
+            "impulse_total_ns": 2043.202621459961,
+            "recoveries": 7,
+            "completed_recovery_mean_s": 0.9335707426071167,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 1.7375701665878296,
+            "continuous_pulse_peak_max_n": 3737.291748046875
+          },
+          "turn_right_0.75": {
+            "trials": 8,
+            "falls": 7,
+            "failure_rate": 0.875,
+            "failure_rate_wilson95": [
+              0.5291051942301386,
+              0.9775830911367038
+            ],
+            "valid_samples": 3973,
+            "alive_seconds_mean": 9.9325,
+            "tracking_rmse_xy_m_s": 0.5963587124250637,
+            "tracking_rmse_yaw_rad_s": 0.6386014386803156,
+            "actual_yaw_rate_mean_rad_s": -0.7574722443266826,
+            "hits": 25,
+            "impulse_total_ns": 2187.7415313720703,
+            "recoveries": 13,
+            "completed_recovery_mean_s": 0.8992301133962778,
+            "recovery_expired": 3,
+            "extra_displacement_max_m": 2.3769986629486084,
+            "continuous_pulse_peak_max_n": 4755.357421875
+          },
+          "advance_turn_left": {
+            "trials": 8,
+            "falls": 5,
+            "failure_rate": 0.625,
+            "failure_rate_wilson95": [
+              0.30573785458380187,
+              0.863158240538479
+            ],
+            "valid_samples": 5613,
+            "alive_seconds_mean": 14.0325,
+            "tracking_rmse_xy_m_s": 0.5657663126025897,
+            "tracking_rmse_yaw_rad_s": 0.5784830723987545,
+            "actual_yaw_rate_mean_rad_s": 0.7117916451101406,
+            "hits": 32,
+            "impulse_total_ns": 2501.135353088379,
+            "recoveries": 19,
+            "completed_recovery_mean_s": 0.7055258311723408,
+            "recovery_expired": 7,
+            "extra_displacement_max_m": 2.901407480239868,
+            "continuous_pulse_peak_max_n": 4704.86474609375
+          },
+          "advance_turn_right": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 3048,
+            "alive_seconds_mean": 7.62,
+            "tracking_rmse_xy_m_s": 0.6338268928928366,
+            "tracking_rmse_yaw_rad_s": 0.7893102473159561,
+            "actual_yaw_rate_mean_rad_s": -0.7281294471710759,
+            "hits": 18,
+            "impulse_total_ns": 1544.4387512207031,
+            "recoveries": 7,
+            "completed_recovery_mean_s": 0.695713779756001,
+            "recovery_expired": 4,
+            "extra_displacement_max_m": 2.6730167865753174,
+            "continuous_pulse_peak_max_n": 4658.1787109375
+          }
+        }
+      }
+    },
+    "impact": {
+      "off": {
+        "trials": 96,
+        "falls": 0,
+        "failure_rate": 0.0,
+        "failure_rate_wilson95": [
+          0.0,
+          0.03847694748481595
+        ],
+        "valid_samples": 96000,
+        "alive_seconds_mean": 20.0,
+        "tracking_rmse_xy_m_s": 0.1450979245196906,
+        "tracking_rmse_yaw_rad_s": 0.1983800732527003,
+        "actual_yaw_rate_mean_rad_s": 0.003687525371412448,
+        "hits": 0,
+        "impulse_total_ns": 0.0,
+        "recoveries": 0,
+        "completed_recovery_mean_s": null,
+        "recovery_expired": 0,
+        "extra_displacement_max_m": 0.0,
+        "continuous_pulse_peak_max_n": 0.0,
+        "commands": {
+          "stand": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.057414846657239796,
+            "tracking_rmse_yaw_rad_s": 0.07828242098272432,
+            "actual_yaw_rate_mean_rad_s": -0.05390467342848569,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.14919670752683037,
+            "tracking_rmse_yaw_rad_s": 0.13105406014475945,
+            "actual_yaw_rate_mean_rad_s": -0.0515993858420843,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_1.0": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.17336380057098252,
+            "tracking_rmse_yaw_rad_s": 0.15316767342698065,
+            "actual_yaw_rate_mean_rad_s": -0.03591577897787647,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "backward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1454061724982203,
+            "tracking_rmse_yaw_rad_s": 0.1342832474268913,
+            "actual_yaw_rate_mean_rad_s": 0.028198104987004625,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.14925799527091277,
+            "tracking_rmse_yaw_rad_s": 0.15684932397756654,
+            "actual_yaw_rate_mean_rad_s": -0.007206310625279002,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.15445784965726636,
+            "tracking_rmse_yaw_rad_s": 0.14336774705942346,
+            "actual_yaw_rate_mean_rad_s": 0.007592583575456956,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.15461439621935882,
+            "tracking_rmse_yaw_rad_s": 0.12833963193762368,
+            "actual_yaw_rate_mean_rad_s": -0.0029858793794119267,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "forward_right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.16497521530297518,
+            "tracking_rmse_yaw_rad_s": 0.11454469526263104,
+            "actual_yaw_rate_mean_rad_s": -0.04258500283278408,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "turn_left_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.09398712088501156,
+            "tracking_rmse_yaw_rad_s": 0.20487496688393972,
+            "actual_yaw_rate_mean_rad_s": 0.6025571715044789,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "turn_right_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.13152816525844907,
+            "tracking_rmse_yaw_rad_s": 0.4924410317015076,
+            "actual_yaw_rate_mean_rad_s": -0.3438161812805629,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "advance_turn_left": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1678043994147204,
+            "tracking_rmse_yaw_rad_s": 0.1414035277604136,
+            "actual_yaw_rate_mean_rad_s": 0.6778069109068019,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          },
+          "advance_turn_right": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.15600527115941432,
+            "tracking_rmse_yaw_rad_s": 0.1680647542979589,
+            "actual_yaw_rate_mean_rad_s": -0.7338912541503086,
+            "hits": 0,
+            "impulse_total_ns": 0.0,
+            "recoveries": 0,
+            "completed_recovery_mean_s": null,
+            "recovery_expired": 0,
+            "extra_displacement_max_m": 0.0,
+            "continuous_pulse_peak_max_n": 0.0
+          }
+        }
+      },
+      "common": {
+        "trials": 96,
+        "falls": 1,
+        "failure_rate": 0.010416666666666666,
+        "failure_rate_wilson95": [
+          0.001841122818436635,
+          0.056667554927112326
+        ],
+        "valid_samples": 95466,
+        "alive_seconds_mean": 19.88875,
+        "tracking_rmse_xy_m_s": 0.19118882476878493,
+        "tracking_rmse_yaw_rad_s": 0.22501349612605984,
+        "actual_yaw_rate_mean_rad_s": 0.007171013425374146,
+        "hits": 707,
+        "impulse_total_ns": 13348.028610229492,
+        "recoveries": 225,
+        "completed_recovery_mean_s": 0.4599552770455678,
+        "recovery_expired": 64,
+        "extra_displacement_max_m": 1.0841103792190552,
+        "continuous_pulse_peak_max_n": 1990.70361328125,
+        "commands": {
+          "stand": {
+            "trials": 8,
+            "falls": 1,
+            "failure_rate": 0.125,
+            "failure_rate_wilson95": [
+              0.02241690886329617,
+              0.4708948057698615
+            ],
+            "valid_samples": 7466,
+            "alive_seconds_mean": 18.665,
+            "tracking_rmse_xy_m_s": 0.14150482461063252,
+            "tracking_rmse_yaw_rad_s": 0.14454745131848704,
+            "actual_yaw_rate_mean_rad_s": -0.013394819787589737,
+            "hits": 60,
+            "impulse_total_ns": 1068.519687652588,
+            "recoveries": 11,
+            "completed_recovery_mean_s": 0.42545429143038666,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 0.512628972530365,
+            "continuous_pulse_peak_max_n": 1861.526611328125
+          },
+          "forward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1978972003508303,
+            "tracking_rmse_yaw_rad_s": 0.16076423065421264,
+            "actual_yaw_rate_mean_rad_s": -0.044121198369070046,
+            "hits": 55,
+            "impulse_total_ns": 1213.3891220092773,
+            "recoveries": 21,
+            "completed_recovery_mean_s": 0.3921426378545307,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 0.7560444474220276,
+            "continuous_pulse_peak_max_n": 1805.134521484375
+          },
+          "forward_1.0": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.20456359823646508,
+            "tracking_rmse_yaw_rad_s": 0.17715567538156546,
+            "actual_yaw_rate_mean_rad_s": -0.03228600858472055,
+            "hits": 53,
+            "impulse_total_ns": 832.362377166748,
+            "recoveries": 25,
+            "completed_recovery_mean_s": 0.39019978523254395,
+            "recovery_expired": 4,
+            "extra_displacement_max_m": 0.6957725286483765,
+            "continuous_pulse_peak_max_n": 1990.70361328125
+          },
+          "backward_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.1660638241520835,
+            "tracking_rmse_yaw_rad_s": 0.16497567778694053,
+            "actual_yaw_rate_mean_rad_s": 0.023603920981127884,
+            "hits": 63,
+            "impulse_total_ns": 1071.1832733154297,
+            "recoveries": 29,
+            "completed_recovery_mean_s": 0.4446549045628515,
+            "recovery_expired": 2,
+            "extra_displacement_max_m": 0.4172590374946594,
+            "continuous_pulse_peak_max_n": 1972.231201171875
+          },
+          "left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.19930477624720436,
+            "tracking_rmse_yaw_rad_s": 0.22538971606419853,
+            "actual_yaw_rate_mean_rad_s": 0.00015484998141073448,
+            "hits": 65,
+            "impulse_total_ns": 1205.9936828613281,
+            "recoveries": 16,
+            "completed_recovery_mean_s": 0.4353122366592288,
+            "recovery_expired": 2,
+            "extra_displacement_max_m": 1.0403709411621094,
+            "continuous_pulse_peak_max_n": 1950.6126708984375
+          },
+          "right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.20432352398981293,
+            "tracking_rmse_yaw_rad_s": 0.17105814194971122,
+            "actual_yaw_rate_mean_rad_s": 0.01284962014687153,
+            "hits": 59,
+            "impulse_total_ns": 1080.554859161377,
+            "recoveries": 21,
+            "completed_recovery_mean_s": 0.42952355600538705,
+            "recovery_expired": 4,
+            "extra_displacement_max_m": 0.9948934316635132,
+            "continuous_pulse_peak_max_n": 1870.90673828125
+          },
+          "forward_left_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.19375269435608514,
+            "tracking_rmse_yaw_rad_s": 0.1780578316400472,
+            "actual_yaw_rate_mean_rad_s": -0.0024076178798859474,
+            "hits": 56,
+            "impulse_total_ns": 1078.7850761413574,
+            "recoveries": 15,
+            "completed_recovery_mean_s": 0.5903329471747081,
+            "recovery_expired": 3,
+            "extra_displacement_max_m": 0.5690816640853882,
+            "continuous_pulse_peak_max_n": 1968.8851318359375
+          },
+          "forward_right_0.6": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.21965070168162754,
+            "tracking_rmse_yaw_rad_s": 0.15438818879990715,
+            "actual_yaw_rate_mean_rad_s": -0.04056570273168018,
+            "hits": 64,
+            "impulse_total_ns": 1167.4560928344727,
+            "recoveries": 19,
+            "completed_recovery_mean_s": 0.5107891528229964,
+            "recovery_expired": 8,
+            "extra_displacement_max_m": 0.7413919568061829,
+            "continuous_pulse_peak_max_n": 1970.5035400390625
+          },
+          "turn_left_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.15098934317092125,
+            "tracking_rmse_yaw_rad_s": 0.22798540786939364,
+            "actual_yaw_rate_mean_rad_s": 0.6099232816002477,
+            "hits": 54,
+            "impulse_total_ns": 1119.9961547851562,
+            "recoveries": 13,
+            "completed_recovery_mean_s": 0.4642304801023923,
+            "recovery_expired": 1,
+            "extra_displacement_max_m": 0.582675039768219,
+            "continuous_pulse_peak_max_n": 1915.6573486328125
+          },
+          "turn_right_0.75": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.18863102393464454,
+            "tracking_rmse_yaw_rad_s": 0.4839146876848558,
+            "actual_yaw_rate_mean_rad_s": -0.38127267578002555,
+            "hits": 60,
+            "impulse_total_ns": 1181.9485397338867,
+            "recoveries": 15,
+            "completed_recovery_mean_s": 0.8149994134902954,
+            "recovery_expired": 23,
+            "extra_displacement_max_m": 1.0841103792190552,
+            "continuous_pulse_peak_max_n": 1899.54736328125
+          },
+          "advance_turn_left": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.21607621131300891,
+            "tracking_rmse_yaw_rad_s": 0.19529120016275123,
+            "actual_yaw_rate_mean_rad_s": 0.6759004760247189,
+            "hits": 53,
+            "impulse_total_ns": 1117.4957962036133,
+            "recoveries": 17,
+            "completed_recovery_mean_s": 0.44205855534357186,
+            "recovery_expired": 3,
+            "extra_displacement_max_m": 0.6589784026145935,
+            "continuous_pulse_peak_max_n": 1949.699951171875
+          },
+          "advance_turn_right": {
+            "trials": 8,
+            "falls": 0,
+            "failure_rate": 0.0,
+            "failure_rate_wilson95": [
+              0.0,
+              0.3244156195108769
+            ],
+            "valid_samples": 8000,
+            "alive_seconds_mean": 20.0,
+            "tracking_rmse_xy_m_s": 0.19130830794550757,
+            "tracking_rmse_yaw_rad_s": 0.20088946686797593,
+            "actual_yaw_rate_mean_rad_s": -0.7237047338638803,
+            "hits": 65,
+            "impulse_total_ns": 1210.3439483642578,
+            "recoveries": 23,
+            "completed_recovery_mean_s": 0.33065201795619464,
+            "recovery_expired": 4,
+            "extra_displacement_max_m": 0.4870143532752991,
+            "continuous_pulse_peak_max_n": 1565.215576171875
+          }
+        }
+      },
+      "stress": {
+        "trials": 96,
+        "falls": 63,
+        "failure_rate": 0.65625,
+        "failure_rate_wilson95": [
+          0.5568784424044507,
+          0.7435975115065444
+        ],
+        "valid_samples": 60820,
+        "alive_seconds_mean": 12.670833333333334,
+        "tracking_rmse_xy_m_s": 0.5262230455418151,
+        "tracking_rmse_yaw_rad_s": 0.5611247587634641,
+        "actual_yaw_rate_mean_rad_s": 0.042491582208111396,
+        "hits": 350,
+        "impulse_total_ns": 29887.602462768555,
+        "recoveries": 160,
+        "completed_recovery_mean_s": 0.6901870117522776,
+        "recovery_expired": 97,
+        "extra_displacement_max_m": 2.5347323417663574,
+        "continuous_pulse_peak_max_n": 4992.10107421875,
+        "commands": {
+          "stand": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 4463,
+            "alive_seconds_mean": 11.1575,
+            "tracking_rmse_xy_m_s": 0.43952756537373694,
+            "tracking_rmse_yaw_rad_s": 0.5605108902113278,
+            "actual_yaw_rate_mean_rad_s": -0.01178997421964069,
+            "hits": 27,
+            "impulse_total_ns": 2141.277702331543,
+            "recoveries": 12,
+            "completed_recovery_mean_s": 0.6995828400055567,
+            "recovery_expired": 7,
+            "extra_displacement_max_m": 1.3784668445587158,
+            "continuous_pulse_peak_max_n": 4757.49560546875
+          },
+          "forward_0.6": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 4420,
+            "alive_seconds_mean": 11.05,
+            "tracking_rmse_xy_m_s": 0.5795808493679172,
+            "tracking_rmse_yaw_rad_s": 0.5444946221687428,
+            "actual_yaw_rate_mean_rad_s": -0.009410370896136855,
+            "hits": 25,
+            "impulse_total_ns": 2360.7201385498047,
+            "recoveries": 11,
+            "completed_recovery_mean_s": 0.8327266546812925,
+            "recovery_expired": 7,
+            "extra_displacement_max_m": 1.9096217155456543,
+            "continuous_pulse_peak_max_n": 4896.8154296875
+          },
+          "forward_1.0": {
+            "trials": 8,
+            "falls": 5,
+            "failure_rate": 0.625,
+            "failure_rate_wilson95": [
+              0.30573785458380187,
+              0.863158240538479
+            ],
+            "valid_samples": 6143,
+            "alive_seconds_mean": 15.357500000000002,
+            "tracking_rmse_xy_m_s": 0.566585329848235,
+            "tracking_rmse_yaw_rad_s": 0.46144630203125603,
+            "actual_yaw_rate_mean_rad_s": -0.005637420162921426,
+            "hits": 34,
+            "impulse_total_ns": 3075.569236755371,
+            "recoveries": 10,
+            "completed_recovery_mean_s": 0.6599995344877243,
+            "recovery_expired": 12,
+            "extra_displacement_max_m": 2.193906784057617,
+            "continuous_pulse_peak_max_n": 4935.3623046875
+          },
+          "backward_0.6": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 3591,
+            "alive_seconds_mean": 8.9775,
+            "tracking_rmse_xy_m_s": 0.5517984469359732,
+            "tracking_rmse_yaw_rad_s": 0.47329227203256247,
+            "actual_yaw_rate_mean_rad_s": 0.02484401108524136,
+            "hits": 21,
+            "impulse_total_ns": 1872.3327026367188,
+            "recoveries": 7,
+            "completed_recovery_mean_s": 0.5571424961090088,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 1.557457685470581,
+            "continuous_pulse_peak_max_n": 4906.513671875
+          },
+          "left_0.6": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 4607,
+            "alive_seconds_mean": 11.5175,
+            "tracking_rmse_xy_m_s": 0.5822552504302073,
+            "tracking_rmse_yaw_rad_s": 0.5978057378350687,
+            "actual_yaw_rate_mean_rad_s": 0.054236984853063684,
+            "hits": 27,
+            "impulse_total_ns": 2452.0738677978516,
+            "recoveries": 12,
+            "completed_recovery_mean_s": 0.7074994891881943,
+            "recovery_expired": 8,
+            "extra_displacement_max_m": 1.7664313316345215,
+            "continuous_pulse_peak_max_n": 4687.70166015625
+          },
+          "right_0.6": {
+            "trials": 8,
+            "falls": 5,
+            "failure_rate": 0.625,
+            "failure_rate_wilson95": [
+              0.30573785458380187,
+              0.863158240538479
+            ],
+            "valid_samples": 6059,
+            "alive_seconds_mean": 15.1475,
+            "tracking_rmse_xy_m_s": 0.5306160717152054,
+            "tracking_rmse_yaw_rad_s": 0.5533552940551693,
+            "actual_yaw_rate_mean_rad_s": 0.013109081512430076,
+            "hits": 35,
+            "impulse_total_ns": 2783.2332611083984,
+            "recoveries": 18,
+            "completed_recovery_mean_s": 0.693610625134574,
+            "recovery_expired": 10,
+            "extra_displacement_max_m": 1.9125217199325562,
+            "continuous_pulse_peak_max_n": 4992.10107421875
+          },
+          "forward_left_0.6": {
+            "trials": 8,
+            "falls": 2,
+            "failure_rate": 0.25,
+            "failure_rate_wilson95": [
+              0.07147768885802763,
+              0.5907301208974108
+            ],
+            "valid_samples": 6637,
+            "alive_seconds_mean": 16.5925,
+            "tracking_rmse_xy_m_s": 0.4211937823206049,
+            "tracking_rmse_yaw_rad_s": 0.48993061154822004,
+            "actual_yaw_rate_mean_rad_s": -0.0016884199505940156,
+            "hits": 35,
+            "impulse_total_ns": 2626.1715393066406,
+            "recoveries": 22,
+            "completed_recovery_mean_s": 0.593863229859959,
+            "recovery_expired": 10,
+            "extra_displacement_max_m": 2.1897644996643066,
+            "continuous_pulse_peak_max_n": 4795.2802734375
+          },
+          "forward_right_0.6": {
+            "trials": 8,
+            "falls": 5,
+            "failure_rate": 0.625,
+            "failure_rate_wilson95": [
+              0.30573785458380187,
+              0.863158240538479
+            ],
+            "valid_samples": 4295,
+            "alive_seconds_mean": 10.7375,
+            "tracking_rmse_xy_m_s": 0.5722386670711326,
+            "tracking_rmse_yaw_rad_s": 0.6221775421421021,
+            "actual_yaw_rate_mean_rad_s": 0.04595017730212598,
+            "hits": 25,
+            "impulse_total_ns": 2243.603790283203,
+            "recoveries": 4,
+            "completed_recovery_mean_s": 0.6524995490908623,
+            "recovery_expired": 8,
+            "extra_displacement_max_m": 1.7777063846588135,
+            "continuous_pulse_peak_max_n": 4926.0732421875
+          },
+          "turn_left_0.75": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 5921,
+            "alive_seconds_mean": 14.802499999999998,
+            "tracking_rmse_xy_m_s": 0.5036119580737634,
+            "tracking_rmse_yaw_rad_s": 0.5643160315358565,
+            "actual_yaw_rate_mean_rad_s": 0.5966838211337225,
+            "hits": 34,
+            "impulse_total_ns": 2870.608352661133,
+            "recoveries": 18,
+            "completed_recovery_mean_s": 0.6941661710540453,
+            "recovery_expired": 8,
+            "extra_displacement_max_m": 2.359869956970215,
+            "continuous_pulse_peak_max_n": 4689.2890625
+          },
+          "turn_right_0.75": {
+            "trials": 8,
+            "falls": 4,
+            "failure_rate": 0.5,
+            "failure_rate_wilson95": [
+              0.21521252682444186,
+              0.7847874731755582
+            ],
+            "valid_samples": 5523,
+            "alive_seconds_mean": 13.807500000000001,
+            "tracking_rmse_xy_m_s": 0.42375522268050847,
+            "tracking_rmse_yaw_rad_s": 0.7361087704352962,
+            "actual_yaw_rate_mean_rad_s": -0.3950596738735016,
+            "hits": 31,
+            "impulse_total_ns": 2269.2767791748047,
+            "recoveries": 14,
+            "completed_recovery_mean_s": 0.7832137133393969,
+            "recovery_expired": 12,
+            "extra_displacement_max_m": 1.3685154914855957,
+            "continuous_pulse_peak_max_n": 4970.30859375
+          },
+          "advance_turn_left": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 5060,
+            "alive_seconds_mean": 12.65,
+            "tracking_rmse_xy_m_s": 0.5329075164040749,
+            "tracking_rmse_yaw_rad_s": 0.5783418785242845,
+            "actual_yaw_rate_mean_rad_s": 0.6921740461473092,
+            "hits": 33,
+            "impulse_total_ns": 2940.93017578125,
+            "recoveries": 20,
+            "completed_recovery_mean_s": 0.7852494299411774,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 2.5347323417663574,
+            "continuous_pulse_peak_max_n": 4795.44140625
+          },
+          "advance_turn_right": {
+            "trials": 8,
+            "falls": 6,
+            "failure_rate": 0.75,
+            "failure_rate_wilson95": [
+              0.40926987910258916,
+              0.9285223111419724
+            ],
+            "valid_samples": 4101,
+            "alive_seconds_mean": 10.252500000000001,
+            "tracking_rmse_xy_m_s": 0.6337745306524879,
+            "tracking_rmse_yaw_rad_s": 0.4929978865530798,
+            "actual_yaw_rate_mean_rad_s": -0.6693324383279643,
+            "hits": 23,
+            "impulse_total_ns": 2251.804916381836,
+            "recoveries": 12,
+            "completed_recovery_mean_s": 0.546666311721007,
+            "recovery_expired": 5,
+            "extra_displacement_max_m": 1.875235676765442,
+            "continuous_pulse_peak_max_n": 4679.46630859375
+          }
+        }
+      }
+    }
+  }
+}

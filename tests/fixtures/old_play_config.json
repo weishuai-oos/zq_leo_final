@@ -1,0 +1,2103 @@
+{
+  "sim": {
+    "physx": {},
+    "dt": 0.005,
+    "render_interval": 4
+  },
+  "scene": {
+    "terrain": {
+      "prim_path": "/World/ground",
+      "terrain_type": "generator",
+      "terrain_generator": {
+        "class_type": {
+          "callable": "FiledTerrainGenerator"
+        },
+        "curriculum": true,
+        "size": [
+          8.0,
+          8.0
+        ],
+        "border_width": 20.0,
+        "num_rows": 10,
+        "num_cols": 20,
+        "horizontal_scale": 0.05,
+        "vertical_scale": 0.002,
+        "slope_threshold": 0.75,
+        "difficulty_range": [
+          0.0,
+          1.0
+        ],
+        "use_cache": false,
+        "seed": 43,
+        "sub_terrains": {
+          "fight_mat_perlin": {
+            "wall_prob": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wall_height": 5.0,
+            "wall_thickness": 0.05,
+            "function": {
+              "callable": "structured_fight_mat_plus_terrain"
+            },
+            "terrain_kind": "perlin",
+            "surface_resolution": 0.1,
+            "perlin_noise_range": [
+              0.0,
+              0.012
+            ],
+            "rough_height_range": [
+              -0.012,
+              0.03
+            ],
+            "wave_amplitude_range": [
+              0.0,
+              0.08
+            ],
+            "wave_count": 5.0,
+            "box_count_range": [
+              4,
+              18
+            ],
+            "box_height_range": [
+              0.015,
+              0.08
+            ],
+            "box_footprint_range": [
+              0.25,
+              0.5
+            ],
+            "obstacle_count_range": [
+              0,
+              20
+            ],
+            "obstacle_exposure_range": [
+              0.03,
+              0.12
+            ],
+            "obstacle_exposure_mode": 0.1,
+            "obstacle_shape_weights": [
+              0.65,
+              0.2,
+              0.15
+            ],
+            "obstacle_length_range": [
+              0.8,
+              1.2
+            ],
+            "cylinder_radius_range": [
+              0.12,
+              0.22
+            ],
+            "hex_radius_range": [
+              0.12,
+              0.22
+            ],
+            "box_width_range": [
+              0.2,
+              0.38
+            ],
+            "spawn_clearance": 1.0,
+            "inner_ring_radius": 1.55,
+            "second_ring_radius": 2.4,
+            "outer_lane_radius_range": [
+              2.8,
+              3.25
+            ],
+            "seed": 43,
+            "proportion": 0.1
+          },
+          "fight_mat_smooth_rough": {
+            "wall_prob": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wall_height": 5.0,
+            "wall_thickness": 0.05,
+            "function": {
+              "callable": "structured_fight_mat_plus_terrain"
+            },
+            "terrain_kind": "rough",
+            "surface_resolution": 0.1,
+            "perlin_noise_range": [
+              0.0,
+              0.012
+            ],
+            "rough_height_range": [
+              -0.012,
+              0.03
+            ],
+            "wave_amplitude_range": [
+              0.0,
+              0.08
+            ],
+            "wave_count": 5.0,
+            "box_count_range": [
+              4,
+              18
+            ],
+            "box_height_range": [
+              0.015,
+              0.08
+            ],
+            "box_footprint_range": [
+              0.25,
+              0.5
+            ],
+            "obstacle_count_range": [
+              0,
+              20
+            ],
+            "obstacle_exposure_range": [
+              0.03,
+              0.12
+            ],
+            "obstacle_exposure_mode": 0.1,
+            "obstacle_shape_weights": [
+              0.65,
+              0.2,
+              0.15
+            ],
+            "obstacle_length_range": [
+              0.8,
+              1.2
+            ],
+            "cylinder_radius_range": [
+              0.12,
+              0.22
+            ],
+            "hex_radius_range": [
+              0.12,
+              0.22
+            ],
+            "box_width_range": [
+              0.2,
+              0.38
+            ],
+            "spawn_clearance": 1.0,
+            "inner_ring_radius": 1.55,
+            "second_ring_radius": 2.4,
+            "outer_lane_radius_range": [
+              2.8,
+              3.25
+            ],
+            "seed": 43,
+            "proportion": 0.15
+          },
+          "fight_mat_wave": {
+            "wall_prob": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wall_height": 5.0,
+            "wall_thickness": 0.05,
+            "function": {
+              "callable": "structured_fight_mat_plus_terrain"
+            },
+            "terrain_kind": "wave",
+            "surface_resolution": 0.1,
+            "perlin_noise_range": [
+              0.0,
+              0.012
+            ],
+            "rough_height_range": [
+              -0.012,
+              0.03
+            ],
+            "wave_amplitude_range": [
+              0.0,
+              0.08
+            ],
+            "wave_count": 5.0,
+            "box_count_range": [
+              4,
+              18
+            ],
+            "box_height_range": [
+              0.015,
+              0.08
+            ],
+            "box_footprint_range": [
+              0.25,
+              0.5
+            ],
+            "obstacle_count_range": [
+              0,
+              20
+            ],
+            "obstacle_exposure_range": [
+              0.03,
+              0.12
+            ],
+            "obstacle_exposure_mode": 0.1,
+            "obstacle_shape_weights": [
+              0.65,
+              0.2,
+              0.15
+            ],
+            "obstacle_length_range": [
+              0.8,
+              1.2
+            ],
+            "cylinder_radius_range": [
+              0.12,
+              0.22
+            ],
+            "hex_radius_range": [
+              0.12,
+              0.22
+            ],
+            "box_width_range": [
+              0.2,
+              0.38
+            ],
+            "spawn_clearance": 1.0,
+            "inner_ring_radius": 1.55,
+            "second_ring_radius": 2.4,
+            "outer_lane_radius_range": [
+              2.8,
+              3.25
+            ],
+            "seed": 43,
+            "proportion": 0.15
+          },
+          "fight_mat_sparse_boxes": {
+            "wall_prob": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wall_height": 5.0,
+            "wall_thickness": 0.05,
+            "function": {
+              "callable": "structured_fight_mat_plus_terrain"
+            },
+            "terrain_kind": "boxes",
+            "surface_resolution": 0.1,
+            "perlin_noise_range": [
+              0.0,
+              0.012
+            ],
+            "rough_height_range": [
+              -0.012,
+              0.03
+            ],
+            "wave_amplitude_range": [
+              0.0,
+              0.08
+            ],
+            "wave_count": 5.0,
+            "box_count_range": [
+              4,
+              18
+            ],
+            "box_height_range": [
+              0.015,
+              0.08
+            ],
+            "box_footprint_range": [
+              0.25,
+              0.5
+            ],
+            "obstacle_count_range": [
+              0,
+              20
+            ],
+            "obstacle_exposure_range": [
+              0.03,
+              0.12
+            ],
+            "obstacle_exposure_mode": 0.1,
+            "obstacle_shape_weights": [
+              0.65,
+              0.2,
+              0.15
+            ],
+            "obstacle_length_range": [
+              0.8,
+              1.2
+            ],
+            "cylinder_radius_range": [
+              0.12,
+              0.22
+            ],
+            "hex_radius_range": [
+              0.12,
+              0.22
+            ],
+            "box_width_range": [
+              0.2,
+              0.38
+            ],
+            "spawn_clearance": 1.0,
+            "inner_ring_radius": 1.55,
+            "second_ring_radius": 2.4,
+            "outer_lane_radius_range": [
+              2.8,
+              3.25
+            ],
+            "seed": 43,
+            "proportion": 0.1
+          },
+          "fight_mat_horizontal_obstacles": {
+            "wall_prob": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "wall_height": 5.0,
+            "wall_thickness": 0.05,
+            "function": {
+              "callable": "structured_fight_mat_plus_terrain"
+            },
+            "terrain_kind": "horizontal",
+            "surface_resolution": 0.1,
+            "perlin_noise_range": [
+              0.0,
+              0.012
+            ],
+            "rough_height_range": [
+              -0.012,
+              0.03
+            ],
+            "wave_amplitude_range": [
+              0.0,
+              0.08
+            ],
+            "wave_count": 5.0,
+            "box_count_range": [
+              4,
+              18
+            ],
+            "box_height_range": [
+              0.015,
+              0.08
+            ],
+            "box_footprint_range": [
+              0.25,
+              0.5
+            ],
+            "obstacle_count_range": [
+              0,
+              20
+            ],
+            "obstacle_exposure_range": [
+              0.03,
+              0.12
+            ],
+            "obstacle_exposure_mode": 0.1,
+            "obstacle_shape_weights": [
+              0.65,
+              0.2,
+              0.15
+            ],
+            "obstacle_length_range": [
+              0.8,
+              1.2
+            ],
+            "cylinder_radius_range": [
+              0.12,
+              0.22
+            ],
+            "hex_radius_range": [
+              0.12,
+              0.22
+            ],
+            "box_width_range": [
+              0.2,
+              0.38
+            ],
+            "spawn_clearance": 1.0,
+            "inner_ring_radius": 1.55,
+            "second_ring_radius": 2.4,
+            "outer_lane_radius_range": [
+              2.8,
+              3.25
+            ],
+            "seed": 43,
+            "proportion": 0.5
+          }
+        }
+      },
+      "max_init_terrain_level": 1,
+      "collision_group": -1,
+      "physics_material": {
+        "friction_combine_mode": "multiply",
+        "restitution_combine_mode": "multiply",
+        "static_friction": 1.0,
+        "dynamic_friction": 1.0,
+        "restitution": 1.0
+      },
+      "visual_material": {
+        "mdl_path": "ISAACLAB_NUCLEUS_DIR/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned.mdl",
+        "project_uvw": true,
+        "texture_scale": [
+          0.25,
+          0.25
+        ]
+      },
+      "debug_vis": false
+    },
+    "robot": {
+      "spawn": {
+        "fix_base": false,
+        "replace_cylinders_with_capsules": false,
+        "merge_fixed_joints": false,
+        "asset_path": "resources/t800/urdf/serial_t800.urdf",
+        "activate_contact_sensors": true,
+        "rigid_props": {
+          "disable_gravity": false,
+          "retain_accelerations": false,
+          "linear_damping": 0.0,
+          "angular_damping": 0.0,
+          "max_linear_velocity": 1000.0,
+          "max_angular_velocity": 1000.0,
+          "max_depenetration_velocity": 1.0
+        },
+        "articulation_props": {
+          "enabled_self_collisions": true,
+          "solver_position_iteration_count": 8,
+          "solver_velocity_iteration_count": 4
+        },
+        "joint_drive": {
+          "gains": {
+            "stiffness": 0,
+            "damping": 0
+          }
+        }
+      },
+      "init_state": {
+        "pos": [
+          0.0,
+          0.0,
+          0.8
+        ],
+        "joint_pos": {
+          "J00_HIP_PITCH_L": -0.548942,
+          "J01_HIP_ROLL_L": 0.220542,
+          "J02_HIP_YAW_L": -0.119339,
+          "J03_KNEE_PITCH_L": 0.27916,
+          "J04_ANKLE_PITCH_L": -0.14,
+          "J05_ANKLE_ROLL_L": 0.0,
+          "J06_HIP_PITCH_R": -0.235541,
+          "J07_HIP_ROLL_R": -0.223292,
+          "J08_HIP_YAW_R": -0.102872,
+          "J09_KNEE_PITCH_R": 0.257664,
+          "J10_ANKLE_PITCH_R": -0.14,
+          "J11_ANKLE_ROLL_R": 0.0,
+          "J12_TORSO_YAW": 0.006373,
+          "J13_SHOULDER_PITCH_L": -1.006467,
+          "J14_SHOULDER_ROLL_L": 0.540767,
+          "J15_SHOULDER_YAW_L": 0.313282,
+          "J16_ELBOW_PITCH_L": -1.331819,
+          "J17_ELBOW_YAW_L": 0.124102,
+          "J20_SHOULDER_PITCH_R": -1.138289,
+          "J21_SHOULDER_ROLL_R": -0.136425,
+          "J22_SHOULDER_YAW_R": 0.197952,
+          "J23_ELBOW_PITCH_R": -1.815755,
+          "J24_ELBOW_YAW_R": -0.623839,
+          "J27_HEAD_PITCH": 0.052337,
+          "J28_HEAD_YAW": 0.621251
+        },
+        "joint_vel": {
+          ".*": 0.0
+        }
+      },
+      "soft_joint_pos_limit_factor": 0.9,
+      "actuators": {
+        "legs": {
+          "joint_names_expr": [
+            ".*_HIP_PITCH.*",
+            ".*_HIP_ROLL.*",
+            ".*_HIP_YAW.*",
+            ".*_KNEE_PITCH.*"
+          ],
+          "effort_limit_sim": {
+            ".*_HIP_PITCH.*": 415.0,
+            ".*_HIP_ROLL.*": 370.0,
+            ".*_HIP_YAW.*": 222.0,
+            ".*_KNEE_PITCH.*": 415.0
+          },
+          "velocity_limit_sim": {
+            ".*_HIP_PITCH.*": 25.96,
+            ".*_HIP_ROLL.*": 25.31,
+            ".*_HIP_YAW.*": 23.19,
+            ".*_KNEE_PITCH.*": 25.96
+          },
+          "stiffness": {
+            ".*_HIP_PITCH.*": 180.0,
+            ".*_HIP_ROLL.*": 100.0,
+            ".*_HIP_YAW.*": 100.0,
+            ".*_KNEE_PITCH.*": 180.0
+          },
+          "damping": {
+            ".*_HIP_PITCH.*": 5.0,
+            ".*_HIP_ROLL.*": 3.0,
+            ".*_HIP_YAW.*": 3.0,
+            ".*_KNEE_PITCH.*": 5.0
+          },
+          "armature": {
+            ".*_HIP_PITCH.*": 0.2427264,
+            ".*_HIP_ROLL.*": 0.14110848,
+            ".*_HIP_YAW.*": 0.0448737,
+            ".*_KNEE_PITCH.*": 0.2427264
+          },
+          "friction": {
+            ".*_HIP_PITCH.*": 0.1,
+            ".*_HIP_ROLL.*": 0.1,
+            ".*_HIP_YAW.*": 0.05,
+            ".*_KNEE_PITCH.*": 0.1
+          },
+          "dynamic_friction": {
+            ".*_HIP_PITCH.*": 0.08,
+            ".*_HIP_ROLL.*": 0.08,
+            ".*_HIP_YAW.*": 0.04,
+            ".*_KNEE_PITCH.*": 0.08
+          },
+          "viscous_friction": {
+            ".*_HIP_PITCH.*": 0.01,
+            ".*_HIP_ROLL.*": 0.01,
+            ".*_HIP_YAW.*": 0.005,
+            ".*_KNEE_PITCH.*": 0.01
+          }
+        },
+        "feet": {
+          "joint_names_expr": [
+            ".*_ANKLE_PITCH.*",
+            ".*_ANKLE_ROLL.*"
+          ],
+          "effort_limit_sim": {
+            ".*_ANKLE_PITCH.*": 160.0,
+            ".*_ANKLE_ROLL.*": 160.0
+          },
+          "velocity_limit_sim": {
+            ".*_ANKLE_PITCH.*": 33.51,
+            ".*_ANKLE_ROLL.*": 33.51
+          },
+          "stiffness": {
+            ".*_ANKLE_PITCH.*": 40.0,
+            ".*_ANKLE_ROLL.*": 40.0
+          },
+          "damping": {
+            ".*_ANKLE_PITCH.*": 0.3,
+            ".*_ANKLE_ROLL.*": 0.3
+          },
+          "armature": {
+            ".*_ANKLE_PITCH.*": 0.0354625,
+            ".*_ANKLE_ROLL.*": 0.0354625
+          },
+          "friction": {
+            ".*_ANKLE_PITCH.*": 0.15,
+            ".*_ANKLE_ROLL.*": 0.12
+          },
+          "dynamic_friction": {
+            ".*_ANKLE_PITCH.*": 0.12,
+            ".*_ANKLE_ROLL.*": 0.1
+          },
+          "viscous_friction": {
+            ".*_ANKLE_PITCH.*": 0.015,
+            ".*_ANKLE_ROLL.*": 0.012
+          }
+        },
+        "torso_yaw": {
+          "joint_names_expr": [
+            "J12_TORSO_YAW"
+          ],
+          "effort_limit_sim": 222.0,
+          "velocity_limit_sim": 23.19,
+          "stiffness": 100.0,
+          "damping": 3.0,
+          "armature": 0.0448737,
+          "friction": 0.08,
+          "dynamic_friction": 0.06,
+          "viscous_friction": 0.008
+        },
+        "arms": {
+          "joint_names_expr": [
+            ".*_SHOULDER_PITCH.*",
+            ".*_SHOULDER_ROLL.*",
+            ".*_SHOULDER_YAW.*",
+            ".*_ELBOW_PITCH.*",
+            ".*_ELBOW_YAW.*"
+          ],
+          "effort_limit_sim": {
+            ".*_SHOULDER_PITCH.*": 160.0,
+            ".*_SHOULDER_ROLL.*": 160.0,
+            ".*_SHOULDER_YAW.*": 160.0,
+            ".*_ELBOW_PITCH.*": 160.0,
+            ".*_ELBOW_YAW.*": 52.0
+          },
+          "velocity_limit_sim": {
+            ".*_SHOULDER_PITCH.*": 33.51,
+            ".*_SHOULDER_ROLL.*": 33.51,
+            ".*_SHOULDER_YAW.*": 33.51,
+            ".*_ELBOW_PITCH.*": 33.51,
+            ".*_ELBOW_YAW.*": 35.2
+          },
+          "stiffness": {
+            ".*_SHOULDER_PITCH.*": 40.0,
+            ".*_SHOULDER_ROLL.*": 40.0,
+            ".*_SHOULDER_YAW.*": 40.0,
+            ".*_ELBOW_PITCH.*": 40.0,
+            ".*_ELBOW_YAW.*": 50.0
+          },
+          "damping": {
+            ".*_SHOULDER_PITCH.*": 0.3,
+            ".*_SHOULDER_ROLL.*": 0.3,
+            ".*_SHOULDER_YAW.*": 0.3,
+            ".*_ELBOW_PITCH.*": 0.3,
+            ".*_ELBOW_YAW.*": 0.3
+          },
+          "armature": {
+            ".*_SHOULDER_PITCH.*": 0.0354625,
+            ".*_SHOULDER_ROLL.*": 0.0354625,
+            ".*_SHOULDER_YAW.*": 0.0354625,
+            ".*_ELBOW_PITCH.*": 0.0354625,
+            ".*_ELBOW_YAW.*": 0.00671625
+          },
+          "friction": {
+            ".*_SHOULDER_PITCH.*": 0.12,
+            ".*_SHOULDER_ROLL.*": 0.1,
+            ".*_SHOULDER_YAW.*": 0.08,
+            ".*_ELBOW_PITCH.*": 0.08,
+            ".*_ELBOW_YAW.*": 0.06
+          },
+          "dynamic_friction": {
+            ".*_SHOULDER_PITCH.*": 0.1,
+            ".*_SHOULDER_ROLL.*": 0.08,
+            ".*_SHOULDER_YAW.*": 0.06,
+            ".*_ELBOW_PITCH.*": 0.06,
+            ".*_ELBOW_YAW.*": 0.05
+          },
+          "viscous_friction": {
+            ".*_SHOULDER_PITCH.*": 0.012,
+            ".*_SHOULDER_ROLL.*": 0.01,
+            ".*_SHOULDER_YAW.*": 0.008,
+            ".*_ELBOW_PITCH.*": 0.008,
+            ".*_ELBOW_YAW.*": 0.006
+          }
+        },
+        "head": {
+          "joint_names_expr": [
+            "J27_HEAD_PITCH",
+            "J28_HEAD_YAW"
+          ],
+          "effort_limit_sim": {
+            "J27_HEAD_PITCH": 52.0,
+            "J28_HEAD_YAW": 52.0
+          },
+          "velocity_limit_sim": {
+            "J27_HEAD_PITCH": 35.2,
+            "J28_HEAD_YAW": 35.2
+          },
+          "stiffness": {
+            "J27_HEAD_PITCH": 50.0,
+            "J28_HEAD_YAW": 50.0
+          },
+          "damping": {
+            "J27_HEAD_PITCH": 0.3,
+            "J28_HEAD_YAW": 0.3
+          },
+          "armature": {
+            "J27_HEAD_PITCH": 0.00671625,
+            "J28_HEAD_YAW": 0.00671625
+          },
+          "friction": {
+            "J27_HEAD_PITCH": 0.05,
+            "J28_HEAD_YAW": 0.05
+          },
+          "dynamic_friction": {
+            "J27_HEAD_PITCH": 0.04,
+            "J28_HEAD_YAW": 0.04
+          },
+          "viscous_friction": {
+            "J27_HEAD_PITCH": 0.005,
+            "J28_HEAD_YAW": 0.005
+          }
+        }
+      },
+      "prim_path": "{ENV_REGEX_NS}/Robot"
+    },
+    "contact_forces": {
+      "prim_path": "{ENV_REGEX_NS}/Robot/.*",
+      "history_length": 3,
+      "track_air_time": true,
+      "update_period": 0.005
+    },
+    "sky_light": {
+      "prim_path": "/World/skyLight",
+      "spawn": {
+        "intensity": 750.0,
+        "texture_file": "ISAAC_NUCLEUS_DIR/Materials/Textures/Skies/PolyHaven/kloofendal_43d_clear_puresky_4k.hdr"
+      }
+    },
+    "motion_reference": {
+      "prim_path": "{ENV_REGEX_NS}/Robot/LINK_BASE",
+      "robot_model_path": "resources/t800/urdf/serial_t800.urdf",
+      "reference_prim_path": null,
+      "frame_interval_s": 0.02,
+      "update_period": 0.02,
+      "num_frames": 2,
+      "motion_buffers": {
+        "boxing_guard": {
+          "path": "amp_dataset",
+          "retargetting_func": null,
+          "filtered_motion_selection_filepath": "amp_dataset/boxing_guard_motion_selection.yaml",
+          "motion_start_from_middle_range": [
+            0.0,
+            0.8
+          ],
+          "motion_start_height_offset": 0.0,
+          "ensure_link_below_zero_ground": false,
+          "buffer_device": "output_device",
+          "motion_interpolate_func": {
+            "callable": "motion_interpolate_bilinear"
+          },
+          "velocity_estimation_method": "frontward"
+        }
+      },
+      "link_of_interests": [
+        "LINK_BASE",
+        "LINK_TORSO_YAW",
+        "LINK_SHOULDER_ROLL_L",
+        "LINK_SHOULDER_ROLL_R",
+        "LINK_ELBOW_YAW_L",
+        "LINK_ELBOW_YAW_R",
+        "LINK_WRIST_END_L",
+        "LINK_WRIST_END_R",
+        "LINK_HIP_ROLL_L",
+        "LINK_HIP_ROLL_R",
+        "LINK_KNEE_PITCH_L",
+        "LINK_KNEE_PITCH_R",
+        "LINK_ANKLE_ROLL_L",
+        "LINK_ANKLE_ROLL_R"
+      ],
+      "mp_split_method": "None"
+    },
+    "num_envs": 1,
+    "env_spacing": 2.5
+  },
+  "actions": {
+    "joint_pos": {
+      "asset_name": "robot",
+      "joint_names": [
+        "J00_HIP_PITCH_L",
+        "J01_HIP_ROLL_L",
+        "J02_HIP_YAW_L",
+        "J03_KNEE_PITCH_L",
+        "J04_ANKLE_PITCH_L",
+        "J05_ANKLE_ROLL_L",
+        "J06_HIP_PITCH_R",
+        "J07_HIP_ROLL_R",
+        "J08_HIP_YAW_R",
+        "J09_KNEE_PITCH_R",
+        "J10_ANKLE_PITCH_R",
+        "J11_ANKLE_ROLL_R",
+        "J12_TORSO_YAW",
+        "J13_SHOULDER_PITCH_L",
+        "J14_SHOULDER_ROLL_L",
+        "J15_SHOULDER_YAW_L",
+        "J16_ELBOW_PITCH_L",
+        "J17_ELBOW_YAW_L",
+        "J20_SHOULDER_PITCH_R",
+        "J21_SHOULDER_ROLL_R",
+        "J22_SHOULDER_YAW_R",
+        "J23_ELBOW_PITCH_R",
+        "J24_ELBOW_YAW_R",
+        "J27_HEAD_PITCH",
+        "J28_HEAD_YAW"
+      ],
+      "preserve_order": true,
+      "scale": {
+        "J00_HIP_PITCH_L": 0.5,
+        "J01_HIP_ROLL_L": 0.2,
+        "J02_HIP_YAW_L": 0.2,
+        "J03_KNEE_PITCH_L": 0.5,
+        "J04_ANKLE_PITCH_L": 0.5,
+        "J05_ANKLE_ROLL_L": 0.2,
+        "J06_HIP_PITCH_R": 0.5,
+        "J07_HIP_ROLL_R": 0.2,
+        "J08_HIP_YAW_R": 0.2,
+        "J09_KNEE_PITCH_R": 0.5,
+        "J10_ANKLE_PITCH_R": 0.5,
+        "J11_ANKLE_ROLL_R": 0.2,
+        "J12_TORSO_YAW": 0.2,
+        "J13_SHOULDER_PITCH_L": 0.4,
+        "J14_SHOULDER_ROLL_L": 0.3,
+        "J15_SHOULDER_YAW_L": 0.3,
+        "J16_ELBOW_PITCH_L": 0.4,
+        "J17_ELBOW_YAW_L": 0.3,
+        "J20_SHOULDER_PITCH_R": 0.4,
+        "J21_SHOULDER_ROLL_R": 0.3,
+        "J22_SHOULDER_YAW_R": 0.3,
+        "J23_ELBOW_PITCH_R": 0.4,
+        "J24_ELBOW_YAW_R": 0.4,
+        "J27_HEAD_PITCH": 0.2,
+        "J28_HEAD_YAW": 0.3
+      },
+      "use_default_offset": true
+    }
+  },
+  "commands": {
+    "base_velocity": {
+      "class_type": {
+        "callable": "T800BoxingGuardVelocityCommand"
+      },
+      "mode_weights": [
+        0.1,
+        0.5,
+        0.2,
+        0.15,
+        0.05
+      ],
+      "tactical_front_offset_deg": 37.0,
+      "cardinal_speed_range": [
+        0.65,
+        1.1
+      ],
+      "other_speed_range": [
+        0.8,
+        1.35
+      ],
+      "turn_rate_range": [
+        1.0,
+        2.1
+      ],
+      "mixed_speed_range": [
+        0.8,
+        1.25
+      ],
+      "mixed_turn_rate_range": [
+        0.5,
+        1.8
+      ],
+      "other_direction_jitter_deg": [
+        -15.0,
+        15.0
+      ],
+      "asset_name": "robot",
+      "resampling_time_range": [
+        4.0,
+        6.0
+      ],
+      "rel_standing_envs": 0.1,
+      "rel_heading_envs": 0.0,
+      "heading_command": false,
+      "debug_vis": true,
+      "ranges": {
+        "lin_vel_x": [
+          -1.35,
+          1.35
+        ],
+        "lin_vel_y": [
+          -1.35,
+          1.35
+        ],
+        "ang_vel_z": [
+          -2.1,
+          2.1
+        ],
+        "heading": null
+      }
+    }
+  },
+  "observations": {
+    "policy": {
+      "base_ang_vel": {
+        "func": {
+          "callable": "base_ang_vel"
+        },
+        "noise": {
+          "n_min": -0.2,
+          "n_max": 0.2
+        }
+      },
+      "projected_gravity": {
+        "func": {
+          "callable": "projected_gravity"
+        },
+        "noise": {
+          "n_min": -0.05,
+          "n_max": 0.05
+        }
+      },
+      "velocity_commands": {
+        "func": {
+          "callable": "generated_commands"
+        },
+        "params": {
+          "command_name": "base_velocity"
+        }
+      },
+      "joint_pos": {
+        "func": {
+          "callable": "joint_pos"
+        },
+        "noise": {
+          "n_min": -0.01,
+          "n_max": 0.01
+        },
+        "params": {
+          "asset_cfg": {
+            "args": [
+              "robot"
+            ],
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J04_ANKLE_PITCH_L",
+              "J05_ANKLE_ROLL_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J10_ANKLE_PITCH_R",
+              "J11_ANKLE_ROLL_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "joint_vel": {
+        "func": {
+          "callable": "joint_vel"
+        },
+        "noise": {
+          "n_min": -1.5,
+          "n_max": 1.5
+        },
+        "params": {
+          "asset_cfg": {
+            "args": [
+              "robot"
+            ],
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J04_ANKLE_PITCH_L",
+              "J05_ANKLE_ROLL_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J10_ANKLE_PITCH_R",
+              "J11_ANKLE_ROLL_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "actions": {
+        "func": {
+          "callable": "last_action"
+        }
+      },
+      "enable_corruption": true,
+      "concatenate_terms": false
+    },
+    "critic": {
+      "base_lin_vel": {
+        "func": {
+          "callable": "base_lin_vel"
+        }
+      },
+      "base_ang_vel": {
+        "func": {
+          "callable": "base_ang_vel"
+        }
+      },
+      "projected_gravity": {
+        "func": {
+          "callable": "projected_gravity"
+        }
+      },
+      "velocity_commands": {
+        "func": {
+          "callable": "generated_commands"
+        },
+        "params": {
+          "command_name": "base_velocity"
+        }
+      },
+      "joint_pos": {
+        "func": {
+          "callable": "joint_pos_rel"
+        },
+        "params": {
+          "asset_cfg": {
+            "args": [
+              "robot"
+            ],
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J04_ANKLE_PITCH_L",
+              "J05_ANKLE_ROLL_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J10_ANKLE_PITCH_R",
+              "J11_ANKLE_ROLL_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "joint_vel": {
+        "func": {
+          "callable": "joint_vel"
+        },
+        "params": {
+          "asset_cfg": {
+            "args": [
+              "robot"
+            ],
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J04_ANKLE_PITCH_L",
+              "J05_ANKLE_ROLL_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J10_ANKLE_PITCH_R",
+              "J11_ANKLE_ROLL_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "actions": {
+        "func": {
+          "callable": "last_action"
+        }
+      },
+      "enable_corruption": false,
+      "concatenate_terms": false
+    },
+    "amp_policy": {
+      "velocity_commands": {
+        "func": {
+          "callable": "generated_commands"
+        },
+        "params": {
+          "command_name": "base_velocity"
+        },
+        "history_length": 2,
+        "flatten_history_dim": true
+      },
+      "projected_gravity": {
+        "func": {
+          "callable": "projected_gravity"
+        },
+        "params": {
+          "asset_cfg": {
+            "args": [
+              "robot"
+            ]
+          }
+        },
+        "history_length": 2
+      },
+      "joint_pos_rel": {
+        "func": {
+          "callable": "joint_pos_rel"
+        },
+        "history_length": 2,
+        "flatten_history_dim": true,
+        "params": {
+          "asset_cfg": {
+            "name": "robot",
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "joint_vel": {
+        "func": {
+          "callable": "joint_vel_rel"
+        },
+        "scale": 0.05,
+        "history_length": 2,
+        "flatten_history_dim": true,
+        "params": {
+          "asset_cfg": {
+            "name": "robot",
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "base_lin_vel": null,
+      "base_ang_vel": null,
+      "enable_corruption": false,
+      "concatenate_terms": false
+    },
+    "amp_reference": {
+      "velocity_commands": {
+        "func": {
+          "callable": "reference_velocity_command"
+        },
+        "params": {
+          "asset_cfg": {
+            "name": "motion_reference"
+          }
+        },
+        "history_length": 2,
+        "flatten_history_dim": true
+      },
+      "projected_gravity": {
+        "func": {
+          "callable": "projected_gravity_reference_as_state"
+        },
+        "params": {
+          "asset_cfg": {
+            "name": "motion_reference"
+          }
+        },
+        "history_length": 2
+      },
+      "joint_pos_rel": {
+        "func": {
+          "callable": "joint_pos_rel_reference_as_state"
+        },
+        "history_length": 2,
+        "flatten_history_dim": true,
+        "params": {
+          "asset_cfg": {
+            "name": "motion_reference",
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "joint_vel": {
+        "func": {
+          "callable": "joint_vel_rel_reference_as_state"
+        },
+        "scale": 0.05,
+        "history_length": 2,
+        "flatten_history_dim": true,
+        "params": {
+          "asset_cfg": {
+            "name": "motion_reference",
+            "joint_names": [
+              "J00_HIP_PITCH_L",
+              "J01_HIP_ROLL_L",
+              "J02_HIP_YAW_L",
+              "J03_KNEE_PITCH_L",
+              "J06_HIP_PITCH_R",
+              "J07_HIP_ROLL_R",
+              "J08_HIP_YAW_R",
+              "J09_KNEE_PITCH_R",
+              "J12_TORSO_YAW",
+              "J13_SHOULDER_PITCH_L",
+              "J14_SHOULDER_ROLL_L",
+              "J15_SHOULDER_YAW_L",
+              "J16_ELBOW_PITCH_L",
+              "J17_ELBOW_YAW_L",
+              "J20_SHOULDER_PITCH_R",
+              "J21_SHOULDER_ROLL_R",
+              "J22_SHOULDER_YAW_R",
+              "J23_ELBOW_PITCH_R",
+              "J24_ELBOW_YAW_R",
+              "J27_HEAD_PITCH",
+              "J28_HEAD_YAW"
+            ],
+            "preserve_order": true
+          }
+        }
+      },
+      "base_lin_vel": null,
+      "base_ang_vel": null,
+      "enable_corruption": false,
+      "concatenate_terms": false
+    }
+  },
+  "rewards": {
+    "track_lin_vel_xy_exp": {
+      "func": {
+        "callable": "track_lin_vel_xy_yaw_frame_exp"
+      },
+      "weight": 1.6,
+      "params": {
+        "command_name": "base_velocity",
+        "std": 0.5
+      }
+    },
+    "track_ang_vel_z_exp": {
+      "func": {
+        "callable": "track_ang_vel_z_world_exp"
+      },
+      "weight": 1.0,
+      "params": {
+        "command_name": "base_velocity",
+        "std": 0.5
+      }
+    },
+    "lin_vel_z_l2": {
+      "func": {
+        "callable": "lin_vel_z_l2"
+      },
+      "weight": -0.5
+    },
+    "ang_vel_xy_l2": {
+      "func": {
+        "callable": "ang_vel_xy_l2"
+      },
+      "weight": -0.5
+    },
+    "flat_orientation_l2": {
+      "func": {
+        "callable": "flat_orientation_l2"
+      },
+      "weight": -0.6
+    },
+    "stand_still_without_cmd": {
+      "func": {
+        "callable": "stand_still_without_cmd"
+      },
+      "weight": -0.15,
+      "params": {
+        "command_name": "base_velocity",
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J00_HIP_PITCH_L",
+            "J01_HIP_ROLL_L",
+            "J02_HIP_YAW_L",
+            "J03_KNEE_PITCH_L",
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J06_HIP_PITCH_R",
+            "J07_HIP_ROLL_R",
+            "J08_HIP_YAW_R",
+            "J09_KNEE_PITCH_R",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R",
+            "J12_TORSO_YAW"
+          ],
+          "preserve_order": true
+        },
+        "command_threshold": 0.02
+      }
+    },
+    "energy": {
+      "func": {
+        "callable": "energy"
+      },
+      "weight": -1e-05
+    },
+    "dof_acc_l2": {
+      "func": {
+        "callable": "joint_acc_l2"
+      },
+      "weight": -2e-07,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J00_HIP_PITCH_L",
+            "J01_HIP_ROLL_L",
+            "J02_HIP_YAW_L",
+            "J03_KNEE_PITCH_L",
+            "J06_HIP_PITCH_R",
+            "J07_HIP_ROLL_R",
+            "J08_HIP_YAW_R",
+            "J09_KNEE_PITCH_R"
+          ]
+        }
+      }
+    },
+    "action_rate_l2": {
+      "func": {
+        "callable": "action_rate_l2"
+      },
+      "weight": -0.0045
+    },
+    "undesired_contacts": {
+      "func": {
+        "callable": "undesired_contacts"
+      },
+      "weight": -1.0,
+      "params": {
+        "sensor_cfg": {
+          "args": [
+            "contact_forces"
+          ],
+          "body_names": [
+            "^(?!LINK_ANKLE_ROLL_L$)(?!LINK_ANKLE_ROLL_R$).+$"
+          ]
+        },
+        "threshold": 1.0
+      }
+    },
+    "feet_slide": {
+      "func": {
+        "callable": "feet_slide"
+      },
+      "weight": -0.5,
+      "params": {
+        "sensor_cfg": {
+          "args": [
+            "contact_forces"
+          ],
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ]
+        },
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ]
+        }
+      }
+    },
+    "feet_force": {
+      "func": {
+        "callable": "contact_force"
+      },
+      "weight": -0.0005,
+      "params": {
+        "sensor_cfg": {
+          "args": [
+            "contact_forces"
+          ],
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ]
+        },
+        "threshold": 1000,
+        "max_reward": 400
+      }
+    },
+    "fly": {
+      "func": {
+        "callable": "fly"
+      },
+      "weight": -1.0,
+      "params": {
+        "sensor_cfg": {
+          "args": [
+            "contact_forces"
+          ],
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ]
+        },
+        "threshold": 1.0
+      }
+    },
+    "feet_air_time": {
+      "func": {
+        "callable": "feet_air_time_positive_biped_tuned"
+      },
+      "weight": 0.5,
+      "params": {
+        "command_name": "base_velocity",
+        "sensor_cfg": {
+          "args": [
+            "contact_forces"
+          ],
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ]
+        },
+        "threshold": 0.18,
+        "command_threshold": 0.08
+      }
+    },
+    "dof_pos_limits": {
+      "func": {
+        "callable": "joint_pos_limits"
+      },
+      "weight": -1.0,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ]
+        }
+      }
+    },
+    "joint_deviation_hip": {
+      "func": {
+        "callable": "joint_deviation_l1"
+      },
+      "weight": -0.1,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J01_HIP_ROLL_L",
+            "J02_HIP_YAW_L",
+            "J07_HIP_ROLL_R",
+            "J08_HIP_YAW_R"
+          ]
+        }
+      }
+    },
+    "joint_deviation_arms": {
+      "func": {
+        "callable": "joint_deviation_l1"
+      },
+      "weight": 0.0,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J13_SHOULDER_PITCH_L",
+            "J14_SHOULDER_ROLL_L",
+            "J15_SHOULDER_YAW_L",
+            "J16_ELBOW_PITCH_L",
+            "J17_ELBOW_YAW_L",
+            "J20_SHOULDER_PITCH_R",
+            "J21_SHOULDER_ROLL_R",
+            "J22_SHOULDER_YAW_R",
+            "J23_ELBOW_PITCH_R",
+            "J24_ELBOW_YAW_R"
+          ]
+        }
+      }
+    },
+    "joint_deviation_head": {
+      "func": {
+        "callable": "joint_deviation_l1"
+      },
+      "weight": 0.0,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J27_HEAD_PITCH",
+            "J28_HEAD_YAW"
+          ]
+        }
+      }
+    },
+    "joint_deviation_torso": {
+      "func": {
+        "callable": "joint_deviation_l1"
+      },
+      "weight": -1.0,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J12_TORSO_YAW"
+          ]
+        }
+      }
+    },
+    "joint_deviation_knee": {
+      "func": {
+        "callable": "joint_deviation_l1"
+      },
+      "weight": -0.05,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J03_KNEE_PITCH_L",
+            "J09_KNEE_PITCH_R"
+          ]
+        }
+      }
+    },
+    "termination_penalty": {
+      "func": {
+        "callable": "is_terminated"
+      },
+      "weight": -200.0
+    },
+    "track_lin_vel_xy_error_l2": {
+      "func": {
+        "callable": "track_lin_vel_xy_yaw_frame_l2"
+      },
+      "weight": -1.0,
+      "params": {
+        "command_name": "base_velocity"
+      }
+    },
+    "track_ang_vel_z_error_l2": {
+      "func": {
+        "callable": "track_ang_vel_z_world_l2"
+      },
+      "weight": -0.5,
+      "params": {
+        "command_name": "base_velocity"
+      }
+    },
+    "standard_arm_pose_l1": {
+      "func": {
+        "callable": "joint_pos_target_l1"
+      },
+      "weight": -0.2,
+      "params": {
+        "target_joint_pos": [
+          -1.1026016473770142,
+          0.6249129176139832,
+          -0.09997937083244324,
+          -1.8275452852249146,
+          0.4490099847316742,
+          -1.1031960248947144,
+          0.10098573565483093,
+          0.5355278849601746,
+          -1.7220640182495117,
+          -0.23479333519935608
+        ],
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J13_SHOULDER_PITCH_L",
+            "J14_SHOULDER_ROLL_L",
+            "J15_SHOULDER_YAW_L",
+            "J16_ELBOW_PITCH_L",
+            "J17_ELBOW_YAW_L",
+            "J20_SHOULDER_PITCH_R",
+            "J21_SHOULDER_ROLL_R",
+            "J22_SHOULDER_YAW_R",
+            "J23_ELBOW_PITCH_R",
+            "J24_ELBOW_YAW_R"
+          ],
+          "preserve_order": true
+        },
+        "normalize_by_num_joints": true
+      }
+    },
+    "standard_head_pose_l1": {
+      "func": {
+        "callable": "joint_pos_target_l1"
+      },
+      "weight": -0.2,
+      "params": {
+        "target_joint_pos": [
+          0.0975627526640892,
+          0.6675200462341309
+        ],
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J27_HEAD_PITCH",
+            "J28_HEAD_YAW"
+          ],
+          "preserve_order": true
+        },
+        "normalize_by_num_joints": true
+      }
+    },
+    "ankle_target_rate_l2": {
+      "func": {
+        "callable": "ankle_target_rate_l2"
+      },
+      "weight": -0.01,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "preserve_order": true
+        },
+        "dt": 0.02
+      }
+    },
+    "ankle_target_acceleration_l2": {
+      "func": {
+        "callable": "ankle_target_acceleration_l2"
+      },
+      "weight": -0.002,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "preserve_order": true
+        },
+        "dt": 0.02
+      }
+    },
+    "ankle_overspeed_hinge_l2": {
+      "func": {
+        "callable": "ankle_overspeed_hinge_l2"
+      },
+      "weight": -0.025,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "preserve_order": true
+        },
+        "dt": 0.02
+      }
+    },
+    "ankle_acceleration_l2": {
+      "func": {
+        "callable": "ankle_acceleration_l2"
+      },
+      "weight": -0.001,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "preserve_order": true
+        },
+        "dt": 0.02
+      }
+    },
+    "ankle_target_soft_limit_hinge_l2": {
+      "func": {
+        "callable": "ankle_target_soft_limit_hinge_l2"
+      },
+      "weight": -0.2,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "preserve_order": true
+        },
+        "dt": 0.02
+      }
+    },
+    "ankle_actual_soft_limit_hinge_l2": {
+      "func": {
+        "callable": "ankle_actual_soft_limit_hinge_l2"
+      },
+      "weight": -0.2,
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "preserve_order": true
+        },
+        "dt": 0.02
+      }
+    }
+  },
+  "terminations": {
+    "time_out": {
+      "func": {
+        "callable": "time_out"
+      },
+      "time_out": true
+    },
+    "base_contact": {
+      "func": {
+        "callable": "illegal_contact"
+      },
+      "time_out": false,
+      "params": {
+        "sensor_cfg": {
+          "args": [
+            "contact_forces"
+          ],
+          "body_names": [
+            "LINK_BASE",
+            "LINK_TORSO_YAW",
+            "LINK_HEAD_.*",
+            "LINK_SHOULDER_.*",
+            "LINK_ELBOW_.*",
+            "LINK_WRIST_END_.*",
+            "LINK_HIP_.*",
+            "LINK_KNEE_PITCH_.*"
+          ]
+        },
+        "threshold": 1.0
+      }
+    },
+    "terrain_out_of_bounds": {
+      "func": {
+        "callable": "terrain_out_of_bounds"
+      },
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ]
+        },
+        "distance_buffer": 3.0
+      }
+    }
+  },
+  "monitors": {},
+  "events": {
+    "physics_material": {
+      "func": {
+        "callable": "randomize_rigid_body_material"
+      },
+      "mode": "startup",
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "body_names": ".*"
+        },
+        "static_friction_range": [
+          0.55,
+          1.25
+        ],
+        "dynamic_friction_range": [
+          0.45,
+          1.1
+        ],
+        "restitution_range": [
+          0.0,
+          0.4
+        ],
+        "num_buckets": 64,
+        "make_consistent": true
+      }
+    },
+    "add_base_mass": {
+      "func": {
+        "callable": "randomize_rigid_body_mass"
+      },
+      "mode": "startup",
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ],
+          "body_names": "LINK_BASE"
+        },
+        "mass_distribution_params": [
+          -5.0,
+          5.0
+        ],
+        "operation": "add"
+      }
+    },
+    "base_external_force_torque": null,
+    "reset_base": {
+      "func": {
+        "callable": "reset_root_state_uniform"
+      },
+      "mode": "reset",
+      "params": {
+        "pose_range": {
+          "x": [
+            -0.5,
+            0.5
+          ],
+          "y": [
+            -0.5,
+            0.5
+          ],
+          "z": [
+            0.28,
+            0.34
+          ],
+          "yaw": [
+            -3.14,
+            3.14
+          ]
+        },
+        "velocity_range": {
+          "x": [
+            -0.5,
+            0.5
+          ],
+          "y": [
+            -0.5,
+            0.5
+          ],
+          "z": [
+            -0.1,
+            0.0
+          ],
+          "roll": [
+            -0.5,
+            0.5
+          ],
+          "pitch": [
+            -0.5,
+            0.5
+          ],
+          "yaw": [
+            -0.5,
+            0.5
+          ]
+        }
+      }
+    },
+    "reset_robot_joints": {
+      "func": {
+        "callable": "reset_joints_by_scale"
+      },
+      "mode": "reset",
+      "params": {
+        "position_range": [
+          0.8,
+          1.2
+        ],
+        "velocity_range": [
+          -1.0,
+          1.0
+        ]
+      }
+    },
+    "push_robot": null,
+    "collider_offsets": {
+      "func": {
+        "callable": "randomize_rigid_body_collider_offsets"
+      },
+      "mode": "startup",
+      "params": {
+        "asset_cfg": {
+          "args": [
+            "robot"
+          ]
+        },
+        "rest_offset_distribution_params": null,
+        "contact_offset_distribution_params": [
+          0.006,
+          0.014
+        ],
+        "distribution": "uniform"
+      }
+    },
+    "ankle_stable_reset": {
+      "func": {
+        "callable": "reset_ankle_stable_history"
+      },
+      "mode": "reset"
+    }
+  },
+  "curriculum": {
+    "terrain_levels": {
+      "func": {
+        "callable": "terrain_levels_vel_with_stats"
+      }
+    }
+  },
+  "viewer": {
+    "eye": [
+      2.0,
+      2.0,
+      0.5
+    ],
+    "lookat": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "origin_type": "asset_root",
+    "asset_name": "robot"
+  },
+  "ANKLE_STABLE_LEVEL": 1,
+  "decimation": 4,
+  "episode_length_s": 20.0,
+  "mirror_action": null,
+  "mirror_observation": null,
+  "mirror_state": null,
+  "run_name": "T800Flat_feetAirTime0.50_standStill0.50_actionRate0.05_jointDeviationKnee0.05_amp_base-mask_cmd-narrow_front37_cmdcond-l2-v2_std-target_offset-original_amp-arms-keep_terrain-fight-mat-mild_low-horizontal-fallen-robot-4to12cm_plus-cols20-rest0p4-turn1p0to2p1_low-cylinders",
+  "ankle_stable_level": 1
+}

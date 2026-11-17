@@ -1,0 +1,77 @@
+{
+  "filter": "mesh",
+  "samples": [
+    {
+      "phase": "upright",
+      "step": 15,
+      "root_height": 0.9229422807693481,
+      "up": 0.9746175408363342,
+      "fall": false,
+      "largest_net": [
+        {
+          "body": "LINK_ANKLE_ROLL_R",
+          "net_n": 675.8125,
+          "filtered_n": 691.791748046875
+        },
+        {
+          "body": "LINK_ANKLE_ROLL_L",
+          "net_n": 212.20436096191406,
+          "filtered_n": 265.0760192871094
+        },
+        {
+          "body": "LINK_BASE",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_PITCH_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 691.791748046875
+    },
+    {
+      "phase": "after_reset",
+      "step": 0,
+      "root_height": 1.1389440298080444,
+      "up": 1.0,
+      "fall": true,
+      "largest_net": [
+        {
+          "body": "LINK_KNEE_PITCH_L",
+          "net_n": 286.8887634277344,
+          "filtered_n": 286.8887634277344
+        },
+        {
+          "body": "LINK_BASE",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_PITCH_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        },
+        {
+          "body": "LINK_HIP_YAW_L",
+          "net_n": 0.0,
+          "filtered_n": 0.0
+        }
+      ],
+      "largest_filtered": 286.8887634277344
+    }
+  ],
+  "fallen_resets": 1,
+  "collider_prims": {
+    "/World/ground/terrain": {
+      "type": "Xform",
+      "collision": false
+    },
+    "/World/ground/terrain/mesh": {
+      "type": "Mesh",
+      "collision": true
+    }
+  },
+  "reset_at_step": 0
+}

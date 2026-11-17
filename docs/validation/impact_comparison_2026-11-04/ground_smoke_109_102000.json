@@ -1,0 +1,1011 @@
+{
+  "observation_dimensions": {
+    "policy": 84,
+    "critic": 87,
+    "amp_policy": 96,
+    "amp_reference": 96
+  },
+  "action_joints": [
+    "J00_HIP_PITCH_L",
+    "J01_HIP_ROLL_L",
+    "J02_HIP_YAW_L",
+    "J03_KNEE_PITCH_L",
+    "J04_ANKLE_PITCH_L",
+    "J05_ANKLE_ROLL_L",
+    "J06_HIP_PITCH_R",
+    "J07_HIP_ROLL_R",
+    "J08_HIP_YAW_R",
+    "J09_KNEE_PITCH_R",
+    "J10_ANKLE_PITCH_R",
+    "J11_ANKLE_ROLL_R",
+    "J12_TORSO_YAW",
+    "J13_SHOULDER_PITCH_L",
+    "J14_SHOULDER_ROLL_L",
+    "J15_SHOULDER_YAW_L",
+    "J16_ELBOW_PITCH_L",
+    "J17_ELBOW_YAW_L",
+    "J20_SHOULDER_PITCH_R",
+    "J21_SHOULDER_ROLL_R",
+    "J22_SHOULDER_YAW_R",
+    "J23_ELBOW_PITCH_R",
+    "J24_ELBOW_YAW_R",
+    "J27_HEAD_PITCH",
+    "J28_HEAD_YAW"
+  ],
+  "control_dt": 0.02,
+  "terrain_proportions": [
+    0.8,
+    0.2
+  ],
+  "terrain_columns": [
+    8,
+    2
+  ],
+  "ground_filtered_body_sensors": 21,
+  "impact": {
+    "enabled": true,
+    "enabled_eval": true,
+    "mode": "train",
+    "seed_offset": 7301,
+    "command_name": "base_velocity",
+    "tactical_front_offset_deg": 37.0,
+    "warmup_updates": 500,
+    "ramp_updates": 5000,
+    "initial_strength": 0.15,
+    "eval_strength": 1.0,
+    "fixed_peak_n": null,
+    "fixed_duration_s": null,
+    "fixed_interval_s": null,
+    "clean_episode_probability": 0.25,
+    "stress_episode_probability": 0.1,
+    "direction_probabilities": [
+      0.6,
+      0.35,
+      0.05
+    ],
+    "direction_elevation_deg": [
+      -15.0,
+      15.0
+    ],
+    "common_peak_bands_n": [
+      [
+        40.0,
+        300.0
+      ],
+      [
+        300.0,
+        900.0
+      ],
+      [
+        900.0,
+        2000.0
+      ]
+    ],
+    "common_peak_band_probabilities": [
+      0.35,
+      0.4,
+      0.25
+    ],
+    "stress_peak_n": [
+      1600.0,
+      5000.0
+    ],
+    "targets": [
+      {
+        "name": "LINK_TORSO_YAW",
+        "group": "torso",
+        "weight": 3.0,
+        "point_half_extent_m": [
+          0.1,
+          0.13,
+          0.18
+        ],
+        "duration_s": [
+          0.025,
+          0.08
+        ],
+        "common_impulse_limit_ns": 100.0,
+        "stress_impulse_limit_ns": 170.0
+      },
+      {
+        "name": "LINK_BASE",
+        "group": "pelvis",
+        "weight": 1.2,
+        "point_half_extent_m": [
+          0.1,
+          0.12,
+          0.1
+        ],
+        "duration_s": [
+          0.025,
+          0.08
+        ],
+        "common_impulse_limit_ns": 100.0,
+        "stress_impulse_limit_ns": 170.0
+      },
+      {
+        "name": "LINK_HEAD_YAW",
+        "group": "head",
+        "weight": 0.6,
+        "point_half_extent_m": [
+          0.07,
+          0.07,
+          0.08
+        ],
+        "duration_s": [
+          0.012,
+          0.035
+        ],
+        "common_impulse_limit_ns": 20.0,
+        "stress_impulse_limit_ns": 40.0
+      },
+      {
+        "name": "LINK_SHOULDER_ROLL_L",
+        "group": "arm",
+        "weight": 0.7,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.1
+        ],
+        "duration_s": [
+          0.018,
+          0.06
+        ],
+        "common_impulse_limit_ns": 55.0,
+        "stress_impulse_limit_ns": 100.0
+      },
+      {
+        "name": "LINK_SHOULDER_YAW_L",
+        "group": "arm",
+        "weight": 0.8,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.12
+        ],
+        "duration_s": [
+          0.018,
+          0.06
+        ],
+        "common_impulse_limit_ns": 55.0,
+        "stress_impulse_limit_ns": 100.0
+      },
+      {
+        "name": "LINK_ELBOW_YAW_L",
+        "group": "arm",
+        "weight": 1.0,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.13
+        ],
+        "duration_s": [
+          0.018,
+          0.06
+        ],
+        "common_impulse_limit_ns": 55.0,
+        "stress_impulse_limit_ns": 100.0
+      },
+      {
+        "name": "LINK_HIP_YAW_L",
+        "group": "thigh",
+        "weight": 0.8,
+        "point_half_extent_m": [
+          0.07,
+          0.07,
+          0.15
+        ],
+        "duration_s": [
+          0.025,
+          0.09
+        ],
+        "common_impulse_limit_ns": 65.0,
+        "stress_impulse_limit_ns": 110.0
+      },
+      {
+        "name": "LINK_KNEE_PITCH_L",
+        "group": "calf",
+        "weight": 0.6,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.17
+        ],
+        "duration_s": [
+          0.025,
+          0.09
+        ],
+        "common_impulse_limit_ns": 45.0,
+        "stress_impulse_limit_ns": 80.0
+      },
+      {
+        "name": "LINK_SHOULDER_ROLL_R",
+        "group": "arm",
+        "weight": 0.7,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.1
+        ],
+        "duration_s": [
+          0.018,
+          0.06
+        ],
+        "common_impulse_limit_ns": 55.0,
+        "stress_impulse_limit_ns": 100.0
+      },
+      {
+        "name": "LINK_SHOULDER_YAW_R",
+        "group": "arm",
+        "weight": 0.8,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.12
+        ],
+        "duration_s": [
+          0.018,
+          0.06
+        ],
+        "common_impulse_limit_ns": 55.0,
+        "stress_impulse_limit_ns": 100.0
+      },
+      {
+        "name": "LINK_ELBOW_YAW_R",
+        "group": "arm",
+        "weight": 1.0,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.13
+        ],
+        "duration_s": [
+          0.018,
+          0.06
+        ],
+        "common_impulse_limit_ns": 55.0,
+        "stress_impulse_limit_ns": 100.0
+      },
+      {
+        "name": "LINK_HIP_YAW_R",
+        "group": "thigh",
+        "weight": 0.8,
+        "point_half_extent_m": [
+          0.07,
+          0.07,
+          0.15
+        ],
+        "duration_s": [
+          0.025,
+          0.09
+        ],
+        "common_impulse_limit_ns": 65.0,
+        "stress_impulse_limit_ns": 110.0
+      },
+      {
+        "name": "LINK_KNEE_PITCH_R",
+        "group": "calf",
+        "weight": 0.6,
+        "point_half_extent_m": [
+          0.06,
+          0.06,
+          0.17
+        ],
+        "duration_s": [
+          0.025,
+          0.09
+        ],
+        "common_impulse_limit_ns": 45.0,
+        "stress_impulse_limit_ns": 80.0
+      }
+    ],
+    "first_hit_delay_s": [
+      1.5,
+      3.0
+    ],
+    "recovery_pause_s": [
+      2.0,
+      5.0
+    ],
+    "combo_gap_s": [
+      0.15,
+      0.5
+    ],
+    "common_combo_probability": 0.3,
+    "stress_combo_probability": 0.0,
+    "common_combo_max_hits": 3,
+    "stress_combo_max_hits": 1,
+    "recovery_min_scale": 0.35,
+    "recovery_recent_hit_s": 0.4,
+    "recovery_max_s": 1.2,
+    "recovery_stable_hold_s": 0.2,
+    "recovery_rearm_stable_s": 0.4,
+    "recovery_tilt_threshold_rad": 0.18,
+    "recovery_angular_speed_threshold": 1.0,
+    "recovery_velocity_error_threshold": 0.55,
+    "measurement_window_s": 2.0,
+    "head_mode": "full",
+    "head_fault_warmup_updates": 500,
+    "head_passive_probability": 0.15,
+    "head_weak_probability": 0.1,
+    "head_fault_delay_s": [
+      2.0,
+      8.0
+    ]
+  },
+  "rewards": {
+    "track_lin_vel_xy_exp": {
+      "func": {
+        "callable": "track_lin_vel_xy_yaw_frame_exp"
+      },
+      "params": {
+        "command_name": "base_velocity",
+        "std": 0.5
+      },
+      "weight": 1.6
+    },
+    "track_ang_vel_z_exp": {
+      "func": {
+        "callable": "track_ang_vel_z_world_exp"
+      },
+      "params": {
+        "command_name": "base_velocity",
+        "std": 0.5
+      },
+      "weight": 1.0
+    },
+    "lin_vel_z_l2": {
+      "func": {
+        "callable": "lin_vel_z_l2"
+      },
+      "params": {},
+      "weight": -0.5
+    },
+    "ang_vel_xy_l2": {
+      "func": {
+        "callable": "ang_vel_xy_l2"
+      },
+      "params": {},
+      "weight": -0.5
+    },
+    "flat_orientation_l2": {
+      "func": {
+        "callable": "flat_orientation_l2"
+      },
+      "params": {},
+      "weight": -0.6
+    },
+    "stand_still_without_cmd": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "stand_still_without_cmd"
+        },
+        "term_params": {
+          "command_name": "base_velocity",
+          "command_threshold": 0.02
+        },
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J00_HIP_PITCH_L",
+            "J01_HIP_ROLL_L",
+            "J02_HIP_YAW_L",
+            "J03_KNEE_PITCH_L",
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J06_HIP_PITCH_R",
+            "J07_HIP_ROLL_R",
+            "J08_HIP_YAW_R",
+            "J09_KNEE_PITCH_R",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R",
+            "J12_TORSO_YAW"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        }
+      },
+      "weight": -0.15
+    },
+    "energy": {
+      "func": {
+        "callable": "energy"
+      },
+      "params": {},
+      "weight": -1e-05
+    },
+    "dof_acc_l2": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "joint_acc_l2"
+        },
+        "term_params": {},
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J00_HIP_PITCH_L",
+            "J01_HIP_ROLL_L",
+            "J02_HIP_YAW_L",
+            "J03_KNEE_PITCH_L",
+            "J06_HIP_PITCH_R",
+            "J07_HIP_ROLL_R",
+            "J08_HIP_YAW_R",
+            "J09_KNEE_PITCH_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        }
+      },
+      "weight": -2e-07
+    },
+    "action_rate_l2": {
+      "func": {
+        "callable": "body_action_rate"
+      },
+      "params": {},
+      "weight": -0.0045
+    },
+    "undesired_contacts": {
+      "func": {
+        "callable": "nonsole_ground_contacts"
+      },
+      "params": {
+        "threshold": 1.0
+      },
+      "weight": -1.0
+    },
+    "feet_slide": {
+      "func": {
+        "callable": "feet_slide"
+      },
+      "params": {
+        "sensor_cfg": {
+          "name": "contact_forces",
+          "joint_names": null,
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ],
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        },
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": null,
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ],
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        }
+      },
+      "weight": -0.5
+    },
+    "feet_force": {
+      "func": {
+        "callable": "contact_force"
+      },
+      "params": {
+        "sensor_cfg": {
+          "name": "contact_forces",
+          "joint_names": null,
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ],
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        },
+        "threshold": 1000,
+        "max_reward": 400
+      },
+      "weight": -0.0005
+    },
+    "fly": {
+      "func": {
+        "callable": "fly"
+      },
+      "params": {
+        "sensor_cfg": {
+          "name": "contact_forces",
+          "joint_names": null,
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": [
+            "LINK_ANKLE_ROLL_L",
+            "LINK_ANKLE_ROLL_R"
+          ],
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        },
+        "threshold": 1.0
+      },
+      "weight": -1.0
+    },
+    "feet_air_time": null,
+    "dof_pos_limits": {
+      "func": {
+        "callable": "joint_pos_limits"
+      },
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        }
+      },
+      "weight": -1.0
+    },
+    "joint_deviation_hip": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "joint_deviation_l1"
+        },
+        "term_params": {},
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J01_HIP_ROLL_L",
+            "J02_HIP_YAW_L",
+            "J07_HIP_ROLL_R",
+            "J08_HIP_YAW_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        }
+      },
+      "weight": -0.1
+    },
+    "joint_deviation_arms": {
+      "func": {
+        "callable": "joint_deviation_l1"
+      },
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J13_SHOULDER_PITCH_L",
+            "J14_SHOULDER_ROLL_L",
+            "J15_SHOULDER_YAW_L",
+            "J16_ELBOW_PITCH_L",
+            "J17_ELBOW_YAW_L",
+            "J20_SHOULDER_PITCH_R",
+            "J21_SHOULDER_ROLL_R",
+            "J22_SHOULDER_YAW_R",
+            "J23_ELBOW_PITCH_R",
+            "J24_ELBOW_YAW_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        }
+      },
+      "weight": 0.0
+    },
+    "joint_deviation_head": null,
+    "joint_deviation_torso": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "joint_deviation_l1"
+        },
+        "term_params": {},
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J12_TORSO_YAW"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        }
+      },
+      "weight": -1.0
+    },
+    "joint_deviation_knee": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "joint_deviation_l1"
+        },
+        "term_params": {},
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J03_KNEE_PITCH_L",
+            "J09_KNEE_PITCH_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": false
+        }
+      },
+      "weight": -0.05
+    },
+    "termination_penalty": {
+      "func": {
+        "callable": "is_terminated"
+      },
+      "params": {},
+      "weight": -200.0
+    },
+    "track_lin_vel_xy_error_l2": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "track_lin_vel_xy_yaw_frame_l2"
+        },
+        "term_params": {
+          "command_name": "base_velocity"
+        }
+      },
+      "weight": -1.0
+    },
+    "track_ang_vel_z_error_l2": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "track_ang_vel_z_world_l2"
+        },
+        "term_params": {
+          "command_name": "base_velocity"
+        }
+      },
+      "weight": -0.5
+    },
+    "standard_arm_pose_l1": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "joint_pos_target_l1"
+        },
+        "term_params": {
+          "target_joint_pos": [
+            -1.1026016473770142,
+            0.6249129176139832,
+            -0.09997937083244324,
+            -1.8275452852249146,
+            0.4490099847316742,
+            -1.1031960248947144,
+            0.10098573565483093,
+            0.5355278849601746,
+            -1.7220640182495117,
+            -0.23479333519935608
+          ],
+          "normalize_by_num_joints": true
+        },
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J13_SHOULDER_PITCH_L",
+            "J14_SHOULDER_ROLL_L",
+            "J15_SHOULDER_YAW_L",
+            "J16_ELBOW_PITCH_L",
+            "J17_ELBOW_YAW_L",
+            "J20_SHOULDER_PITCH_R",
+            "J21_SHOULDER_ROLL_R",
+            "J22_SHOULDER_YAW_R",
+            "J23_ELBOW_PITCH_R",
+            "J24_ELBOW_YAW_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        }
+      },
+      "weight": -0.2
+    },
+    "standard_head_pose_l1": null,
+    "ankle_target_rate_l2": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "ankle_target_rate_l2"
+        },
+        "term_params": {
+          "dt": 0.02
+        },
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        }
+      },
+      "weight": -0.01
+    },
+    "ankle_target_acceleration_l2": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "ankle_target_acceleration_l2"
+        },
+        "term_params": {
+          "dt": 0.02
+        },
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        }
+      },
+      "weight": -0.002
+    },
+    "ankle_overspeed_hinge_l2": {
+      "func": {
+        "callable": "ankle_overspeed_hinge_l2"
+      },
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        },
+        "dt": 0.02
+      },
+      "weight": -0.025
+    },
+    "ankle_acceleration_l2": {
+      "func": {
+        "callable": "recovery_scaled"
+      },
+      "params": {
+        "term_func": {
+          "callable": "ankle_acceleration_l2"
+        },
+        "term_params": {
+          "dt": 0.02
+        },
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        }
+      },
+      "weight": -0.001
+    },
+    "ankle_target_soft_limit_hinge_l2": {
+      "func": {
+        "callable": "ankle_target_soft_limit_hinge_l2"
+      },
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        },
+        "dt": 0.02
+      },
+      "weight": -0.2
+    },
+    "ankle_actual_soft_limit_hinge_l2": {
+      "func": {
+        "callable": "ankle_actual_soft_limit_hinge_l2"
+      },
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "J04_ANKLE_PITCH_L",
+            "J05_ANKLE_ROLL_L",
+            "J10_ANKLE_PITCH_R",
+            "J11_ANKLE_ROLL_R"
+          ],
+          "joint_ids": "slice(None, None, None)",
+          "fixed_tendon_names": null,
+          "fixed_tendon_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "object_collection_names": null,
+          "object_collection_ids": "slice(None, None, None)",
+          "preserve_order": true
+        },
+        "dt": 0.02
+      },
+      "weight": -0.2
+    },
+    "impact_scale_snapshot": {
+      "func": {
+        "callable": "capture_recovery_scale"
+      },
+      "params": {},
+      "weight": 1.0
+    }
+  },
+  "registered_tasks": [
+    "T800_base",
+    "T800_base-AnkleCombined",
+    "T800_base-AnkleCombined-Play",
+    "T800_base-AnkleDamping",
+    "T800_base-AnkleDamping-Play",
+    "T800_base-AnklePose",
+    "T800_base-AnklePose-Play",
+    "T800_base-AnkleSmooth",
+    "T800_base-AnkleSmooth-Play",
+    "T800_base-AnkleTargetLimit",
+    "T800_base-AnkleTargetLimit-Play",
+    "T800_base-Impact",
+    "T800_base-Impact-Play",
+    "T800_base-Play"
+  ],
+  "checkpoint": {
+    "path": "/home/xjh/workspace/zq/zq_leo_final/logs/cusrl/T800_base-Impact/2026-11-02-20-45-18:T800_base-Impact_from85500_40k/ckpt/ckpt_102000.pt",
+    "full_restore_verified": true
+  },
+  "simulation": {
+    "num_envs": 2,
+    "steps": 4,
+    "observation_dimensions": {
+      "policy": 84,
+      "critic": 87,
+      "amp_policy": 96,
+      "amp_reference": 96
+    },
+    "applied_impulse_ns": 21.536569595336914,
+    "reset_wrenches_cleared": true,
+    "ground_contact_smoke": {
+      "sole_filtered_force_peak_n": 6027.6337890625,
+      "nonsole_ground_contact_per_env": [
+        true,
+        true
+      ],
+      "fallen_terminated_per_env": [
+        true,
+        true
+      ],
+      "all_falls_detected_within_s": 0.02
+    }
+  }
+}
